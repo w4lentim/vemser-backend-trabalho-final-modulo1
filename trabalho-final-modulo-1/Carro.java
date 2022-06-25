@@ -15,5 +15,4 @@ public abstract class Carro {
     public void setTipo(Integer tipo) {
         this.tipo = tipo;
     }
-    
 }
