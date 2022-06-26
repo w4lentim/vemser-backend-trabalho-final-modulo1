@@ -48,20 +48,21 @@ public class Cliente extends Usuario implements Impressao, Operacao {
     }
 
     @Override
-    public Boolean devolver() {
-        return null;
+    public Boolean devolver(Integer diaEntregue) {
+        Double multaExcesso;
+        if(diaEntregue.equals(aluguel.getDiaDoAluguel() + aluguel.getQntDias())) {
+            System.out.println("Carro entregue com sucesso.");
+            return true;
+        } else {
+            System.out.println("Carro entregue excedendo o dia de entrega.");
+            multaExcesso = Double.valueOf((diaEntregue - (aluguel.getDiaDoAluguel() + aluguel.getQntDias())));
+            System.out.println("Valor da multa: " + multaExcesso);
+            return false;
+        }
     }
 
     @Override
-    public Double multa() {
-        return null;
-    }
-
-
-    @Override
-    public void imprimir() {
-
-    }
+    public void imprimir() {};
 
     @Override
     public String toString() {
