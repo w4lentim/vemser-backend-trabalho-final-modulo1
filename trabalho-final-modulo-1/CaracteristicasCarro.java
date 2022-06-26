@@ -58,4 +58,17 @@ public class CaracteristicasCarro {
     public void imprimirCaracteristicas() {
         System.out.println("Marca: " + getMarca() + "\nModelo: " + getModelo() + "Ano: " + getAno() + "Quantidade de passageiros: " + getQntPassageiros() + "Quilômetros rodados (km): " + getKmRodados());
     }
+
+    @Override
+    public String toString() {
+        return
+                "\n---------------\n" +
+                "Marca:'" + marca +
+                "\nModelo:'" + modelo +
+                "\nAno:" + ano +
+                "\nQuantidade de Passageiros:" + qntPassageiros +
+                "\nKilometros Rodados:" + kmRodados +
+                "\nQuantidade de Combustível Disponível:" + qntCombustivel
+                ;
+    }
 }

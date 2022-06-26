@@ -8,7 +8,21 @@ public class Main {
         int tipo = 0;
         int opcao = 0;
         int opcaoAux = 0;
+        double doubleAux =0;
 
+        CaracteristicasCarro caracFusca = new CaracteristicasCarro("Wolkswagem", "qualquer", 1990, 4,
+                120000L, 25.0);
+        CaracteristicasCarro caracPalio = new CaracteristicasCarro("Fiat", "2.0", 2010, 5,
+                40000L, 45.0);
+
+        Carro fusca = new Carro("Fusca", caracFusca, "B", 100.00);
+        Carro palio = new Carro("Palio", caracPalio, "C", 100.00);
+
+        Aluguel aluguel1 = new Aluguel(26, 4, fusca);
+
+        Cliente cliente1 = new Cliente("Willian", "111.222.333-44", "Cliente", aluguel1);
+
+       // CarroOperacoes carro = new CarroOperacoes(new CaracteristicasCarro("Fiat", "Palio", 2010"", 5, 1480L, 40.0));
 
         // MENU DE OPÇÕES:
         // 1 - CLIENTE OU FUNCIONÁRIO?
@@ -104,16 +118,28 @@ public class Main {
                     opcao = sc.nextInt();
                     switch (opcao) {
                         case 1:
-                            System.out.println("~lista~");
-
+                            fusca.imprimir();
+                            palio.imprimir();
 
                             System.out.println("Digite 0 para retornar:");
                             opcaoAux = sc.nextInt();
                             if (opcaoAux==0){
                                 break;
                             }
+
                         case 2:
-                            System.out.println("~alugar");
+                            cliente1.alugar(palio.getValorAluguelCarro());
+                            System.out.println(palio.getValorAluguelCarro());
+                            System.out.println("Deseja alugar o carro:\n1 - SIM   2 - NÃo");
+                            opcaoAux = sc.nextInt();
+                            if (opcaoAux==1){
+                                System.out.println("Informe o valor:");
+                                doubleAux = sc.nextDouble();
+                                cliente1.pagar(doubleAux, palio.getValorAluguelCarro());
+                            }
+                            else {
+                                break;
+                            }
 
                             System.out.println("Digite 0 para retornar:");
                             opcaoAux = sc.nextInt();

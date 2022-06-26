@@ -1,4 +1,4 @@
-public class Carro {
+public class Carro implements Impressao{
 
     private String nomeDoCarro;
     private CaracteristicasCarro infoCarro;
@@ -49,4 +49,11 @@ public class Carro {
         Integer diasCarro = diaDoAluguel.getDiaDoAluguel() + qntDiasCarro.getQntDias();
         return diasCarro;
     }
+
+    @Override
+    public void imprimir() {
+        System.out.println("Nome do carro: " + nomeDoCarro + "\nTipo:" + tipo + "\nValor de Aluguel:" + valorAluguelCarro +
+                infoCarro );
+    }
+
 }

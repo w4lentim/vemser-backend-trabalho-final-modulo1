@@ -38,10 +38,16 @@ public class Cliente extends Usuario implements Impressao, Operacao {
 
     @Override
     public Boolean pagar(Double valorPagamento, Double valorCarroAlugar) {
+        Double troco;
         if(valorPagamento.equals(alugar(valorCarroAlugar))) {
             System.out.println(valorPagamento + " Carro alugado com sucesso");
             return true;
-        } else {
+        } else if (valorPagamento>alugar(valorCarroAlugar)){
+            troco = valorPagamento -valorCarroAlugar;
+            System.out.println(valorPagamento + " Carro alugado com sucesso\nTroco:" + troco);
+            return true;
+        }
+        else {
             System.out.println(valorPagamento + " Valor não corresponde ao valor do aluguel");
             return false;
         }
@@ -62,7 +68,9 @@ public class Cliente extends Usuario implements Impressao, Operacao {
     }
 
     @Override
-    public void imprimir() {};
+    public void imprimir() {
+
+    };
 
     @Override
     public String toString() {
