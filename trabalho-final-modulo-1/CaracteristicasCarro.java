@@ -5,13 +5,23 @@ public class CaracteristicasCarro extends Carro {
     private Integer ano;
     private Integer qntPassageiros;
     private Long kmRodados;
+    private Double qntCombustivel;
 
-    public CaracteristicasCarro(String marca, String modelo, Integer ano, Integer qntPassageiros, Long kmRodados) {
+    public CaracteristicasCarro(String marca, String modelo, Integer ano, Integer qntPassageiros, Long kmRodados, Double qntCombustivel) {
         this.marca = marca;
         this.modelo = modelo;
         this.ano = ano;
         this.qntPassageiros = qntPassageiros;
         this.kmRodados = kmRodados;
+        this.qntCombustivel = qntCombustivel;
+    }
+
+    public Double getQntCombustivel() {
+        return qntCombustivel;
+    }
+
+    public void setQntCombustivel(Double qntCombustivel) {
+        this.qntCombustivel = qntCombustivel;
     }
 
     public String getMarca() {

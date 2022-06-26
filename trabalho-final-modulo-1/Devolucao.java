@@ -19,7 +19,7 @@ public class Devolucao extends Carro{
         this.qntCombustivelDevolucao = qntCombustivelDevolucao;
     }
 
-    public boolean devolucaoCarro(){
+    public boolean devolucaoCarro(Integer diaDaDevolucao){
         return false;
     }
 

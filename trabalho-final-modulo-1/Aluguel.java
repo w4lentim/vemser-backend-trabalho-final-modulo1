@@ -1,16 +1,14 @@
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
 
-public class Aluguel extends Carro{
+public class Aluguel extends Cliente{
     private Integer diaDoAluguel;
     private Integer qntDias;
-    private Double qntCombustivel;
+    static final Double VALOR_DIARIA = 100.00;
 
-    public Aluguel(Integer diaDoAluguel, Integer qntDias, Double qntCombustivel) {
+
+    public Aluguel(String nivel, String nome, String cpf, Integer diaDoAluguel, Integer qntDias) {
+        super(nivel, nome, cpf);
         this.diaDoAluguel = diaDoAluguel;
         this.qntDias = qntDias;
-        this.qntCombustivel = qntCombustivel;
     }
 
     public Integer getDiaDoAluguel() {
@@ -25,15 +23,9 @@ public class Aluguel extends Carro{
     public void setQntDias(Integer qntDias) {
         this.qntDias = qntDias;
     }
-    public Double getQntCombustivel() {
-        return qntCombustivel;
-    }
-    public void setQntCombustivel(Double qntCombustivel) {
-        this.qntCombustivel = qntCombustivel;
-    }
 
-    public Integer calcularDiasComCarro(LocalDate retirada, LocalDate devolucao){
-        Integer qntDias = Math.toIntExact(ChronoUnit.DAYS.between(retirada, devolucao));
+    public Integer calcularDiasComCarro(Integer retirada, Integer devolucao){
+        this.qntDias = devolucao - retirada;
         return qntDias;
     }
 }

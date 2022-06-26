@@ -8,9 +8,11 @@ public class Funcionario extends Usuario{
         this.matricula = matricula;
     }
 
+    @Override
     public String getNome() {
         return nome;
     }
+
     public void setNome(String nome) {
         this.nome = nome;
     }
