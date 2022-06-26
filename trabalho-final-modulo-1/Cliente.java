@@ -20,22 +20,22 @@ public class Cliente extends Usuario implements Impressao, Operacao {
     }
 
     @Override
-    public Double alugar(Double valorAluguel, Integer qntDias) {
+    public Double alugar(Double valorDoCarroAlugar, Integer qntDias) {
         if(aluguel.getCarro().getTipo().equals("C")) {
-            valorAluguel = Aluguel.VALOR_DIARIA * qntDias;
+            valorDoCarroAlugar = Aluguel.VALOR_DIARIA * qntDias;
         } else if(aluguel.getCarro().getTipo().equals("B")) {
-            valorAluguel = Aluguel.VALOR_DIARIA * qntDias * 1.2;
+            valorDoCarroAlugar = Aluguel.VALOR_DIARIA * qntDias * 1.2;
         } else if (aluguel.getCarro().getTipo().equals("A")) {
-            valorAluguel = Aluguel.VALOR_DIARIA * qntDias * 1.5;
+            valorDoCarroAlugar = Aluguel.VALOR_DIARIA * qntDias * 1.5;
         } else{
             System.out.println("Tipo de Carro informado inválido");
         }
-        return valorAluguel;
+        return valorDoCarroAlugar;
     }
 
     @Override
     public Boolean pagar(Double valorPagamento, Integer diaDaDevolucao) {
-        if(valorPagamento.equals(alugar(getAluguel().getCarro().getValorAluguelCarro(), aluguel.getCarro().calcularDiasComCarro(diaDaDevolucao, aluguel) ))) {
+        if(valorPagamento.equals(alugar(getAluguel().getCarro().getValorAluguelCarro(), aluguel.getCarro().calcularDiasComCarro(aluguel, aluguel)))) {
             System.out.println("Carro alugado com sucesso");
             return true;
         } else {

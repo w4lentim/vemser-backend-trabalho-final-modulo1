@@ -1,9 +1,16 @@
-public abstract class Carro {
+public class Carro {
 
     private String nomeDoCarro;
     private CaracteristicasCarro infoCarro;
     private String tipo;
     private Double valorAluguelCarro;
+
+    public Carro(String nomeDoCarro, CaracteristicasCarro infoCarro, String tipo, Double valorAluguelCarro) {
+        this.nomeDoCarro = nomeDoCarro;
+        this.infoCarro = infoCarro;
+        this.tipo = tipo;
+        this.valorAluguelCarro = valorAluguelCarro;
+    }
 
     public String getNomeDoCarro() {
         return nomeDoCarro;
@@ -38,7 +45,8 @@ public abstract class Carro {
         return valorAluguelCarro;
     }
 
-    public Integer calcularDiasComCarro(Integer diaDaDevolucao, Aluguel diaDoAluguel){
-        return diaDoAluguel.getDiaDoAluguel() - diaDaDevolucao;
+    public Integer calcularDiasComCarro(Aluguel qntDiasCarro, Aluguel diaDoAluguel){
+        Integer diasCarro = diaDoAluguel.getDiaDoAluguel() + qntDiasCarro.getQntDias();
+        return diasCarro;
     }
 }
