@@ -1,4 +1,4 @@
-public class CaracteristicasCarro extends Carro {
+public class CaracteristicasCarro {
 
     private String marca;
     private String modelo;

@@ -37,4 +37,8 @@ public abstract class Carro {
         this.valorAluguelCarro = valorAluguelCarro;
         return valorAluguelCarro;
     }
+
+    public Integer calcularDiasComCarro(Integer diaDaDevolucao, Aluguel diaDoAluguel){
+        return diaDoAluguel.getDiaDoAluguel() - diaDaDevolucao;
+    }
 }

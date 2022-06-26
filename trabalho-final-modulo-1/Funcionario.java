@@ -1,21 +1,10 @@
-public class Funcionario extends Cliente {
-    private Cliente nomeFuncionario;
+public class Funcionario extends Usuario {
     private String matricula;
 
 
-    public Funcionario(Integer diaDoAluguel, Integer qntDias, Carro nomeCarro, Carro tipoCarro, String nome, String cpf,
-            Cliente nomeFuncionario, String matricula) {
-        super(diaDoAluguel, qntDias, nomeCarro, tipoCarro, nome, cpf);
-        this.nomeFuncionario = nomeFuncionario;
+    public Funcionario(String nome, String cpf, String nivel, String matricula) {
+        super(nome, cpf, nivel);
         this.matricula = matricula;
-    }
-
-    public Cliente getNomeFuncionario() {
-        return nomeFuncionario;
-    }
-
-    public void setNomeFuncionario(Cliente nomeFuncionario) {
-        this.nomeFuncionario = nomeFuncionario;
     }
 
     public String getMatricula() {
@@ -26,17 +15,4 @@ public class Funcionario extends Cliente {
         this.matricula = matricula;
     }
 
-    public void imprimirFuncionario() {
-        System.out.println("Nome do Funcionário: " + getNomeFuncionario() + "\nMatricula: " + getMatricula());
-    }
-
-    @Override
-    public void imprimir() {
-
-    }
-
-    @Override
-    public String toString() {
-        return "Nome do Funcionário: " + getNomeFuncionario() + "\nMatricula: " + getMatricula();
-    }
 }

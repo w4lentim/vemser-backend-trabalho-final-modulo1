@@ -1,17 +1,15 @@
-public class Aluguel extends Carro {
+public class Aluguel {
 
     private Integer diaDoAluguel;
     private Integer qntDias;
-    private Carro nomeCarro;
-    private Carro tipoCarro;
+    private Carro carro;
 
     static final Double VALOR_DIARIA = 100.00;
 
-    public Aluguel(Integer diaDoAluguel, Integer qntDias, Carro nomeCarro, Carro tipoCarro) {
+    public Aluguel(Integer diaDoAluguel, Integer qntDias, Carro carro) {
         this.diaDoAluguel = diaDoAluguel;
         this.qntDias = qntDias;
-        this.nomeCarro = nomeCarro;
-        this.tipoCarro = tipoCarro;
+        this.carro = carro;
     }
     public Integer getDiaDoAluguel() {
         return diaDoAluguel;
@@ -25,21 +23,11 @@ public class Aluguel extends Carro {
     public void setQntDias(Integer qntDias) {
         this.qntDias = qntDias;
     }
+    public Carro getCarro() {
+        return carro;
+    }
+    public void setCarro(Carro carro) {
+        this.carro = carro;
+    }
 
-    public Carro getNomeCarro() {
-        return nomeCarro;
-    }
-    public void setNomeCarro(Carro nomeCarro) {
-        this.nomeCarro = nomeCarro;
-    }
-    public Carro getTipoCarro() {
-        return tipoCarro;
-    }
-    public void setTipoCarro(Carro tipoCarro) {
-        this.tipoCarro = tipoCarro;
-    }
-    public Integer calcularDiasComCarro(Devolucao diaDaDevolucao, Aluguel diaDoAluguel){
-        
-        return qntDias;
-    }
 }

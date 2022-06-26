@@ -1,28 +1,18 @@
-public class Cliente extends Aluguel implements Impressao, Operacao {
+public class Cliente extends Usuario implements Impressao, Operacao {
 
-    private String nome;
-    private String cpf;
+    private Aluguel aluguel;
 
-    public Cliente(Integer diaDoAluguel, Integer qntDias, Carro nomeCarro, Carro tipoCarro, String nome, String cpf) {
-        super(diaDoAluguel, qntDias, nomeCarro, tipoCarro);
-        this.nome = nome;
-        this.cpf = cpf;
+    public Cliente(String nome, String cpf, String nivel, Aluguel aluguel) {
+        super(nome, cpf, nivel);
+        this.aluguel = aluguel;
     }
 
-    public String getNome() {
-        return nome;
+    public Aluguel getAluguel() {
+        return aluguel;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setAluguel(Aluguel aluguel) {
+        this.aluguel = aluguel;
     }
 
     public void imprimirCliente(){
@@ -31,21 +21,21 @@ public class Cliente extends Aluguel implements Impressao, Operacao {
 
     @Override
     public Double alugar(Double valorAluguel, Integer qntDias) {
-        if(getTipo() == "C") {
+        if(aluguel.getCarro().getTipo().equals("C")) {
             valorAluguel = Aluguel.VALOR_DIARIA * qntDias;
-        } else if(getTipo() == "B") {
+        } else if(aluguel.getCarro().getTipo().equals("B")) {
             valorAluguel = Aluguel.VALOR_DIARIA * qntDias * 1.2;
-        } else if (getTipo() == "A") {
+        } else if (aluguel.getCarro().getTipo().equals("A")) {
             valorAluguel = Aluguel.VALOR_DIARIA * qntDias * 1.5;
         } else{
             System.out.println("Tipo de Carro informado inválido");
         }
-        return this.setValorAluguelCarro(valorAluguel);
+        return valorAluguel;
     }
 
     @Override
-    public Boolean pagar(Double valorPagamento) {
-        if(valorPagamento == (getValorAluguelCarro())) {
+    public Boolean pagar(Double valorPagamento, Integer diaDaDevolucao) {
+        if(valorPagamento.equals(alugar(getAluguel().getCarro().getValorAluguelCarro(), aluguel.getCarro().calcularDiasComCarro(diaDaDevolucao, aluguel) ))) {
             System.out.println("Carro alugado com sucesso");
             return true;
         } else {
@@ -61,17 +51,9 @@ public class Cliente extends Aluguel implements Impressao, Operacao {
 
     @Override
     public Double multa() {
-
-        //if()
-
         return null;
     }
 
-    @Override
-    public Double alugar() {
-        // TODO Auto-generated method stub
-        return null;
-    }
 
     @Override
     public void imprimir() {
