@@ -58,10 +58,7 @@ public class Carro implements Impressao{
 
     @Override
     public String toString() {
-        return "Carro " + infoCarro + ", Nome do Carro: " + nomeDoCarro + ", Tipo: " + tipo
-                + "Valor de aluguel do Carro: " + valorAluguelCarro;
+        return infoCarro + "\nNome do Carro: " + nomeDoCarro + "\nTipo: " + tipo
+                + " \nValor de aluguel do Carro: " + valorAluguelCarro;
     }
-
-    
-
 }

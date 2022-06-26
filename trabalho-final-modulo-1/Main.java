@@ -94,24 +94,15 @@ public class Main {
                 do {
                     System.out.println("-CLIENTE-");
                     System.out.println("MENU DE OPÇÕES;");
-                    System.out.println("1 - VERIFICAR CARROS DISPONÍVEIS\n2 - ALUGAR CARRO\n3 - DEVOLVER CARRO\n0 - SAIR\n\nDIGITE A OPCAO:");
+                    System.out.println("1 - ALUGAR CARRO\n2 - DEVOLVER CARRO\n0 - SAIR\n\nDIGITE A OPCAO:");
                     opcao = sc.nextInt();
                     switch (opcao) {
                         case 1:
-                            
                             carrosDisponiveisCatalogo.listarCarros();
 
-                            System.out.println("1 - VERIFICAR CARACTERÍSTICAS DO CARRO; \n2 - ALUGAR CARRO;\n3 - DEVOLVER CARRO;\n4 - SAIR");
-                            int opcaoCarro = sc.nextInt();
-                            switch (opcaoCarro) {
-                                case 1 -> {
-                                    
-                                }
-                            }
-
-                        case 2:
                             System.out.println("Deseja alugar o carro:\n1 - SIM   2 - NÃo");
                             opcaoAux = sc.nextInt();
+
                             if (opcaoAux==1){
                                 System.out.println("Informe o valor:");
                                 doubleAux = sc.nextDouble();
@@ -126,7 +117,8 @@ public class Main {
                                 break;
                             }
                             break;
-                        case 3:
+
+                        case 2:
                             System.out.println("~devolver");
 
                             System.out.println("Digite 0 para retornar:");
@@ -134,7 +126,7 @@ public class Main {
                             if (opcaoAux==0){
                                 break;
                             }
-                            break;
+
                         case 0:
                             break;
                         default:
