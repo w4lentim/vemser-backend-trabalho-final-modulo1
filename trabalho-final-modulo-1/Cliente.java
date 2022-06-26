@@ -61,6 +61,10 @@ public class Cliente extends Aluguel implements Impressao, Operacao {
 
     @Override
     public Double multa() {
+<<<<<<< HEAD
+=======
+        //if()
+>>>>>>> e5e735b7acced07268efd30b55975c75ac852b1d
         return null;
     }
 
