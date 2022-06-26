@@ -2,7 +2,8 @@ public class Cliente extends Usuario{
     private String nome;
     private String cpf;
 
-    public Cliente(String nome, String cpf) {
+    public Cliente(String nivel, String nome, String cpf) {
+        super(nivel);
         this.nome = nome;
         this.cpf = cpf;
     }

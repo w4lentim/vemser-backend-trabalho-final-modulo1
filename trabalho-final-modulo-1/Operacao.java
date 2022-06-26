@@ -1,8 +1,7 @@
 public interface Operacao {
     
-    boolean alugar();
-    boolean devolver();
-    boolean multa();
-    boolean pagar();
-    
+    Boolean alugar();
+    Boolean devolver();
+    Boolean multa();
+    Boolean pagar();
 }
