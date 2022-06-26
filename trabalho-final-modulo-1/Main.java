@@ -5,9 +5,11 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int tipo =0;
+        int tipo = 0;
         int opcao = 0;
-        
+        int opcaoAux = 0;
+
+
         // MENU DE OPÇÕES:
         // 1 - CLIENTE OU FUNCIONÁRIO?
         //     1.1 - CLIENTE;
@@ -39,43 +41,103 @@ public class Main {
         System.out.println("SEJA BEM VINDO(S) A DBCAR");
         System.out.println("A melhor locadora de carros do Brasil!");
         System.out.println("_______________________________________");
-        System.out.println("LOGIN:\nDigite 1 para funcionário ou Digite 2 para cliente:");
-        tipo = sc.nextInt();
+        System.out.println("\t\n" +
+                "              ____----------- _____\n" +
+                "\\~~~~~~~~~~/~_--~~~------~~~~~     \\\n" +
+                " `---`\\  _-~      |                   \\\n" +
+                "   _-~  <_         |                    \\[]\n" +
+                " / ___     ~~--[\"\"] |      ________-------'_\n" +
+                "> /~` \\    |-.   `\\~~.~~~~~                _ ~ - _\n" +
+                " ~|  ||\\%  |       |    ~  ._                ~ _   ~ ._\n" +
+                "   `_//|_%  \\      |          ~  .             ~-_   /\\\n" +
+                "          `--__     |    _-____  /\\               ~-_ \\/.\n" +
+                "              ~--_ /  ,/ -~-_ \\ \\/         _______---~/\n" +
+                "                  ~~-/._<   \\ \\`~~~~~~~~~~~~~     ##--~/\n" +
+                "                         \\    ) |`------##---~~~~-~  ) )\n" +
+                "                          ~-_/_/                  ~~ ~~\n");
 
-        if (tipo == 1)
-        {
-            System.out.println("-FUNCIONARIO-");
-            System.out.println("MENU DE OPÇÕES;");
-            System.out.println("1 - ADICIONAR CARRO DO CATALOGO\n2 - REMOVER CARRO DO CATALOGO\n3 - ATUALIZAR CATALOGO\n0 - SAIR\nDIGITE A OPCAO:");
-            opcao = sc.nextInt();
-            switch (opcao){
-                case  1:
-                    System.out.println("~adicionar~");
-                    break;
 
-                case 2:
-                    System.out.println("~remover");
-                case 3:
-                    System.out.println("~atualizar");
+        do {
+            System.out.println("LOGIN:\nDigite 1 para funcionário ou Digite 2 para cliente:");
+            tipo = sc.nextInt();
+
+            if (tipo == 1) {
+                do {
+                    System.out.println("-FUNCIONARIO-");
+                    System.out.println("MENU DE OPÇÕES;");
+                    System.out.println("1 - ADICIONAR CARRO DO CATALOGO\n2 - REMOVER CARRO DO CATALOGO\n3 - ATUALIZAR CATALOGO\n0 - SAIR\nDIGITE A OPCAO:");
+
+                    opcao = sc.nextInt();
+                    switch (opcao) {
+                        case 1:
+                            System.out.println("~adicionar~");
+                            System.out.println("Digite 0 para retornar:");
+                            opcaoAux = sc.nextInt();
+                            if (opcaoAux==0){
+                                break;
+                            }
+                        case 2:
+                            System.out.println("~remover");
+                            System.out.println("Digite 0 para retornar:");
+                            opcaoAux = sc.nextInt();
+                            if (opcaoAux==0){
+                                break;
+                            }
+                        case 3:
+                            System.out.println("~atualizar");
+                            System.out.println("Digite 0 para retornar:");
+                            opcaoAux = sc.nextInt();
+                            if (opcaoAux==0){
+                                break;
+                            }
+                        case 0:
+                            System.out.println("~voltar menu");
+                            break;
+                    }
+                } while (opcao != 0);
+
+            } else if (tipo == 2) {
+                do {
+                    System.out.println("-CLIENTE-");
+                    System.out.println("MENU DE OPÇÕES;");
+                    System.out.println("1 - VERIFICAR CARROS DISPONÍVEIS\n2 - ALUGAR CARRO\n3 - DEVOLVER CARRO\n0 - SAIR\n\nDIGITE A OPCAO:");
+                    opcao = sc.nextInt();
+                    switch (opcao) {
+                        case 1:
+                            System.out.println("~lista~");
+
+
+                            System.out.println("Digite 0 para retornar:");
+                            opcaoAux = sc.nextInt();
+                            if (opcaoAux==0){
+                                break;
+                            }
+                        case 2:
+                            System.out.println("~alugar");
+
+                            System.out.println("Digite 0 para retornar:");
+                            opcaoAux = sc.nextInt();
+                            if (opcaoAux==0){
+                                break;
+                            }
+                            break;
+                        case 3:
+                            System.out.println("~devolver");
+
+                            System.out.println("Digite 0 para retornar:");
+                            opcaoAux = sc.nextInt();
+                            if (opcaoAux==0){
+                                break;
+                            }
+                            break;
+                        case 0:
+                            break;
+                        default:
+                            System.out.println("Operacao invalida, escolha novamente a opcao:");
+                            break;
+                    }
+                } while (opcao != 0);
             }
-        }
-        else if(tipo ==2){
-            System.out.println("-CLIENTE-");
-            System.out.println("MENU DE OPÇÕES;");
-            System.out.println("1 - VERIFICAR CARROS DISPONÍVEIS\n2 - ALUGAR CARRO\n3 - DEVOLVER CARRO\n0 - SAIR\n\nDIGITE A OPCAO:");
-            opcao = sc.nextInt();
-            switch (opcao){
-                case  1:
-                    System.out.println("~lista~");
-                    break;
-
-                case 2:
-                    System.out.println("~alugar");
-                case 3:
-                    System.out.println("~devolver");
-            }
-        }
-
-        }
-
+        } while (tipo != 0);
     }
+}

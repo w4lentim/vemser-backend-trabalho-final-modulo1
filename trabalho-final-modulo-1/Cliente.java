@@ -60,13 +60,12 @@ public class Cliente extends Usuario implements Operacao{
 
     @Override
     public Boolean devolver() {
-
         return null;
     }
 
     @Override
     public Double multa() {
-        if()
+        //if()
         return null;
     }
 }
