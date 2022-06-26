@@ -56,4 +56,12 @@ public class Carro implements Impressao{
                 infoCarro );
     }
 
+    @Override
+    public String toString() {
+        return "Carro " + infoCarro + ", Nome do Carro: " + nomeDoCarro + ", Tipo: " + tipo
+                + "Valor de aluguel do Carro: " + valorAluguelCarro;
+    }
+
+    
+
 }

@@ -63,12 +63,12 @@ public class CaracteristicasCarro {
     public String toString() {
         return
                 "\n---------------\n" +
-                "Marca:'" + marca +
-                "\nModelo:'" + modelo +
-                "\nAno:" + ano +
-                "\nQuantidade de Passageiros:" + qntPassageiros +
-                "\nKilometros Rodados:" + kmRodados +
-                "\nQuantidade de Combustível Disponível:" + qntCombustivel
+                "Marca: " + marca +
+                "\nModelo: " + modelo +
+                "\nAno: " + ano +
+                "\nQuantidade de Passageiros: " + qntPassageiros +
+                "\nKilometros Rodados: " + kmRodados +
+                "\nQuantidade de Combustível Disponível: " + qntCombustivel
                 ;
     }
 }

@@ -10,19 +10,7 @@ public class Main {
         int opcaoAux = 0;
         double doubleAux =0;
 
-        CaracteristicasCarro caracFusca = new CaracteristicasCarro("Wolkswagem", "qualquer", 1990, 4,
-                120000L, 25.0);
-        CaracteristicasCarro caracPalio = new CaracteristicasCarro("Fiat", "2.0", 2010, 5,
-                40000L, 45.0);
-
-        Carro fusca = new Carro("Fusca", caracFusca, "B", 100.00);
-        Carro palio = new Carro("Palio", caracPalio, "C", 100.00);
-
-        Aluguel aluguel1 = new Aluguel(26, 4, fusca);
-
-        Cliente cliente1 = new Cliente("Willian", "111.222.333-44", "Cliente", aluguel1);
-
-       // CarroOperacoes carro = new CarroOperacoes(new CaracteristicasCarro("Fiat", "Palio", 2010"", 5, 1480L, 40.0));
+        CarroOperacoes carrosDisponiveisCatalogo = new CarroOperacoes();
 
         // MENU DE OPÇÕES:
         // 1 - CLIENTE OU FUNCIONÁRIO?
@@ -33,24 +21,16 @@ public class Main {
         //          1.2.3  CARRO 3;
         //          1.2.4  CARRO 4;
         //          1.2.5  CARRO 5;
+        //        1.2 - VERIFICAR CARACTERÍSTICAS CARRO;
         //        1.3 - ALUGAR CARRO;
         //        1.4 - DEVOLVER CARRO;
         //        1.5 - SAIR;
         //     2.1 - FUNCIONÁRIO;
-        //        2.1 - ADICIONAR CARRO A WISH LIST;
-        //        2.2 - REMOVER CARRO DA WISH LIST;
-        //        2.3 - ATUALIZAR CARRO DA WISH LIST;
+        //        2.1 - ADICIONAR CARRO AO CATÁLOGO;
+        //        2.2 - REMOVER CARRO DO CATÁLOGO;
+        //        2.3 - ATUALIZAR CARRO DO CATÁLOGO;
         // 0 - SAIR;
-        /*
-        int escolha = 0;
-        while (escolha != 0) {
-            System.out.println("SEJA BEM VINDO(S) A DBCAR");
-            System.out.println("A melhor locadora de carros do Brasil!");
-            System.out.println("_______________________________________");
-            System.out.println("MENU DE OPÇÕES;");
-            System.out.println("1 - LISTAR CARROS DISPONÍVEIS;\n2 - ADICIONAR UM CARRO A WISH LIST;\n3 - REMOVER CARRO DA WISH LIST;\n4 - ATUALIZAR CARRO DA WISH LIST;\n0 - SAIR.");
-        }
-         */
+        //
 
         System.out.println("SEJA BEM VINDO(S) A DBCAR");
         System.out.println("A melhor locadora de carros do Brasil!");
@@ -118,24 +98,23 @@ public class Main {
                     opcao = sc.nextInt();
                     switch (opcao) {
                         case 1:
-                            fusca.imprimir();
-                            palio.imprimir();
+                            
+                            carrosDisponiveisCatalogo.listarCarros();
 
-                            System.out.println("Digite 0 para retornar:");
-                            opcaoAux = sc.nextInt();
-                            if (opcaoAux==0){
-                                break;
+                            System.out.println("1 - VERIFICAR CARACTERÍSTICAS DO CARRO; \n2 - ALUGAR CARRO;\n3 - DEVOLVER CARRO;\n4 - SAIR");
+                            int opcaoCarro = sc.nextInt();
+                            switch (opcaoCarro) {
+                                case 1 -> {
+                                    
+                                }
                             }
 
                         case 2:
-                            cliente1.alugar(palio.getValorAluguelCarro());
-                            System.out.println(palio.getValorAluguelCarro());
                             System.out.println("Deseja alugar o carro:\n1 - SIM   2 - NÃo");
                             opcaoAux = sc.nextInt();
                             if (opcaoAux==1){
                                 System.out.println("Informe o valor:");
                                 doubleAux = sc.nextDouble();
-                                cliente1.pagar(doubleAux, palio.getValorAluguelCarro());
                             }
                             else {
                                 break;

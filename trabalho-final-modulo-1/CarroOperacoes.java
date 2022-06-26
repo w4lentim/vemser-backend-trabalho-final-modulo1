@@ -2,14 +2,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarroOperacoes {
+
     private ArrayList<Carro> carrosDisponiveis;
 
     public CarroOperacoes() {
         this.carrosDisponiveis = new ArrayList<>();
-        this.carrosDisponiveis.add(new Carro("Palio", new CaracteristicasCarro("Fiat", "2.0", 2009, 6,
-               50000L, 40.0), "C", 500.0));
-        this.carrosDisponiveis.add(new Carro("Onix", new CaracteristicasCarro("Chevrolet", "1.0", 2015,
-                6, 20000L, 40.0), "C", 500.0));
+        this.carrosDisponiveis.add(new Carro("Palio", new CaracteristicasCarro("Fiat", "Attrative", 2009, 5,50000L, 48.0), "C", 200.0));
+        this.carrosDisponiveis.add(new Carro("Onix", new CaracteristicasCarro("Chevrolet", "LTZ", 2018, 5, 30000L,50.0), "C", 400.0));
+        this.carrosDisponiveis.add(new Carro("Compass", new CaracteristicasCarro("Jeep", "Compass", 2019, 5, 20000L, 60.0), "B", 500.0));
+        this.carrosDisponiveis.add(new Carro("Civic", new CaracteristicasCarro("Honda", "Touring", 2018, 6, 10000L, 40.0), "B", 500.0));
+        this.carrosDisponiveis.add(new Carro("Carrera GTS", new CaracteristicasCarro("Porsche", "911.2", 2018, 2, 30000L, 40.0), "A", 1000.0));
     }
 
     public void adicionarCarro(Carro carro) {
@@ -42,4 +44,9 @@ public class CarroOperacoes {
     public void setCarrosDisponiveis(ArrayList<Carro> carrosDisponiveis) {
         this.carrosDisponiveis = carrosDisponiveis;
     }
+
+    @Override
+    public String toString() {
+        return "\nCarroOperacoes " + carrosDisponiveis;
+    }  
 }
