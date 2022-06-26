@@ -20,13 +20,16 @@ public class Cliente extends Usuario implements Impressao, Operacao {
     }
 
     @Override
-    public Double alugar(Double valorDoCarroAlugar, Integer qntDias) {
+    public Double alugar(Double valorDoCarroAlugar) {
         if(aluguel.getCarro().getTipo().equals("C")) {
-            valorDoCarroAlugar = Aluguel.VALOR_DIARIA * qntDias;
+            valorDoCarroAlugar = aluguel.getCarro().getValorAluguelCarro() * aluguel.getQntDias();
+            System.out.println(valorDoCarroAlugar + " Aluguel C");
         } else if(aluguel.getCarro().getTipo().equals("B")) {
-            valorDoCarroAlugar = Aluguel.VALOR_DIARIA * qntDias * 1.2;
+            valorDoCarroAlugar = aluguel.getCarro().getValorAluguelCarro() * aluguel.getQntDias() * 1.2;
+            System.out.println(valorDoCarroAlugar + " Aluguel B");
         } else if (aluguel.getCarro().getTipo().equals("A")) {
-            valorDoCarroAlugar = Aluguel.VALOR_DIARIA * qntDias * 1.5;
+            valorDoCarroAlugar = aluguel.getCarro().getValorAluguelCarro() * aluguel.getQntDias() * 1.5;
+            System.out.println(valorDoCarroAlugar + " Aluguel A");
         } else{
             System.out.println("Tipo de Carro informado inválido");
         }
@@ -34,12 +37,12 @@ public class Cliente extends Usuario implements Impressao, Operacao {
     }
 
     @Override
-    public Boolean pagar(Double valorPagamento, Integer diaDaDevolucao) {
-        if(valorPagamento.equals(alugar(getAluguel().getCarro().getValorAluguelCarro(), aluguel.getCarro().calcularDiasComCarro(aluguel, aluguel)))) {
-            System.out.println("Carro alugado com sucesso");
+    public Boolean pagar(Double valorPagamento, Double valorCarroAlugar) {
+        if(valorPagamento.equals(alugar(valorCarroAlugar))) {
+            System.out.println(valorPagamento + " Carro alugado com sucesso");
             return true;
         } else {
-            System.out.println("Valor não corresponde ao valor do aluguel");
+            System.out.println(valorPagamento + " Valor não corresponde ao valor do aluguel");
             return false;
         }
     }

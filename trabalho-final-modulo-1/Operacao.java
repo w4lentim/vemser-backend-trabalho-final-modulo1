@@ -1,7 +1,7 @@
 public interface Operacao {
 
-    Double alugar(Double valorDoCarroAlugar, Integer qntDias);
-    Boolean pagar(Double valorPagamento, Integer diaDaDevolucao);
+    Double alugar(Double valorDoCarroAlugar);
+    Boolean pagar(Double valorPagamento, Double valorCarroAlugar);
     Boolean devolver();
     Double multa();
 

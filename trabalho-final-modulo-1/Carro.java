@@ -45,7 +45,7 @@ public class Carro {
         return valorAluguelCarro;
     }
 
-    public Integer calcularDiasComCarro(Aluguel qntDiasCarro, Aluguel diaDoAluguel){
+    public static Integer calcularDiasComCarro(Aluguel qntDiasCarro, Aluguel diaDoAluguel){
         Integer diasCarro = diaDoAluguel.getDiaDoAluguel() + qntDiasCarro.getQntDias();
         return diasCarro;
     }

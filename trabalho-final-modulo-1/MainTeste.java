@@ -3,7 +3,7 @@ public class MainTeste {
         
         CaracteristicasCarro caracFusca = new CaracteristicasCarro("Wolkswagem", "qualquer", 1990, 4, 120000L, 25.0);
 
-        Carro fusca = new Carro("Fusca", caracFusca, "C", Aluguel.VALOR_DIARIA);
+        Carro fusca = new Carro("Fusca", caracFusca, "B", 100.00);
 
         Aluguel aluguel1 = new Aluguel(26, 4, fusca);
 
@@ -12,6 +12,11 @@ public class MainTeste {
         cliente1.imprimirCliente();
         System.out.println("_____________________");
 
-        cliente1.alugar();
+        cliente1.alugar(fusca.getValorAluguelCarro());
+        System.out.println("-------------------------");
+
+        cliente1.pagar(480.00, fusca.getValorAluguelCarro());
+        System.out.println("____________________________");
+
     }
 }
