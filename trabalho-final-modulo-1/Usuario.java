@@ -1,9 +1,9 @@
-public class Usuario extends Aluguel {
+public class Usuario extends Cliente {
+
     private String nivel;
 
-    public Usuario(String nivel, String nome, String cpf, Integer diaDoAluguel, Integer qntDias, String nivel1) {
-        super(nivel, nome, cpf, diaDoAluguel, qntDias);
-        this.nivel = nivel1;
+    public Usuario(String nivel, Cliente nome, Cliente cpf, Carro nomeCarro, Carro tipo) {
+        this.nivel = nivel;
     }
 
     public String getNivel() {

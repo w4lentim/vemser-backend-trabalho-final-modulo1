@@ -1,7 +1,22 @@
 public class Devolucao extends Carro{
-    private Integer diaDaDevolucao;
-    private Double qntCombustivelDevolucao;
 
+    private Integer diaDaDevolucao;
+    private Carro nomeDoCarroDevolvido;
+    private Carro tipoDoCarroDevolvido;
+
+    public Devolucao(Integer diaDaDevolucao, Carro nomeDoCarroDevolvido, Carro tipoDoCarroDevolvido) {
+        this.diaDaDevolucao = diaDaDevolucao;
+        this.nomeDoCarroDevolvido = nomeDoCarroDevolvido;
+        this.tipoDoCarroDevolvido = tipoDoCarroDevolvido;
+    }
+
+    public boolean devolucaoCarro(Integer diaDaDevolucao){
+        return false;
+    }
+
+    public boolean calculoMulta(){
+        return false;
+    }
 
     public Integer getDiaDaDevolucao() {
         return diaDaDevolucao;
@@ -11,20 +26,20 @@ public class Devolucao extends Carro{
         this.diaDaDevolucao = diaDaDevolucao;
     }
 
-    public Double getQntCombustivelDevolucao() {
-        return qntCombustivelDevolucao;
+    public Carro getNomeDoCarroDevolvido() {
+        return nomeDoCarroDevolvido;
     }
 
-    public void setQntCombustivelDevolucao(Double qntCombustivelDevolucao) {
-        this.qntCombustivelDevolucao = qntCombustivelDevolucao;
+    public void setNomeDoCarroDevolvido(Carro nomeDoCarroDevolvido) {
+        this.nomeDoCarroDevolvido = nomeDoCarroDevolvido;
     }
 
-    public boolean devolucaoCarro(Integer diaDaDevolucao){
-        return false;
+    public Carro getTipoDoCarroDevolvido() {
+        return tipoDoCarroDevolvido;
     }
 
-    public boolean calculoMulta(){
-        return false;
+    public void setTipoDoCarroDevolvido(Carro tipoDoCarroDevolvido) {
+        this.tipoDoCarroDevolvido = tipoDoCarroDevolvido;
     }
     
 }

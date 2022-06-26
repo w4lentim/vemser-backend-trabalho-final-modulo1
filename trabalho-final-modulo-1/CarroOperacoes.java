@@ -24,7 +24,7 @@ public class CarroOperacoes {
 
     public void atualizarCarros(Integer indice, Carro carro) {
         Carro carroParaAtualizar = carrosDisponiveis.get(indice);
-        carroParaAtualizar.setNomeCarro(carro.getNomeCarro());
+        carroParaAtualizar.setNomeDoCarro(carro.getNomeDoCarro());
         carroParaAtualizar.setTipo(carro.getTipo());
     }
 

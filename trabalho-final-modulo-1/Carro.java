@@ -1,18 +1,24 @@
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
-
 public abstract class Carro {
-    private CaracteristicasCarro nomeCarro;
+
+    private String nomeDoCarro;
+    private CaracteristicasCarro infoCarro;
     private String tipo;
     private Double valorAluguelCarro;
 
-
-    public CaracteristicasCarro getNomeCarro() {
-        return nomeCarro;
+    public String getNomeDoCarro() {
+        return nomeDoCarro;
     }
 
-    public void setNomeCarro(CaracteristicasCarro nomeCarro) {
-        this.nomeCarro = nomeCarro;
+    public void setNomeDoCarro(String nomeDoCarro) {
+        this.nomeDoCarro = nomeDoCarro;
+    }
+
+    public CaracteristicasCarro getInfoCarro() {
+        return infoCarro;
+    }
+
+    public void setInfoCarro(CaracteristicasCarro infoCarro) {
+        this.infoCarro = infoCarro;
     }
 
     public String getTipo() {
@@ -31,5 +37,4 @@ public abstract class Carro {
         this.valorAluguelCarro = valorAluguelCarro;
         return valorAluguelCarro;
     }
-
 }

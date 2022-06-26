@@ -58,5 +58,4 @@ public class CaracteristicasCarro extends Carro {
     public void imprimirCaracteristicas() {
         System.out.println("Marca: " + getMarca() + "\nModelo: " + getModelo() + "Ano: " + getAno() + "Quantidade de passageiros: " + getQntPassageiros() + "Quilômetros rodados (km): " + getKmRodados());
     }
-    
 }

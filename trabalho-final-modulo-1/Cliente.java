@@ -1,11 +1,12 @@
-public class Cliente extends Usuario implements Operacao{
+public class Cliente extends Aluguel implements Impressao, Operacao {
+
     private String nome;
     private String cpf;
 
-    public Cliente(String nivel, String nome, String cpf, Integer diaDoAluguel, Integer qntDias, String nivel1, String nome1, String cpf1) {
-        super(nivel, nome, cpf, diaDoAluguel, qntDias, nivel1);
-        this.nome = nome1;
-        this.cpf = cpf1;
+    public Cliente(Integer diaDoAluguel, Integer qntDias, Carro nomeCarro, Carro tipoCarro, String nome, String cpf) {
+        super(diaDoAluguel, qntDias, nomeCarro, tipoCarro);
+        this.nome = nome;
+        this.cpf = cpf;
     }
 
     public String getNome() {
@@ -26,11 +27,6 @@ public class Cliente extends Usuario implements Operacao{
 
     public void imprimirCliente(){
         System.out.println("Nome do Cliente: " + getNome() + "\nCPF: " + getCpf());
-    }
-
-    @Override
-    public String toString() {
-        return "Nome do cliente: " + getNome() + "\nCPF: " + getCpf();
     }
 
     @Override
@@ -60,13 +56,27 @@ public class Cliente extends Usuario implements Operacao{
 
     @Override
     public Boolean devolver() {
-
         return null;
     }
 
     @Override
     public Double multa() {
-        if()
         return null;
+    }
+
+    @Override
+    public Double alugar() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void imprimir() {
+
+    }
+
+    @Override
+    public String toString() {
+        return "Nome do cliente: " + getNome() + "\nCPF: " + getCpf();
     }
 }
