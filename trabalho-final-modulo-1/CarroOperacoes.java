@@ -35,10 +35,6 @@ public class CarroOperacoes {
         }
     }
 
-    public void adicionarCarros(Carro carro) {
-        this.carrosDisponiveis.add(carro);
-    }
-
     public void atualizarCarros(Integer indice, Carro carro) {
         Carro carroParaAtualizar = carrosDisponiveis.get(indice);
         carroParaAtualizar.setNomeDoCarro(carro.getNomeDoCarro());
@@ -60,6 +56,7 @@ public class CarroOperacoes {
     public void setCarrosDisponiveis(ArrayList<Carro> carrosDisponiveis) {
         this.carrosDisponiveis = carrosDisponiveis;
     }
+    
 
     @Override
     public String toString() {

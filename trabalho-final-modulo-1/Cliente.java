@@ -69,12 +69,12 @@ public class Cliente extends Usuario implements Impressao, Operacao {
     }
 
     @Override
-    public void imprimir() {
-
-    };
-
-    @Override
     public String toString() {
         return "Nome do cliente: " + getNome() + "\nCPF: " + getCpf();
+    }
+
+    @Override
+    public void imprimir() {
+        
     }
 }

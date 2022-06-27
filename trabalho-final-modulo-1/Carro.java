@@ -77,11 +77,6 @@ public class Carro implements Impressao{
         return valorAluguelCarro;
     }
 
-    public static Integer calcularDiasComCarro(Aluguel qntDiasCarro, Aluguel diaDoAluguel){
-        Integer diasCarro = diaDoAluguel.getDiaDoAluguel() + qntDiasCarro.getQntDias();
-        return diasCarro;
-    }
-
     @Override
     public void imprimir() {
         System.out.println("\nID: " + this.id + "\nNome do carro: " + this.nomeDoCarro + "\nTipo: " + this.tipo
