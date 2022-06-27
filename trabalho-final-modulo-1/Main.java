@@ -12,47 +12,12 @@ public class Main {
 
         CarroOperacoes carrosDisponiveisCatalogo = new CarroOperacoes();
 
-        // MENU DE OPÇÕES:
-        // 1 - CLIENTE OU FUNCIONÁRIO?
-        //     1.1 - CLIENTE;
-        //        1.2 - VERIFICAR CARROS DISPONÍVEIS;
-        //          1.2.1. CARRO 1;
-        //          1.2.2  CARRO 2;
-        //          1.2.3  CARRO 3;
-        //          1.2.4  CARRO 4;
-        //          1.2.5  CARRO 5;
-        //        1.2 - VERIFICAR CARACTERÍSTICAS CARRO;
-        //        1.3 - ALUGAR CARRO;
-        //        1.4 - DEVOLVER CARRO;
-        //        1.5 - SAIR;
-        //     2.1 - FUNCIONÁRIO;
-        //        2.1 - ADICIONAR CARRO AO CATÁLOGO;
-        //        2.2 - REMOVER CARRO DO CATÁLOGO;
-        //        2.3 - ATUALIZAR CARRO DO CATÁLOGO;
-        // 0 - SAIR;
-        //
-
         System.out.println("SEJA BEM VINDO(S) A DBCAR");
         System.out.println("A melhor locadora de carros do Brasil!");
         System.out.println("_______________________________________");
-        System.out.println("\t\n" +
-                "              ____----------- _____\n" +
-                "\\~~~~~~~~~~/~_--~~~------~~~~~     \\\n" +
-                " `---`\\  _-~      |                   \\\n" +
-                "   _-~  <_         |                    \\[]\n" +
-                " / ___     ~~--[\"\"] |      ________-------'_\n" +
-                "> /~` \\    |-.   `\\~~.~~~~~                _ ~ - _\n" +
-                " ~|  ||\\%  |       |    ~  ._                ~ _   ~ ._\n" +
-                "   `_//|_%  \\      |          ~  .             ~-_   /\\\n" +
-                "          `--__     |    _-____  /\\               ~-_ \\/.\n" +
-                "              ~--_ /  ,/ -~-_ \\ \\/         _______---~/\n" +
-                "                  ~~-/._<   \\ \\`~~~~~~~~~~~~~     ##--~/\n" +
-                "                         \\    ) |`------##---~~~~-~  ) )\n" +
-                "                          ~-_/_/                  ~~ ~~\n");
-
-
+        
         do {
-            System.out.println("LOGIN:\nDigite 1 para funcionário ou Digite 2 para cliente:");
+            System.out.println("LOGIN:\n1 - FUNCIONÁRIO;\n 2 - CLIENTE:\nSUA ESCOLHA:");
             tipo = sc.nextInt();
 
             if (tipo == 1) {
@@ -63,30 +28,44 @@ public class Main {
 
                     opcao = sc.nextInt();
                     switch (opcao) {
-                        case 1:
-                            System.out.println("~adicionar~");
+                        case 1 -> {
+                            Carro carro = new Carro();
+                            System.out.println("Digite o nome do carro: ");
+                            carro.setNomeDoCarro(sc.nextLine());
+                            System.out.println("Digite o tipo do carro: ");
+                            carro.setTipo(sc.nextLine());
+                            System.out.println("Digite a marca do carro: ");
+                            carro.setMarca(sc.nextLine());
+                            System.out.println("Digite a quantidade de passageiros que o carro suporta: ");
+                            carro.setQntPassageiros(sc.nextInt());
+                            System.out.println("Digite a quantidade de quilômetros rodados pelo carro (km): ");
+                            carro.setKmRodados(sc.nextLong());
+                            System.out.println("Digite o valor do aluguel do carro R$: ");
+                            carro.setValorAluguelCarro(sc.nextDouble());
+                        }
+                        case 2 -> {
+                            System.out.println("Qual id do carro deseja excluir? ");
+                            carrosDisponiveisCatalogo.listarCarros();
+                            int id = sc.nextInt();
+                            carrosDisponiveisCatalogo.removerCarros(id);
+                        }
+                        case 3 -> {
+                            System.out.println("Qual carro gostaria de atualizar? ");
+                            carrosDisponiveisCatalogo.listarCarros();
+                            int id = sc.nextInt();
+                            sc.nextLine();
+
+                            CarroOperacoes carroAtualizado = new CarroOperacoes();
+                            System.out.println("Digite as informações do carro: ");
                             System.out.println("Digite 0 para retornar:");
                             opcaoAux = sc.nextInt();
-                            if (opcaoAux==0){
-                                break;
-                            }
-                        case 2:
-                            System.out.println("~remover");
-                            System.out.println("Digite 0 para retornar:");
-                            opcaoAux = sc.nextInt();
-                            if (opcaoAux==0){
-                                break;
-                            }
-                        case 3:
-                            System.out.println("~atualizar");
-                            System.out.println("Digite 0 para retornar:");
-                            opcaoAux = sc.nextInt();
-                            if (opcaoAux==0){
-                                break;
-                            }
-                        case 0:
-                            System.out.println("~voltar menu");
+                        }
+                        case 0 -> {
                             break;
+                        }
+                        default -> {
+                            System.out.println("Opção digitada inválida. Escolha apenas uma das opções válidas!");
+                        }
                     }
                 } while (opcao != 0);
 

@@ -7,11 +7,11 @@ public class CarroOperacoes {
 
     public CarroOperacoes() {
         this.carrosDisponiveis = new ArrayList<>();
-        this.carrosDisponiveis.add(new Carro("Palio", new CaracteristicasCarro("Fiat", "Attrative", 2009, 5,50000L, 48.0), "C", 200.0));
-        this.carrosDisponiveis.add(new Carro("Onix", new CaracteristicasCarro("Chevrolet", "LTZ", 2018, 5, 30000L,50.0), "C", 400.0));
-        this.carrosDisponiveis.add(new Carro("Compass", new CaracteristicasCarro("Jeep", "Compass", 2019, 5, 20000L, 60.0), "B", 500.0));
-        this.carrosDisponiveis.add(new Carro("Civic", new CaracteristicasCarro("Honda", "Touring", 2018, 6, 10000L, 40.0), "B", 500.0));
-        this.carrosDisponiveis.add(new Carro("Carrera GTS", new CaracteristicasCarro("Porsche", "911.2", 2018, 2, 30000L, 40.0), "A", 1000.0));
+        this.carrosDisponiveis.add(new Carro("Pálio", "C", "Fiat", 5, 20000L, 200.00));
+        this.carrosDisponiveis.add(new Carro("Onix", "C", "Chevrolet", 5, 30000L, 400.00));
+        this.carrosDisponiveis.add(new Carro("Compass", "B", "Jeep", 5, 20000L, 500.00));
+        this.carrosDisponiveis.add(new Carro("Civic", "B", "Honda", 6, 10000L, 500.00));
+        this.carrosDisponiveis.add(new Carro("Carrera GTS", "A", "Porsche", 2, 30000L, 1000.00));
     }
 
     public void adicionarCarro(Carro carro) {
@@ -19,8 +19,9 @@ public class CarroOperacoes {
     }
 
     public void listarCarros() {
-        carrosDisponiveis.stream()
-        .forEach(System.out::println);
+        for (int id = 0; id < carrosDisponiveis.size(); id++) {
+            System.out.println("id: " + id + " | " + carrosDisponiveis.get(id));
+        }
     }
 
     public void adicionarCarros(Carro carro) {

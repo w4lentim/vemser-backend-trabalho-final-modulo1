@@ -1,16 +1,22 @@
 public class Carro implements Impressao{
 
     private String nomeDoCarro;
-    private CaracteristicasCarro infoCarro;
     private String tipo;
+    private String marca;
+    private Integer qntPassageiros;
+    private Long kmRodados;
     private Double valorAluguelCarro;
 
-    public Carro(String nomeDoCarro, CaracteristicasCarro infoCarro, String tipo, Double valorAluguelCarro) {
+    public Carro() {};
+
+    public Carro(String nomeDoCarro, String tipo, String marca, Integer qntPassageiros, Long kmRodados, Double valorAluguelCarro) {
         this.nomeDoCarro = nomeDoCarro;
-        this.infoCarro = infoCarro;
         this.tipo = tipo;
+        this.marca = marca;
+        this.qntPassageiros = qntPassageiros;
+        this.kmRodados = kmRodados;
         this.valorAluguelCarro = valorAluguelCarro;
-    }
+    }  
 
     public String getNomeDoCarro() {
         return nomeDoCarro;
@@ -20,20 +26,36 @@ public class Carro implements Impressao{
         this.nomeDoCarro = nomeDoCarro;
     }
 
-    public CaracteristicasCarro getInfoCarro() {
-        return infoCarro;
-    }
-
-    public void setInfoCarro(CaracteristicasCarro infoCarro) {
-        this.infoCarro = infoCarro;
-    }
-
     public String getTipo() {
         return tipo;
     }
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public Integer getQntPassageiros() {
+        return qntPassageiros;
+    }
+
+    public void setQntPassageiros(Integer qntPassageiros) {
+        this.qntPassageiros = qntPassageiros;
+    }
+
+    public Long getKmRodados() {
+        return kmRodados;
+    }
+
+    public void setKmRodados(Long kmRodados) {
+        this.kmRodados = kmRodados;
     }
 
     public Double getValorAluguelCarro() {
@@ -52,13 +74,12 @@ public class Carro implements Impressao{
 
     @Override
     public void imprimir() {
-        System.out.println("Nome do carro: " + nomeDoCarro + "\nTipo:" + tipo + "\nValor de Aluguel:" + valorAluguelCarro +
-                infoCarro );
+        System.out.println("Nome do carro: " + nomeDoCarro + "\nTipo:" + tipo + "\nValor de Aluguel:" + valorAluguelCarro);
     }
 
     @Override
     public String toString() {
-        return infoCarro + "\nNome do Carro: " + nomeDoCarro + "\nTipo: " + tipo
-                + " \nValor de aluguel do Carro: " + valorAluguelCarro;
+        return "\nNome do Carro: " + this.nomeDoCarro + "\nTipo: " + this.tipo
+                + " \nValor de aluguel do Carro R$: " + this.valorAluguelCarro;
     }
 }
