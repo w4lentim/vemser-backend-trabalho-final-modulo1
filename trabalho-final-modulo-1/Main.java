@@ -46,6 +46,9 @@ public class Main {
                     }
                     case 2 -> {
                         Carro carro = new Carro();
+                        System.out.println("Digite o ID do carro: ");
+                        carro.setId(sc.nextInt());
+                        sc.nextLine();
                         System.out.println("Digite o nome do carro: ");
                         carro.setNomeDoCarro(sc.nextLine());
                         System.out.println("Digite o tipo do carro: ");

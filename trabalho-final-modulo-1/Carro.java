@@ -1,5 +1,6 @@
 public class Carro implements Impressao{
 
+    private Integer id;
     private String nomeDoCarro;
     private String tipo;
     private String marca;
@@ -9,14 +10,23 @@ public class Carro implements Impressao{
 
     public Carro() {};
 
-    public Carro(String nomeDoCarro, String tipo, String marca, Integer qntPassageiros, Long kmRodados, Double valorAluguelCarro) {
+    public Carro(Integer id, String nomeDoCarro, String tipo, String marca, Integer qntPassageiros, Long kmRodados, Double valorAluguelCarro) {
+        this.id = id;
         this.nomeDoCarro = nomeDoCarro;
         this.tipo = tipo;
         this.marca = marca;
         this.qntPassageiros = qntPassageiros;
         this.kmRodados = kmRodados;
         this.valorAluguelCarro = valorAluguelCarro;
-    }  
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getNomeDoCarro() {
         return nomeDoCarro;
@@ -74,11 +84,15 @@ public class Carro implements Impressao{
 
     @Override
     public void imprimir() {
-        System.out.println("\nNome do carro: " + this.nomeDoCarro + "\nTipo: " + this.tipo + "\nMarca: " + this.marca + "\nQuantidade de Passageiros: " + this.qntPassageiros + "\nQuilômetros rodados: " + this.kmRodados + " km" + "\nValor de Aluguel R$: " + valorAluguelCarro);
+        System.out.println("\nID: " + this.id + "\nNome do carro: " + this.nomeDoCarro + "\nTipo: " + this.tipo
+                + "\nMarca: " + this.marca + "\nQuantidade de Passageiros: " + this.qntPassageiros + "\nQuilômetros rodados: "
+                + this.kmRodados + " km" + "\nValor de Aluguel R$: " + valorAluguelCarro);
     }
 
     @Override
     public String toString() {
-        return "\nNome do carro: " + this.nomeDoCarro + "\nTipo: " + this.tipo + "\nMarca: " + this.marca + "\nQuantidade de Passageiros: " + this.qntPassageiros + "\nQuilômetros rodados: " + this.kmRodados + "km" + "\nValor de Aluguel R$: " + valorAluguelCarro;
+        return "\nID: " + this.id + "\nNome do carro: " + this.nomeDoCarro + "\nTipo: " + this.tipo + "\nMarca: "
+                + this.marca + "\nQuantidade de Passageiros: " + this.qntPassageiros + "\nQuilômetros rodados: " + this.kmRodados
+                + "km" + "\nValor de Aluguel R$: " + valorAluguelCarro;
     }
 }

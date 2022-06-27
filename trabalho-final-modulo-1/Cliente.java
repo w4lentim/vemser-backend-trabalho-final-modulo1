@@ -21,6 +21,7 @@ public class Cliente extends Usuario implements Impressao, Operacao {
 
     @Override
     public Double alugar(Double valorDoCarroAlugar) {
+
         if(aluguel.getCarro().getTipo().equals("C")) {
             valorDoCarroAlugar = aluguel.getCarro().getValorAluguelCarro() * aluguel.getQntDias();
             System.out.println(valorDoCarroAlugar + " Aluguel C");
