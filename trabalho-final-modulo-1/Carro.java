@@ -74,12 +74,11 @@ public class Carro implements Impressao{
 
     @Override
     public void imprimir() {
-        System.out.println("Nome do carro: " + nomeDoCarro + "\nTipo:" + tipo + "\nValor de Aluguel:" + valorAluguelCarro);
+        System.out.println("\nNome do carro: " + this.nomeDoCarro + "\nTipo: " + this.tipo + "\nMarca: " + this.marca + "\nQuantidade de Passageiros: " + this.qntPassageiros + "\nQuilômetros rodados: " + this.kmRodados + " km" + "\nValor de Aluguel R$: " + valorAluguelCarro);
     }
 
     @Override
     public String toString() {
-        return "\nNome do Carro: " + this.nomeDoCarro + "\nTipo: " + this.tipo
-                + " \nValor de aluguel do Carro R$: " + this.valorAluguelCarro;
+        return "\nNome do carro: " + this.nomeDoCarro + "\nTipo: " + this.tipo + "\nMarca: " + this.marca + "\nQuantidade de Passageiros: " + this.qntPassageiros + "\nQuilômetros rodados: " + this.kmRodados + "km" + "\nValor de Aluguel R$: " + valorAluguelCarro;
     }
 }

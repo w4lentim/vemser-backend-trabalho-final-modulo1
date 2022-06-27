@@ -8,9 +8,24 @@ public class Main {
 
         CarroOperacoes carrosDisponiveisCatalogo = new CarroOperacoes();
 
-        System.out.println("SEJA BEM VINDO(S) A DBCAR");
+        System.out.println("\nSEJA BEM VINDO(S) A DBCAR");
         System.out.println("A melhor locadora de carros do Brasil!");
         System.out.println("_______________________________________");
+
+        System.out.println("\t\n" +
+                "              ____----------- _____\n" +
+                "\\~~~~~~~~~~/~_--~~~------~~~~~     \\\n" +
+                " `---`\\  _-~      |                   \\\n" +
+                "   _-~  <_         |                    \\[]\n" +
+                " / ___     ~~--[\"\"] |      ________-------'_\n" +
+                "> /~` \\    |-.   `\\~~.~~~~~                _ ~ - _\n" +
+                " ~|  ||\\%  |       |    ~  ._                ~ _   ~ ._\n" +
+                "   `_//|_%  \\      |          ~  .             ~-_   /\\\n" +
+                "          `--__     |    _-____  /\\               ~-_ \\/.\n" +
+                "              ~--_ /  ,/ -~-_ \\ \\/         _______---~/\n" +
+                "                  ~~-/._<   \\ \\`~~~~~~~~~~~~~     ##--~/\n" +
+                "                         \\    ) |`------##---~~~~-~  ) )\n" +
+                "                          ~-_/_/                  ~~ ~~\n");
 
         do {
             System.out.println("LOGIN:\n1 - FUNCIONÁRIO;\n2 - CLIENTE:\nSUA ESCOLHA:");
@@ -98,8 +113,18 @@ public class Main {
                 switch (opcao) {
                     case 1 -> {
                         carrosDisponiveisCatalogo.listarCarros();
-                        System.out.println("1 - ALUGAR CARRO;\n2 - DEVOLVER CARRO;\n0 - SAIR");
                         System.out.println("____________________________");
+                        System.out.println("1 - ALUGAR CARRO;\n2 - DEVOLVER CARRO;\n0 - SAIR");
+                        int opcaoCliente = sc.nextInt();
+                        sc.nextLine();
+                        
+                        switch (opcaoCliente) {
+                            case 1 -> {
+                                System.out.println("Informe o ID do carro que deseja alugar: ");
+                                int id = sc.nextInt();
+                                
+                            }
+                        }
                         }
                     }
                 } else {
