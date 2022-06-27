@@ -65,8 +65,8 @@ public class Main {
                         carrosDisponiveisCatalogo.adicionarCarro(carro);
                     }
                     case 3 -> {
-                        System.out.println("Qual id do carro deseja excluir? ");
                         carrosDisponiveisCatalogo.listarCarros();
+                        System.out.println("Qual id do carro deseja excluir? ");
                         int id = sc.nextInt();
                         carrosDisponiveisCatalogo.removerCarros(id);
                     }
@@ -127,6 +127,9 @@ public class Main {
                         }
                         }
                     }
+                } else if (opcao == 0) {
+                    System.out.println("OBRIGADO POR UTILIZAR NOSSO SERVIÇO!");
+                    break;
                 } else {
                     System.out.println("OPÇÃO INFORMADA INVÁLIDA!");
                     System.out.println("____________________________");
