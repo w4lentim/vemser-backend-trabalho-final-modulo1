@@ -6,6 +6,7 @@ public class CarroOperacoes {
     private ArrayList<Carro> carrosDisponiveis;
 
     public CarroOperacoes() {
+
         this.carrosDisponiveis = new ArrayList<>();
         this.carrosDisponiveis.add(new Carro("Pálio", "C", "Fiat", 5, 20000L, 200.00));
         this.carrosDisponiveis.add(new Carro("Onix", "C", "Chevrolet", 5, 30000L, 400.00));
@@ -21,6 +22,7 @@ public class CarroOperacoes {
     public void listarCarros() {
         for (int id = 0; id < carrosDisponiveis.size(); id++) {
             System.out.println("id: " + id + " | " + carrosDisponiveis.get(id));
+            System.out.println("____________________________");
         }
     }
 
