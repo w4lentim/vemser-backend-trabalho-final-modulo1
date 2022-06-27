@@ -44,6 +44,10 @@ public class CarroOperacoes {
         Carro carroParaAtualizar = carrosDisponiveis.get(indice);
         carroParaAtualizar.setNomeDoCarro(carro.getNomeDoCarro());
         carroParaAtualizar.setTipo(carro.getTipo());
+        carroParaAtualizar.setMarca(carro.getMarca());
+        carroParaAtualizar.setQntPassageiros(carro.getQntPassageiros());
+        carroParaAtualizar.setKmRodados(carro.getKmRodados());
+        carroParaAtualizar.setValorAluguelCarro(carro.getValorAluguelCarro());
     }
 
     public void removerCarros(Integer indice) {
