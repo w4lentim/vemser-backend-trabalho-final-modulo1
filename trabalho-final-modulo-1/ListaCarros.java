@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class ListaCarros {
+public class ListaCarros implements Operacoes {
     
     private ArrayList<Carro> listaCarros;
 

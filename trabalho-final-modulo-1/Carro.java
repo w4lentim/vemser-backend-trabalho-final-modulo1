@@ -1,4 +1,4 @@
-public class Carro implements Operacoes {
+public class Carro {
     
     private Integer idCarro;
     private String nomeCarro;
