@@ -17,6 +17,20 @@ public class ListaCarros {
         this.listaCarros.add(new Carro(9, "Shelby GT500", "Mustang", "A", 5, 5000, 1000.00));
     }
 
+    public void alugar(Integer id) {
+        if (listaCarros != null) {
+            for (int index = 0; index < listaCarros.size(); index++) {
+                if (index == id) {
+                    listaCarros.remove(index);
+                }
+            }
+        }
+    }
+
+    public void devolver(Integer id) {
+        
+    }
+
     public void adicionarCarro(Carro carro) {
         this.listaCarros.add(carro);
     }

@@ -1,7 +1,7 @@
 public class Funcionario extends Usuario {
     
     private Integer idFuncionario;
-    private String matricula;
+    private String matricula; // (UNIQUE);
 
 
     public Funcionario(Integer idFuncionario, String matricula) {

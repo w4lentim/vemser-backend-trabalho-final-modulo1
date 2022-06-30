@@ -18,12 +18,6 @@ public class Carro implements Operacoes {
         this.precoDiaria = precoDiaria;
     }
 
-    public void alugar(Integer id) {
-        if (listaCarros != null) {
-            
-        }
-    }
-
     public Integer getIdCarro() {
         return idCarro;
     }
