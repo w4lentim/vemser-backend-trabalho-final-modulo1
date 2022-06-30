@@ -1,4 +1,4 @@
 public interface Impressao {
-
-    void imprimir();
+    
+    public void imprimir();
 }

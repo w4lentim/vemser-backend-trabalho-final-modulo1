@@ -1,47 +1,43 @@
-public class Carro implements Impressao{
-
-    private Integer id;
-    private String nomeDoCarro;
-    private String tipo;
+public class Carro implements Operacoes {
+    
+    private Integer idCarro;
+    private String nomeCarro;
     private String marca;
+    private String classe;
     private Integer qntPassageiros;
-    private Long kmRodados;
-    private Double valorAluguelCarro;
+    private Integer kmRodados;
+    private Double precoDiaria;
 
-    public Carro() {};
-
-    public Carro(Integer id, String nomeDoCarro, String tipo, String marca, Integer qntPassageiros, Long kmRodados, Double valorAluguelCarro) {
-        this.id = id;
-        this.nomeDoCarro = nomeDoCarro;
-        this.tipo = tipo;
+    public Carro(Integer idCarro, String nomeCarro, String marca, String classe, Integer qntPassageiros, Integer kmRodados, Double precoDiaria) {
+        this.idCarro = idCarro;
+        this.nomeCarro = nomeCarro;
         this.marca = marca;
+        this.classe = classe;
         this.qntPassageiros = qntPassageiros;
         this.kmRodados = kmRodados;
-        this.valorAluguelCarro = valorAluguelCarro;
+        this.precoDiaria = precoDiaria;
     }
 
-    public Integer getId() {
-        return id;
+    public void alugar(Integer id) {
+        if (listaCarros != null) {
+            
+        }
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public Integer getIdCarro() {
+        return idCarro;
     }
 
-    public String getNomeDoCarro() {
-        return nomeDoCarro;
+    public void setIdCarro(Integer idCarro) {
+        this.idCarro = idCarro;
     }
 
-    public void setNomeDoCarro(String nomeDoCarro) {
-        this.nomeDoCarro = nomeDoCarro;
+    public String getNomeCarro() {
+        return nomeCarro;
     }
 
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setNomeCarro(String nomeCarro) {
+        this.nomeCarro = nomeCarro;
     }
 
     public String getMarca() {
@@ -52,6 +48,14 @@ public class Carro implements Impressao{
         this.marca = marca;
     }
 
+    public String getClasse() {
+        return classe;
+    }
+
+    public void setClasse(String classe) {
+        this.classe = classe;
+    }
+
     public Integer getQntPassageiros() {
         return qntPassageiros;
     }
@@ -60,34 +64,19 @@ public class Carro implements Impressao{
         this.qntPassageiros = qntPassageiros;
     }
 
-    public Long getKmRodados() {
+    public Integer getKmRodados() {
         return kmRodados;
     }
 
-    public void setKmRodados(Long kmRodados) {
+    public void setKmRodados(Integer kmRodados) {
         this.kmRodados = kmRodados;
     }
 
-    public Double getValorAluguelCarro() {
-        return valorAluguelCarro;
+    public Double getPrecoDiaria() {
+        return precoDiaria;
     }
 
-    public Double setValorAluguelCarro(Double valorAluguelCarro) {
-        this.valorAluguelCarro = valorAluguelCarro;
-        return valorAluguelCarro;
-    }
-
-    @Override
-    public void imprimir() {
-        System.out.println("\nID: " + this.id + "\nNome do carro: " + this.nomeDoCarro + "\nTipo: " + this.tipo
-                + "\nMarca: " + this.marca + "\nQuantidade de Passageiros: " + this.qntPassageiros + "\nQuilômetros rodados: "
-                + this.kmRodados + " km" + "\nValor de Aluguel R$: " + valorAluguelCarro);
-    }
-
-    @Override
-    public String toString() {
-        return "\nID: " + this.id + "\nNome do carro: " + this.nomeDoCarro + "\nTipo: " + this.tipo + "\nMarca: "
-                + this.marca + "\nQuantidade de Passageiros: " + this.qntPassageiros + "\nQuilômetros rodados: " + this.kmRodados
-                + "km" + "\nValor de Aluguel R$: " + valorAluguelCarro;
+    public void setPrecoDiaria(Double precoDiaria) {
+        this.precoDiaria = precoDiaria;
     }
 }

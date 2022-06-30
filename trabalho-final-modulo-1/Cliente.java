@@ -1,80 +1,51 @@
-public class Cliente extends Usuario implements Impressao, Operacao {
+public class Cliente extends Usuario {
+    
+    private Integer idCliente;
+    private String cpf;
+    private String telefone;
+    private String endereco;
 
-    private Aluguel aluguel;
-
-    public Cliente(String nome, String cpf, String nivel, Aluguel aluguel) {
-        super(nome, cpf, nivel);
-        this.aluguel = aluguel;
+    public Cliente(Integer idCliente, String nome, String cpf, String telefone, String endereco) {
+        this.idCliente = idCliente;
+        this.cpf = cpf;
+        this.telefone = telefone;
+        this.endereco = endereco;
     }
 
-    public Aluguel getAluguel() {
-        return aluguel;
+    public Integer getIdCliente() {
+        return idCliente;
     }
 
-    public void setAluguel(Aluguel aluguel) {
-        this.aluguel = aluguel;
+    public void setIdCliente(Integer idCliente) {
+        this.idCliente = idCliente;
     }
 
-    public void imprimirCliente(){
-        System.out.println("Nome do Cliente: " + getNome() + "\nCPF: " + getCpf());
+    public String getCpf() {
+        return cpf;
     }
 
-    @Override
-    public Double alugar(Double valorDoCarroAlugar) {
-
-        if(aluguel.getCarro().getTipo().equals("C")) {
-            valorDoCarroAlugar = aluguel.getCarro().getValorAluguelCarro() * aluguel.getQntDias();
-            System.out.println(valorDoCarroAlugar + " Aluguel C");
-        } else if(aluguel.getCarro().getTipo().equals("B")) {
-            valorDoCarroAlugar = aluguel.getCarro().getValorAluguelCarro() * aluguel.getQntDias() * 1.2;
-            System.out.println(valorDoCarroAlugar + " Aluguel B");
-        } else if (aluguel.getCarro().getTipo().equals("A")) {
-            valorDoCarroAlugar = aluguel.getCarro().getValorAluguelCarro() * aluguel.getQntDias() * 1.5;
-            System.out.println(valorDoCarroAlugar + " Aluguel A");
-        } else{
-            System.out.println("Tipo de Carro informado inválido");
-        }
-        return valorDoCarroAlugar;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+    
+    public String getTelefone() {
+        return telefone;
     }
 
-    @Override
-    public Boolean pagar(Double valorPagamento, Double valorCarroAlugar) {
-        Double troco;
-        if(valorPagamento.equals(alugar(valorCarroAlugar))) {
-            System.out.println(valorPagamento + " Carro alugado com sucesso");
-            return true;
-        } else if (valorPagamento>alugar(valorCarroAlugar)){
-            troco = valorPagamento -valorCarroAlugar;
-            System.out.println(valorPagamento + " Carro alugado com sucesso\nTroco:" + troco);
-            return true;
-        }
-        else {
-            System.out.println(valorPagamento + " Valor não corresponde ao valor do aluguel");
-            return false;
-        }
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
-    @Override
-    public Boolean devolver(Integer diaEntregue) {
-        Double multaExcesso;
-        if(diaEntregue.equals(aluguel.getDiaDoAluguel() + aluguel.getQntDias())) {
-            System.out.println("Carro entregue com sucesso.");
-            return true;
-        } else {
-            System.out.println("Carro entregue excedendo o dia de entrega.");
-            multaExcesso = Double.valueOf((diaEntregue - (aluguel.getDiaDoAluguel() + aluguel.getQntDias())));
-            System.out.println("Valor da multa: " + multaExcesso);
-            return false;
-        }
+    public String getEndereco() {
+        return endereco;
     }
 
-    @Override
-    public String toString() {
-        return "Nome do cliente: " + getNome() + "\nCPF: " + getCpf();
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 
     @Override
     public void imprimir() {
-        
+        System.out.println("Nome do Cliente: " + this.getNome() + "\nCPF: " + this.getCpf());
     }
 }
