@@ -1,4 +1,4 @@
-public class Aluguel extends Carro {
+public class Aluguel {
     
     private Usuario usuario;
     private Carro carro;
@@ -7,7 +7,6 @@ public class Aluguel extends Carro {
     private Integer diaDaEntrega;
 
     public Aluguel(Integer id, String nomeCarro, String marca, String classe, Integer qntPassageiros, Integer kmRodados, Double valorDouble, Usuario usuario, Carro carro, Integer idAluguel, Integer diaDoAluguel, Integer diaDaEntrega) {
-        super(id, nomeCarro, marca, classe, qntPassageiros, kmRodados, valorDouble);
         this.usuario = usuario;
         this.carro = carro;
         this.idAluguel = idAluguel;

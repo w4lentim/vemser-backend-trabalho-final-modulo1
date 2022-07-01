@@ -6,21 +6,21 @@ public class ListaCarros implements Operacoes {
 
     public ListaCarros() {
         this.listaCarros = new ArrayList<>();
-        this.listaCarros.add(new Carro(1, "Pálio", "Fiat", "C", 5, 20000, 100.00));
-        this.listaCarros.add(new Carro(2, "Gol", "Volkswagen", "C", 5, 25000, 100.00));
-        this.listaCarros.add(new Carro(3, "Onix", "Chevrolet", "C", 5, 30000, 200.00));
-        this.listaCarros.add(new Carro(4, "Compass", "Jeep", "B", 5, 10000, 300.00));
-        this.listaCarros.add(new Carro(5, "Civic", "Honda", "B", 5, 10000, 300.00));
-        this.listaCarros.add(new Carro(6, "T-Cross", "Volkswagen", "B", 5, 15000, 300.00));
-        this.listaCarros.add(new Carro(7, "Elegance", "Mercedes-Benz", "A", 5, 20000, 500.00));
-        this.listaCarros.add(new Carro(8, "911 GTS", "Porsche", "A", 5, 5000, 1000.00));
-        this.listaCarros.add(new Carro(9, "Shelby GT500", "Mustang", "A", 5, 5000, 1000.00));
+        this.listaCarros.add(new Carro(1, false, "Pálio", "Fiat", "C", 5, 20000, 100.00));
+        this.listaCarros.add(new Carro(2, false, "Gol", "Volkswagen", "C", 5, 25000, 100.00));
+        this.listaCarros.add(new Carro(3, false, "Onix", "Chevrolet", "C", 5, 30000, 200.00));
+        this.listaCarros.add(new Carro(4, false, "Compass", "Jeep", "B", 5, 10000, 300.00));
+        this.listaCarros.add(new Carro(5, false, "Civic", "Honda", "B", 5, 10000, 300.00));
+        this.listaCarros.add(new Carro(6, false, "T-Cross", "Volkswagen", "B", 5, 15000, 300.00));
+        this.listaCarros.add(new Carro(7, false, "Elegance", "Mercedes-Benz", "A", 5, 20000, 500.00));
+        this.listaCarros.add(new Carro(8, false, "911 GTS", "Porsche", "A", 5, 5000, 1000.00));
+        this.listaCarros.add(new Carro(9, false, "Shelby GT500", "Mustang", "A", 5, 5000, 1000.00));
     }
 
-    public void alugar(Integer id) {
+    public void alugar(Integer idCliente, Integer idCarro, Integer diaDeEntrada, Integer diaDaEntrega) {
         if (listaCarros != null) {
             for (int index = 0; index < listaCarros.size(); index++) {
-                if (index == id) {
+                if (index == idCarro) {
                     listaCarros.remove(index);
                 }
             }

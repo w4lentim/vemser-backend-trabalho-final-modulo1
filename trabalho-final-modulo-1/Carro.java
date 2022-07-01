@@ -1,6 +1,7 @@
 public class Carro {
     
     private Integer idCarro;
+    private Boolean alugado;
     private String nomeCarro;
     private String marca;
     private String classe;
@@ -8,8 +9,9 @@ public class Carro {
     private Integer kmRodados;
     private Double precoDiaria;
 
-    public Carro(Integer idCarro, String nomeCarro, String marca, String classe, Integer qntPassageiros, Integer kmRodados, Double precoDiaria) {
+    public Carro(Integer idCarro, Boolean alugado, String nomeCarro, String marca, String classe, Integer qntPassageiros, Integer kmRodados, Double precoDiaria) {
         this.idCarro = idCarro;
+        this.alugado = alugado;
         this.nomeCarro = nomeCarro;
         this.marca = marca;
         this.classe = classe;
@@ -72,5 +74,13 @@ public class Carro {
 
     public void setPrecoDiaria(Double precoDiaria) {
         this.precoDiaria = precoDiaria;
+    }
+
+    public Boolean getAlugado() {
+        return alugado;
+    }
+
+    public void setAlugado(Boolean alugado) {
+        this.alugado = alugado;
     }
 }
