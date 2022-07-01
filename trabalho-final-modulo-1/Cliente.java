@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Cliente extends Usuario {
     
     private Integer idCliente;
@@ -5,15 +7,23 @@ public class Cliente extends Usuario {
     private String cpf; // (UNIQUE);
     private String telefone;
     private String endereco;
+    private Double saldo;
 
     public Cliente() {};
 
-    public Cliente(Integer idCliente, String nome, String cpf, String telefone, String endereco) {
+    public Cliente(Integer idCliente, String nome, String cpf, String telefone, String endereco, Double saldo) {
         this.idCliente = idCliente;
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;
         this.endereco = endereco;
+        this.saldo = saldo;
+    }
+    public Double saldoCliente(Double valor){
+        System.out.println("Escreva seu saldo disponível:");
+        Scanner sc = new Scanner(System.in);
+        saldo = sc.nextDouble();
+        return saldo;
     }
 
     public Integer getIdCliente() {

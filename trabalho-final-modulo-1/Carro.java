@@ -1,5 +1,7 @@
+import java.text.DecimalFormat;
+
 public class Carro {
-    
+
     private Integer idCarro;
     private String alugado;
     private String nomeCarro;
@@ -9,7 +11,10 @@ public class Carro {
     private Integer kmRodados;
     private Double precoDiaria;
 
-    public Carro() {};
+    public Carro() {
+    }
+
+    ;
 
     public Carro(Integer idCarro, String alugado, String nomeCarro, String marca, String classe, Integer qntPassageiros, Integer kmRodados, Double precoDiaria) {
         this.idCarro = idCarro;
@@ -84,5 +89,20 @@ public class Carro {
 
     public void setAlugado(String alugado) {
         this.alugado = alugado;
+    }
+
+    @Override
+    public String toString() {
+        DecimalFormat df = new DecimalFormat("#,###.00");
+        return "{"
+                + "\"id\": " + idCarro + ", "
+                + "\"nome\": \"" + nomeCarro + "\", "
+                + "\"marca\": \"" + marca + "\", "
+                + "\"classe\": \"" + classe + "\", "
+                + "\"kmRodados\": " + kmRodados + ", "
+                + "\"precoDiaria\": " + df.format(precoDiaria) + ", "
+                + "\"qntPassageiros\": " + qntPassageiros + ", "
+                + "\"alugado\": \"" + alugado
+                + "\"}";
     }
 }

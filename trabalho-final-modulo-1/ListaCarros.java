@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class ListaCarros {
-    
+
     private ArrayList<Carro> listaCarros;
 
     public ListaCarros() {
@@ -17,15 +17,20 @@ public class ListaCarros {
         this.listaCarros.add(new Carro(9, "N", "Shelby GT500", "Mustang", "A", 5, 5000, 1000.00));
     }
 
-    // public void alugar(Integer idCliente, Integer idCarro, Integer diaDeEntrada, Integer diaDaEntrega) {
-    //     if (listaCarros != null) {
-    //         for (int index = 0; index < listaCarros.size(); index++) {
-    //             if (index == idCarro) {
-    //                 listaCarros.remove(index);
-    //             }
-    //         }
-    //     }
-    // }
+
+    public void alugar(Integer idCarro) {
+        if (listaCarros != null) {
+            Carro carroSelecionado = listaCarros.get(idCarro);
+            if (carroSelecionado.getAlugado().equals("S")) {
+                System.out.println("---- CARRO N├âO DISPONIVEL PARA ALUGUEL ----");
+            } else {
+                carroSelecionado.setAlugado("S");
+                System.out.println("---- CARRO ALUGADO COM SUCESSO ----");
+            }
+            listaCarros.set(idCarro, carroSelecionado);
+        }
+    }
+
 
     public void adicionarCarro(Carro carro) {
         this.listaCarros.add(carro);
@@ -33,7 +38,8 @@ public class ListaCarros {
 
     public void listarCarros() {
         listaCarros.stream()
-        .forEach(System.out::println);
+                .filter((carro) -> carro.getAlugado().equals("N"))
+                .forEach(System.out::println);
     }
 
     public void selecionarCarro(Integer indice) {
@@ -45,7 +51,7 @@ public class ListaCarros {
                 } else {
                     System.out.println("Carro selecionado indisponível. Informe um carro disponível.");
                 }
-            } 
+            }
         }
     }
 

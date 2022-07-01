@@ -9,8 +9,9 @@ public class Main {
         int escolha = 0;
         
         while (escolha != 3) {
-            System.out.println("SEJA BEM VINDOS A LOCADORA DBCAR!");
+            System.out.println("SEJA BEM VINDO A LOCADORA DBCAR!");
             System.out.println("LOGIN:\n1 - ACESSO FUNCIONÁRIO;\n2 - ACESSO CLIENTE;");
+            System.out.print("SUA ESCOLHA: ");
             int opcaoMenu = scanner.nextInt();
             scanner.nextLine();
             switch (opcaoMenu) {
@@ -18,6 +19,7 @@ public class Main {
                     System.out.println("VOCÊ ESTÁ ACESSANDO O MENU PARA FUNCIONÁRIO;");
                     System.out.println("------ MENU PARA FUNCIONÁRIOS ------");
                     System.out.println("1 - LISTAR OS CARROS DISPONÍVEIS DO CATÁLOGO;\n2 - ADICIONAR UM NOVO CARRO AO CATÁLOGO;\n3 - ATUALIZAR UM CARRO DO CATÁLOGO;\n4 - REMOVER CARRO DO CATÁLOGO;\n0 - SAIR;\nSUA ESCOLHA: ");
+                    System.out.print("SUA ESCOLHA: ");
                     int opcaoFuncionario = scanner.nextInt();
                     scanner.nextLine();
                     switch (opcaoFuncionario) {
@@ -88,7 +90,7 @@ public class Main {
                             System.out.println("Informe o ID do carro que deseja remover: ");
                             int idRemover = scanner.nextInt();
 
-                            carrosDisponiveisCatalogo.removerCarro(idRemover);
+                            carrosDisponiveisCatalogo.removerCarro(idRemover - 1);
                             System.out.println("---- CARRO REMOVIDO COM SUCESSO! ----");
                         }
                         case 0 -> {
@@ -103,6 +105,7 @@ public class Main {
                     System.out.println("VOCÊ ESTÁ ACESSANDO O MENU PARA CLIENTES;");
                     System.out.println("------ MENU PARA CLIENTES ------");
                     System.out.println("1 - LISTAR OS CARROS DISPONÍVEIS DO CATÁLOGO;\n2 - ALUGAR UM CARRO;\n3 - DEVOLVER CARRO;\n0 - SAIR;\nSUA ESCOLHA: ");
+                    System.out.print("SUA ESCOLHA: ");
                     int opcaoCliente = scanner.nextInt();
                     scanner.nextLine();
                     switch (opcaoCliente) {
@@ -128,7 +131,7 @@ public class Main {
                             novoCliente.setEndereco(scanner.nextLine());
 
                             /////// INICIAR DAQUI;
-                                
+                            carrosDisponiveisCatalogo.alugar(idCarroEscolhido - 1);
                         }
                     }
                 }
