@@ -1,7 +1,7 @@
 public class Carro {
     
     private Integer idCarro;
-    private Boolean alugado;
+    private String alugado;
     private String nomeCarro;
     private String marca;
     private String classe;
@@ -9,7 +9,9 @@ public class Carro {
     private Integer kmRodados;
     private Double precoDiaria;
 
-    public Carro(Integer idCarro, Boolean alugado, String nomeCarro, String marca, String classe, Integer qntPassageiros, Integer kmRodados, Double precoDiaria) {
+    public Carro() {};
+
+    public Carro(Integer idCarro, String alugado, String nomeCarro, String marca, String classe, Integer qntPassageiros, Integer kmRodados, Double precoDiaria) {
         this.idCarro = idCarro;
         this.alugado = alugado;
         this.nomeCarro = nomeCarro;
@@ -76,11 +78,11 @@ public class Carro {
         this.precoDiaria = precoDiaria;
     }
 
-    public Boolean getAlugado() {
+    public String getAlugado() {
         return alugado;
     }
 
-    public void setAlugado(Boolean alugado) {
+    public void setAlugado(String alugado) {
         this.alugado = alugado;
     }
 }

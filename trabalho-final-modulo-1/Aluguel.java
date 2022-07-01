@@ -1,13 +1,13 @@
 public class Aluguel {
     
-    private Usuario usuario;
+    private Cliente cliente;
     private Carro carro;
     private Integer idAluguel;
     private Integer diaDoAluguel;
     private Integer diaDaEntrega;
 
-    public Aluguel(Integer id, String nomeCarro, String marca, String classe, Integer qntPassageiros, Integer kmRodados, Double valorDouble, Usuario usuario, Carro carro, Integer idAluguel, Integer diaDoAluguel, Integer diaDaEntrega) {
-        this.usuario = usuario;
+    public Aluguel(Cliente cliente, Carro carro, Integer idAluguel, Integer diaDoAluguel, Integer diaDaEntrega) {
+        this.cliente = cliente;
         this.carro = carro;
         this.idAluguel = idAluguel;
         this.diaDoAluguel = diaDoAluguel;
@@ -33,12 +33,12 @@ public class Aluguel {
         return valorDiarias;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public Carro getCarro() {
@@ -72,4 +72,6 @@ public class Aluguel {
     public void setDiaDaEntrega(Integer diaDaEntrega) {
         this.diaDaEntrega = diaDaEntrega;
     } 
+
+    
 }

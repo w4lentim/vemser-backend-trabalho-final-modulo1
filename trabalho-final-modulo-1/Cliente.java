@@ -1,12 +1,16 @@
 public class Cliente extends Usuario {
     
     private Integer idCliente;
+    private String nome;
     private String cpf; // (UNIQUE);
     private String telefone;
     private String endereco;
 
+    public Cliente() {};
+
     public Cliente(Integer idCliente, String nome, String cpf, String telefone, String endereco) {
         this.idCliente = idCliente;
+        this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;
         this.endereco = endereco;
@@ -19,6 +23,14 @@ public class Cliente extends Usuario {
     public void setIdCliente(Integer idCliente) {
         this.idCliente = idCliente;
     }
+    
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
     public String getCpf() {
         return cpf;
@@ -27,7 +39,7 @@ public class Cliente extends Usuario {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-    
+
     public String getTelefone() {
         return telefone;
     }
