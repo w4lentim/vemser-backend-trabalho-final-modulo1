@@ -27,8 +27,6 @@ public class Aluguel {
             valorDiarias = imprimirDiasComCarro() * carro.getPrecoDiaria() * 1.2;
         } else if (carro.getClasse().equals("A")) {
             valorDiarias = imprimirDiasComCarro() * carro.getPrecoDiaria() * 1.5;
-        } else {
-            System.out.println("O carro informado não está disponível.");
         }
         return valorDiarias;
     }
@@ -71,7 +69,5 @@ public class Aluguel {
 
     public void setDiaDaEntrega(Integer diaDaEntrega) {
         this.diaDaEntrega = diaDaEntrega;
-    } 
-
-    
+    }
 }

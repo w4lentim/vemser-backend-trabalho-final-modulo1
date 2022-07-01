@@ -11,10 +11,7 @@ public class Carro {
     private Integer kmRodados;
     private Double precoDiaria;
 
-    public Carro() {
-    }
-
-    ;
+    public Carro() {};
 
     public Carro(Integer idCarro, String alugado, String nomeCarro, String marca, String classe, Integer qntPassageiros, Integer kmRodados, Double precoDiaria) {
         this.idCarro = idCarro;

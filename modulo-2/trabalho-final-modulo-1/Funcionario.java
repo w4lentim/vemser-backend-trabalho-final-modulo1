@@ -3,7 +3,6 @@ public class Funcionario extends Usuario {
     private Integer idFuncionario;
     private String matricula; // (UNIQUE);
 
-
     public Funcionario(Integer idFuncionario, String matricula) {
         this.idFuncionario = idFuncionario;
         this.matricula = matricula;

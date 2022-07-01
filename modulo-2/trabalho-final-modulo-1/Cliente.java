@@ -20,10 +20,10 @@ public class Cliente extends Usuario {
         this.saldo = saldo;
     }
     public Double saldoCliente(Double valor){
-        System.out.println("Escreva seu saldo disponível:");
+        System.out.println("Escreva seu saldo disponível: ");
         Scanner sc = new Scanner(System.in);
-        saldo = sc.nextDouble();
-        return saldo;
+        this.setSaldo(sc.nextDouble());
+        return getSaldo();
     }
 
     public Integer getIdCliente() {
@@ -66,8 +66,13 @@ public class Cliente extends Usuario {
         this.endereco = endereco;
     }
 
+    public Double getSaldo() { return saldo; }
+
+    public void setSaldo(Double saldo) { this.saldo = saldo; }
+
+
     @Override
     public void imprimir() {
-        System.out.println("Nome do Cliente: " + this.getNome() + "\nCPF: " + this.getCpf());
+        System.out.println("Nome do Cliente: " + this.getNome() + "\nCPF: " + this.getCpf() + "\nTelefone: " + this.getTelefone() + "\nEndereço: " + this.getEndereco() + "\nSaldo R$: " + this.getSaldo());
     }
 }

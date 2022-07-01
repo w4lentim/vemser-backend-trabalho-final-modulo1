@@ -1,9 +1,7 @@
 import java.util.ArrayList;
 
 public class ListaCarros {
-
     private ArrayList<Carro> listaCarros;
-
     public ListaCarros() {
         this.listaCarros = new ArrayList<>();
         this.listaCarros.add(new Carro(1, "N", "Pálio", "Fiat", "C", 5, 20000, 100.00));
@@ -17,20 +15,18 @@ public class ListaCarros {
         this.listaCarros.add(new Carro(9, "N", "Shelby GT500", "Mustang", "A", 5, 5000, 1000.00));
     }
 
-
-    public void alugar(Integer idCarro) {
+    public void alugar(Integer idCarro) { // Está apenas verificando se a flag é S/N;
         if (listaCarros != null) {
             Carro carroSelecionado = listaCarros.get(idCarro);
             if (carroSelecionado.getAlugado().equals("S")) {
-                System.out.println("---- CARRO N├âO DISPONIVEL PARA ALUGUEL ----");
+                System.out.println("---- CARRO NÃO ESTÁ DISPONIVEL PARA ALUGAR ----");
             } else {
-                carroSelecionado.setAlugado("S");
-                System.out.println("---- CARRO ALUGADO COM SUCESSO ----");
+                carroSelecionado.setAlugado("N");
+                System.out.println("---- CARRO ESTÁ DISPONÍVEL PARA O ALUGUEL ----");
             }
             listaCarros.set(idCarro, carroSelecionado);
         }
     }
-
 
     public void adicionarCarro(Carro carro) {
         this.listaCarros.add(carro);
