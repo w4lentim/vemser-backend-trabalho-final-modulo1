@@ -3,13 +3,13 @@ package br.com.dbc.model;
 import br.com.dbc.repository.Impressao;
 
 public abstract class Usuario implements Impressao {
-    private String idUsuario;
+    private Integer idUsuario;
     private String nome;
 
-    public String getIdUsuario() {
+    public Integer getIdUsuario() {
         return idUsuario;
     }
-    public void setIdUsuario(String idUsuario) {
+    public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
     }
     public String getNome() {

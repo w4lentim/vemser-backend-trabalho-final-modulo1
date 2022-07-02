@@ -14,7 +14,7 @@ public class ClienteService {
     public void adicionarCliente(Cliente cliente) {
         try {
             Cliente clienteAdicionado = clienteRepository.adicionar(cliente);
-            System.out.println("contato adicinado com sucesso! " + clienteAdicionado);
+            System.out.println("cliente adicinado com sucesso! " + clienteAdicionado);
         } catch (BancoDeDadosException e) {
             e.printStackTrace();
         }
@@ -55,6 +55,5 @@ public class ClienteService {
 //        } catch (BancoDeDadosException e) {
 //            e.printStackTrace();
 //        }
-    }
 }
 
