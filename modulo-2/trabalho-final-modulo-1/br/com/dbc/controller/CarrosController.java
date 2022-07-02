@@ -1,3 +1,8 @@
+package br.com.dbc.controller;
+
+import br.com.dbc.model.Carro;
+import br.com.dbc.model.Database;
+
 import java.util.ArrayList;
 
 public class CarrosController {
@@ -34,7 +39,7 @@ public class CarrosController {
         if (carros != null) {
             for (int index = 0; index < carros.size(); index++) {
                 if (carros.get(index).getIdCarro() == id) {
-                    System.out.println("Carro selecionado: " + carros.get(index));
+                    System.out.println("br.com.dbc.model.Carro selecionado: " + carros.get(index));
                     return carros.get(index);
                 }
             }

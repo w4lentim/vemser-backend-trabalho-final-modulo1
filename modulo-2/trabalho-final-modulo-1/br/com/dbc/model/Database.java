@@ -1,3 +1,8 @@
+package br.com.dbc.model;
+
+import br.com.dbc.controller.CarrosController;
+import br.com.dbc.controller.ClientesController;
+
 import java.util.ArrayList;
 
 public class Database {

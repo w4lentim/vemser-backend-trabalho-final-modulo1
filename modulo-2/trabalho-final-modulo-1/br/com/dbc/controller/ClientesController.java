@@ -1,3 +1,8 @@
+package br.com.dbc.controller;
+
+import br.com.dbc.model.Cliente;
+import br.com.dbc.model.Database;
+
 import java.util.ArrayList;
 
 public class ClientesController {
@@ -18,7 +23,7 @@ public class ClientesController {
         if (clientes != null) {
             for (int index = 0; index < clientes.size(); index++) {
                 if (clientes.get(index).getIdCliente() == id) {
-                    System.out.println("Cliente selecionado: " + clientes.get(index).getIdCliente());
+                    System.out.println("br.com.dbc.model.Cliente selecionado: " + clientes.get(index).getIdCliente());
                     return clientes.get(index);
                 }
             }
