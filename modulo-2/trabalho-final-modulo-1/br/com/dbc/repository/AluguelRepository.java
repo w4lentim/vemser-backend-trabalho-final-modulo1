@@ -1,0 +1,160 @@
+package br.com.dbc.repository;
+
+import br.com.dbc.exception.BancoDeDadosException;
+import br.com.dbc.model.Aluguel;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class AluguelRepository implements  Repositorio<Integer, Aluguel> {
+
+    @Override
+    public Integer getProximoId(Connection connection) throws SQLException {
+        String sql = "SELECT seq_aluguel.nextval mysequence from DUAL";
+
+        Statement stmt = connection.createStatement();
+        ResultSet res = stmt.executeQuery(sql);
+
+        if (res.next()) {
+            return res.getInt("mysequence");
+        }
+        return null;
+    }
+
+    @Override
+    public Aluguel adicionar(Aluguel Aluguel) throws BancoDeDadosException {
+        Connection con = null;
+        try {
+            con = ConexaoBancoDeDados.getConnection();
+
+            Integer proximoId = this.getProximoId(con);
+            Aluguel.setIdAluguel(proximoId);
+
+            String sql = "INSERT INTO Aluguel\n" +
+                    "(ID_Aluguel, ID_Usuario, ID_Carro, DIA DO ALUGUEL, DIA DA ENTREGA)\n" +
+                    "VALUES(?, ?, ?, ?, ?)\n";
+
+            PreparedStatement stmt = con.prepareStatement(sql);
+
+            stmt.setInt(1, Aluguel.getIdAluguel());
+            //inserir idusuario
+            //inserir idcarro
+            stmt.setInt(2, Aluguel.getDiaDoAluguel());
+            stmt.setInt(3, Aluguel.getDiaDoAluguel());
+
+
+            int res = stmt.executeUpdate();
+            System.out.println("adicionarAluguel.res=" + res);
+            return new Aluguel();
+        } catch (SQLException e) {
+            throw new BancoDeDadosException(e.getCause());
+        } finally {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public boolean remover(Integer id) throws BancoDeDadosException {
+        Connection con = null;
+        try {
+            con = ConexaoBancoDeDados.getConnection();
+
+            String sql = "DELETE FROM Aluguel WHERE id_Aluguel = ?";
+
+            PreparedStatement stmt = con.prepareStatement(sql);
+
+            stmt.setInt(1, id);
+
+            // Executa-se a consulta
+            int res = stmt.executeUpdate();
+            System.out.println("removerAluguelPorId.res=" + res);
+
+            return res > 0;
+        } catch (SQLException e) {
+            throw new BancoDeDadosException(e.getCause());
+        } finally {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public boolean editar(Integer id, Aluguel aluguel) throws BancoDeDadosException {
+        Connection con = null;
+        try {
+            con = ConexaoBancoDeDados.getConnection();
+
+            StringBuilder sql = new StringBuilder();
+            sql.append("UPDATE Aluguel SET ");
+            sql.append(" Dia do Aluguel = ?,");
+            sql.append(" Dia da Entrega = ?,");
+
+            PreparedStatement stmt = con.prepareStatement(sql.toString());
+
+            stmt.setInt(1, aluguel.getDiaDoAluguel());
+            stmt.setInt(2, aluguel.getDiaDaEntrega());
+
+            // Executa-se a consulta
+            int res = stmt.executeUpdate();
+            System.out.println("editarAluguel.res=" + res);
+
+            return res > 0;
+        } catch (SQLException e) {
+            throw new BancoDeDadosException(e.getCause());
+        } finally {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public List<Aluguel> listar() throws BancoDeDadosException {
+        List<Aluguel> alugueis = new ArrayList<>();
+        Connection con = null;
+        try {
+            con = ConexaoBancoDeDados.getConnection();
+            Statement stmt = con.createStatement();
+
+            String sql = "SELECT * FROM Aluguel";
+
+            // Executa-se a consulta
+            ResultSet res = stmt.executeQuery(sql);
+
+            while (res.next()) {
+                Aluguel aluguel = new Aluguel();
+                aluguel.setIdAluguel(res.getInt("id_Aluguel"));
+                aluguel.setDiaDoAluguel(res.getInt("diaDoAluguel"));
+                aluguel.setDiaDaEntrega(res.getInt("diaDaEntrega"));
+                alugueis.add(aluguel);
+            }
+        } catch (SQLException e) {
+            throw new BancoDeDadosException(e.getCause());
+        } finally {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return alugueis;
+    }
+}
