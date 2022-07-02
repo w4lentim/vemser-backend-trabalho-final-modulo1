@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Cliente extends Usuario {
@@ -19,6 +20,7 @@ public class Cliente extends Usuario {
         this.endereco = endereco;
         this.saldo = saldo;
     }
+
     public Double saldoCliente(Double valor){
         System.out.println("Escreva seu saldo disponível: ");
         Scanner sc = new Scanner(System.in);

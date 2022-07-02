@@ -3,8 +3,6 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        
-        ListaCarros carrosDisponiveisCatalogo = new ListaCarros();
 
         int escolha = 0;
         
@@ -13,7 +11,6 @@ public class Main {
             System.out.println("LOGIN:\n1 - ACESSO FUNCIONÁRIO;\n2 - ACESSO CLIENTE;");
             System.out.print("SUA ESCOLHA: ");
             int opcaoMenu = sc.nextInt();
-            sc.nextLine();
             switch (opcaoMenu) {
                 case 1 -> {
                     System.out.println("VOCÊ ESTÁ ACESSANDO O MENU PARA FUNCIONÁRIO;");
@@ -23,16 +20,15 @@ public class Main {
                     sc.nextLine();
                     switch (opcaoFuncionario) {
                         case 1 -> {
-                            carrosDisponiveisCatalogo.listarCarros();
+                            CarrosController.carrosController.listarCarrosDisponiveis();
                             System.out.println("-------------------------------------------------");
                         }
                         case 2 -> {
                             Carro carro = new Carro();
                             System.out.println("Informe o ID do carro: ");
-                            carro.setIdCarro(sc.nextInt());
-                            sc.nextLine();
-                            System.out.println("Carro está disponível ou alugado? (S/N): ");
-                            carro.setAlugado(sc.next());
+                            carro.setIdCarro(Integer.parseInt(sc.nextLine()));
+                            System.out.println("Carro está disponível? (S/N): ");
+                            carro.setAlugado(sc.nextLine());
                             System.out.println("Informe o nome do carro: ");
                             carro.setNomeCarro(sc.nextLine());
                             System.out.println("Informe a marca do carro: ");
@@ -40,18 +36,17 @@ public class Main {
                             System.out.println("Informe a classe do carro: ");
                             carro.setClasse(sc.nextLine());
                             System.out.println("Informe a quantidade de passageiros que o carro suporta: ");
-                            carro.setQntPassageiros(sc.nextInt());
-                            sc.nextLine();
+                            carro.setQntPassageiros(Integer.parseInt(sc.nextLine()));
                             System.out.println("Informe a quantidade de km rodados pelo carro: ");
-                            carro.setKmRodados(sc.nextInt());
-                            sc.nextLine();
+                            carro.setKmRodados(Integer.parseInt(sc.nextLine()));
                             System.out.println("Informe o preço da diária do carro R$: ");
-                            carro.setPrecoDiaria(sc.nextDouble());
-                            sc.nextLine();
+                            carro.setPrecoDiaria(Double.parseDouble(sc.nextLine()));
                             System.out.println("---- CARRO CADASTRADO COM SUCESSO ----");
+
+                            CarrosController.carrosController.adicionarCarro(carro);
                         }
                         case 3 -> {
-                            carrosDisponiveisCatalogo.listarCarros();
+                            CarrosController.carrosController.listarCarrosDisponiveis();
                             System.out.println("-------------------------------------------------");
                             System.out.println("Informe o ID do carro que deseja atualizar: ");
                             int idAtualizar = sc.nextInt();
@@ -59,6 +54,7 @@ public class Main {
 
                             Carro carroAtualizado = new Carro();
 
+                            // CORREÇOES ----- nextline
                             System.out.println("Informe o novo ID do carro: ");
                             carroAtualizado.setIdCarro(sc.nextInt());
                             sc.nextLine();
@@ -80,16 +76,16 @@ public class Main {
                             carroAtualizado.setPrecoDiaria(sc.nextDouble());
                             sc.nextLine();
 
-                            carrosDisponiveisCatalogo.atualizarCarro(idAtualizar - 1, carroAtualizado);
+                            CarrosController.carrosController.atualizarCarro(idAtualizar, carroAtualizado);
                             System.out.println("---- CARRO ATUALIZADO COM SUCESSO ----");
                         }
                         case 4 -> {
-                            carrosDisponiveisCatalogo.listarCarros();
+                            CarrosController.carrosController.listarCarrosDisponiveis();
                             System.out.println("----------------------------------------------");
                             System.out.println("Informe o ID do carro que deseja remover: ");
                             int idRemover = sc.nextInt();
 
-                            carrosDisponiveisCatalogo.removerCarro(idRemover - 1);
+                            CarrosController.carrosController.removerCarro(idRemover);
                             System.out.println("---- CARRO REMOVIDO COM SUCESSO! ----");
                         }
                         case 0 -> {
@@ -109,28 +105,35 @@ public class Main {
                     sc.nextLine();
                     switch (opcaoCliente) {
                         case 1 -> {
-                            carrosDisponiveisCatalogo.listarCarros();
+                            CarrosController.carrosController.listarCarrosDisponiveis();
                             System.out.println("-------------------------------------------------");
                         }
                         case 2 -> {
                             System.out.println("Informe o ID do carro que deseja alugar: ");
-                            int idCarroEscolhido = sc.nextInt();
+                            int idCarroEscolhido = (Integer.parseInt(sc.nextLine()));
+                            Carro carroEscolhido = CarrosController.carrosController.selecionarCarro(idCarroEscolhido);
+                            System.out.println("Informe o ID do cliente: ");
+                            int idClienteAluguel = (Integer.parseInt(sc.nextLine()));
+                            Cliente clienteAluguel = ClientesController.clientesController.selecionarCliente(idClienteAluguel);
+                            System.out.println("Dia do aluguel: ");
+                            int diaAluguel = sc.nextInt();
                             sc.nextLine();
-
-//                            Cliente novoCliente = new Cliente();
-//                            System.out.println("Informe seu ID de Cliente: ");
-//                            novoCliente.setIdCliente(sc.nextInt());
-//                            sc.nextLine();
-//                            System.out.println("Informe seu nome: ");
-//                            novoCliente.setNome(sc.nextLine());
-//                            System.out.println("Informe seu CPF: ");
-//                            novoCliente.setCpf(sc.nextLine());
-//                            System.out.println("Informe um telefone para contato: ");
-//                            novoCliente.setTelefone(sc.nextLine());
-//                            System.out.println("Informe um endereço: ");
-//                            novoCliente.setEndereco(sc.nextLine());
-
-                            carrosDisponiveisCatalogo.alugar(idCarroEscolhido - 1);
+                            System.out.println("Dia da entrega: ");
+                            int diaEntrega = sc.nextInt();
+                            sc.nextLine();
+                            Aluguel aluguelCarro = new Aluguel();
+                            aluguelCarro.setCarro(carroEscolhido);
+                            aluguelCarro.setCliente(clienteAluguel);
+                            aluguelCarro.setDiaDoAluguel(diaAluguel);
+                            aluguelCarro.setDiaDaEntrega(diaEntrega);
+                            System.out.println("Valor do aluguel R$: " + aluguelCarro.getValorAluguel());
+                            System.out.println("CONFIRMAR ALUGUEL?\n1 - Sim;\n2 - Não\nSUA ESCOLHA: ");
+                            int confirmarAluguel = sc.nextInt();
+                            if (confirmarAluguel == 1) {
+                                AlugueisController.alugueisController.alugar(aluguelCarro);
+                            } else {
+                                System.out.println("ALUGUEL CANCELADO;");
+                            }
                         }
                     }
                 }
@@ -141,3 +144,16 @@ public class Main {
         }    
     }
 }
+
+//    Cliente novoCliente = new Cliente();
+//                            System.out.println("Informe seu ID de Cliente: ");
+//                                    novoCliente.setIdCliente(sc.nextInt());
+//                                    sc.nextLine();
+//                                    System.out.println("Informe seu nome: ");
+//                                    novoCliente.setNome(sc.nextLine());
+//                                    System.out.println("Informe seu CPF: ");
+//                                    novoCliente.setCpf(sc.nextLine());
+//                                    System.out.println("Informe um telefone para contato: ");
+//                                    novoCliente.setTelefone(sc.nextLine());
+//                                    System.out.println("Informe um endereço: ");
+//                                    novoCliente.setEndereco(sc.nextLine());

@@ -6,12 +6,22 @@ public class Aluguel {
     private Integer diaDoAluguel;
     private Integer diaDaEntrega;
 
+    public Aluguel() {};
+
     public Aluguel(Cliente cliente, Carro carro, Integer idAluguel, Integer diaDoAluguel, Integer diaDaEntrega) {
         this.cliente = cliente;
         this.carro = carro;
         this.idAluguel = idAluguel;
         this.diaDoAluguel = diaDoAluguel;
         this.diaDaEntrega = diaDaEntrega;
+    }
+
+    public Double getValorAluguel() {
+        if (this.carro == null) {
+            return 0.0;
+        } else {
+            return (this.diaDaEntrega - this.diaDoAluguel) * this.carro.getPrecoDiaria();
+        }
     }
 
     public Integer imprimirDiasComCarro() {
