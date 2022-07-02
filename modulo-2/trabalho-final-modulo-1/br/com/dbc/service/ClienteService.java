@@ -49,12 +49,12 @@ public class ClienteService {
         }
     }
 
-    public void listarClientePorCodigoDoCliente(Integer idCliente) {
-        try {
-            clienteRepository,listarClientePorCodigoDoCliente(idCliente).forEach(System.out::println);
-        } catch (BancoDeDadosException e) {
-            e.printStackTrace();
-        }
+//    public void listarClientePorCodigoDoCliente(Integer idCliente) {
+//        try {
+//            clienteRepository,listarClientePorCodigoDoCliente(idCliente).forEach(System.out::println);
+//        } catch (BancoDeDadosException e) {
+//            e.printStackTrace();
+//        }
     }
 }
 

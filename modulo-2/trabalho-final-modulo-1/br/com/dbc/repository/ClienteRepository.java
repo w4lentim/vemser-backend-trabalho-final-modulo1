@@ -32,8 +32,8 @@ public class ClienteRepository implements  Repositorio<Integer, Cliente> {
                 Integer proximoId = this.getProximoId(con);
                 cliente.setIdCliente(proximoId);
 
-                String sql = "INSERT INTO PESSOA\n" +
-                        "(ID_PESSOA, NOME, DATA_NASCIMENTO, CPF)\n" +
+                String sql = "INSERT INTO CLIENTE\n" +
+                        "(ID_CLIENTE, CPF, TELEFONE, ENDERECO)\n" +
                         "VALUES(?, ?, ?, ?)\n";
 
                 PreparedStatement stmt = con.prepareStatement(sql);
@@ -44,7 +44,7 @@ public class ClienteRepository implements  Repositorio<Integer, Cliente> {
                 stmt.setString(4, cliente.getEndereco());
 
                 int res = stmt.executeUpdate();
-                System.out.println("adicionarPessoa.res=" + res);
+                System.out.println("adicionarCliente.res=" + res);
                 return cliente;
             } catch (SQLException e) {
                 throw new BancoDeDadosException(e.getCause());
@@ -100,7 +100,7 @@ public class ClienteRepository implements  Repositorio<Integer, Cliente> {
                 sql.append(" cpf = ?,");
                 sql.append(" telefone = ?,");
                 sql.append(" endereco = ? ");
-                sql.append(" WHERE id_pessoa = ? ");
+                sql.append(" WHERE id_cliente = ? ");
 
                 PreparedStatement stmt = con.prepareStatement(sql.toString());
 
@@ -111,7 +111,7 @@ public class ClienteRepository implements  Repositorio<Integer, Cliente> {
 
                 // Executa-se a consulta
                 int res = stmt.executeUpdate();
-                System.out.println("editarPessoa.res=" + res);
+                System.out.println("editarCliente.res=" + res);
 
                 return res > 0;
             } catch (SQLException e) {
@@ -142,7 +142,7 @@ public class ClienteRepository implements  Repositorio<Integer, Cliente> {
 
                 while (res.next()) {
                     Cliente cliente = new Cliente();
-                    cliente.setIdCliente(res.getInt("id_pessoa"));
+                    cliente.setIdCliente(res.getInt("id_cliente"));
                     cliente.setCpf(res.getString("cpf"));
                     cliente.setTelefone(res.getString("telefone"));
                     cliente.setEndereco(res.getString("endereco"));
