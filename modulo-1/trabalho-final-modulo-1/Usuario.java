@@ -1,5 +1,4 @@
 public abstract class Usuario implements Impressao {
-    
     private String idUsuario;
     private String nome;
 

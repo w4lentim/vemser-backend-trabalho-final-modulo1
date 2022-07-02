@@ -6,6 +6,8 @@ public class Aluguel {
     private Integer diaDoAluguel;
     private Integer diaDaEntrega;
 
+    public Aluguel() {};
+
     public Aluguel(Cliente cliente, Carro carro, Integer idAluguel, Integer diaDoAluguel, Integer diaDaEntrega) {
         this.cliente = cliente;
         this.carro = carro;
@@ -14,23 +16,12 @@ public class Aluguel {
         this.diaDaEntrega = diaDaEntrega;
     }
 
-    public Integer imprimirDiasComCarro() {
-        Integer diasTotais = this.getDiaDaEntrega() - this.getDiaDoAluguel();
-        return diasTotais;
-    }
-
-    public Double calcularDiarias() {
-        Double valorDiarias = 0.0;
-        if (carro.getClasse().equals("C")) {
-            valorDiarias = imprimirDiasComCarro() * carro.getPrecoDiaria();
-        } else if (carro.getClasse().equals("B")) {
-            valorDiarias = imprimirDiasComCarro() * carro.getPrecoDiaria() * 1.2;
-        } else if (carro.getClasse().equals("A")) {
-            valorDiarias = imprimirDiasComCarro() * carro.getPrecoDiaria() * 1.5;
+    public Double valorDoAluguel() {
+        if (this.carro == null) {
+            return 0.0;
         } else {
-            System.out.println("O carro informado não está disponível.");
+            return (this.diaDaEntrega - this.diaDoAluguel) * this.carro.getPrecoDiaria();
         }
-        return valorDiarias;
     }
 
     public Cliente getCliente() {
@@ -71,7 +62,5 @@ public class Aluguel {
 
     public void setDiaDaEntrega(Integer diaDaEntrega) {
         this.diaDaEntrega = diaDaEntrega;
-    } 
-
-    
+    }
 }
