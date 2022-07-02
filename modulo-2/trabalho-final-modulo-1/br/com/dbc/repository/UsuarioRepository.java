@@ -71,7 +71,6 @@ public class UsuarioRepository implements Repositorio<Integer, Usuario> {
 
             stmt.setInt(1, id);
 
-            // Executa-se a consulta
             int res = stmt.executeUpdate();
             System.out.println("removerUsuarioPorId.res=" + res);
 
@@ -105,7 +104,6 @@ public class UsuarioRepository implements Repositorio<Integer, Usuario> {
             stmt.setString(1, usuario.getNome());
             stmt.setInt(2, id);
 
-            // Executa-se a consulta
             int res = stmt.executeUpdate();
             System.out.println("editarUsuario.res=" + res);
 
@@ -133,7 +131,6 @@ public class UsuarioRepository implements Repositorio<Integer, Usuario> {
 
             String sql = "SELECT * FROM USUARIO";
 
-            // Executa-se a consulta
             ResultSet res = stmt.executeQuery(sql);
 
             while (res.next()) {

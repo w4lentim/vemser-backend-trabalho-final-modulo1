@@ -16,34 +16,31 @@ public class UsuarioService {
     public void adicionarUsuario(Usuario usuario) {
         try {
             Usuario usuarioAdicionado = usuarioRepository.adicionar(usuario);
-            System.out.println("usuario adicinado com sucesso! " + usuarioAdicionado);
+            System.out.println("Usuário adicionado com sucesso! " + usuarioAdicionado);
         } catch (BancoDeDadosException e) {
             e.printStackTrace();
         }
     }
 
-    // remoção
     public void removerUsuario(Integer id) {
         try {
             boolean conseguiuRemover = usuarioRepository.remover(id);
-            System.out.println("removido? " + conseguiuRemover + "| com id=" + id);
+            System.out.println("Removido? " + conseguiuRemover + "| com id = " + id);
         } catch (BancoDeDadosException e) {
             e.printStackTrace();
         }
     }
 
-    // atualização de um objeto
-    public void editarUsuario(Integer id, Usuario usuario) {
+    public void atualizarUsuario(Integer id, Usuario usuario) {
         try {
             boolean conseguiuEditar = usuarioRepository.editar(id, usuario);
-            System.out.println("editado? " + conseguiuEditar + "| com id=" + id);
+            System.out.println("Editado? " + conseguiuEditar + "| com id = " + id);
         } catch (BancoDeDadosException e) {
             e.printStackTrace();
         }
     }
 
-    // leitura
-    public void listarCliente() {
+    public void listarUsuario() {
         try {
             usuarioRepository.listar().forEach(System.out::println);
         } catch (BancoDeDadosException e) {

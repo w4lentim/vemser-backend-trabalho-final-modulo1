@@ -3,7 +3,6 @@ package br.com.dbc.model;
 import br.com.dbc.model.Usuario;
 
 public class Funcionario extends Usuario {
-    
     private Integer idFuncionario;
     private String matricula;
 

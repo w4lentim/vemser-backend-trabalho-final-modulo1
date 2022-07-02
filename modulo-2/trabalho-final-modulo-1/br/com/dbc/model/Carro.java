@@ -3,7 +3,6 @@ package br.com.dbc.model;
 import java.text.DecimalFormat;
 
 public class Carro {
-
     private Integer idCarro;
     private String alugado;
     private String nomeCarro;

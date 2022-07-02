@@ -75,7 +75,6 @@ public class Cliente extends Usuario {
 
     public void setSaldo(Double saldo) { this.saldo = saldo; }
 
-
     @Override
     public void imprimir() {
         System.out.println("Nome do br.com.dbc.model.Cliente: " + this.getNome() + "\nCPF: " + this.getCpf() + "\nTelefone: " + this.getTelefone() + "\nEndereço: " + this.getEndereco() + "\nSaldo R$: " + this.getSaldo());

@@ -1,17 +1,19 @@
-package br.com.dbc.controller;
+package br.com.dbc.service;
 
+import br.com.dbc.controller.CarrosController;
 import br.com.dbc.model.Aluguel;
 import br.com.dbc.model.Database;
+import br.com.dbc.repository.AluguelRepository;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class AlugueisController {
+public class AluguelService {
 
-    public AlugueisController () {};
+    private AluguelRepository aluguelRepository;
 
-    private List<Aluguel> carrosAlugados;
-    public static AlugueisController alugueisController = new AlugueisController();
+    public AluguelService() { aluguelRepository = new AluguelRepository(); }
+
+    public static AluguelService alugueisService = new AluguelService();
 
     public void alugar(Aluguel aluguel) {
         ArrayList<Aluguel> alugueis = Database.database.getAlugueis();

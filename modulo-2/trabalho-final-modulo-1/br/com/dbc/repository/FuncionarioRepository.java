@@ -1,17 +1,17 @@
 package br.com.dbc.repository;
 
 import br.com.dbc.exception.BancoDeDadosException;
-import br.com.dbc.model.Carro;
+import br.com.dbc.model.Funcionario;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarroRepository implements  Repositorio<Integer, Carro> {
+public class FuncionarioRepository implements  Repositorio<Integer, Funcionario> {
 
     @Override
     public Integer getProximoId(Connection connection) throws SQLException {
-        String sql = "SELECT seq_carro.nextval mysequence from DUAL";
+        String sql = "SELECT seq_funcionario.nextval mysequence from DUAL";
 
         Statement stmt = connection.createStatement();
         ResultSet res = stmt.executeQuery(sql);
@@ -19,37 +19,31 @@ public class CarroRepository implements  Repositorio<Integer, Carro> {
         if (res.next()) {
             return res.getInt("mysequence");
         }
+
         return null;
     }
 
     @Override
-    public Carro adicionar(Carro Carro) throws BancoDeDadosException {
+    public Funcionario adicionar(Funcionario funcionario) throws BancoDeDadosException {
         Connection con = null;
         try {
             con = ConexaoBancoDeDados.getConnection();
 
             Integer proximoId = this.getProximoId(con);
-            Carro.setIdCarro(proximoId);
+            funcionario.setIdFuncionario(proximoId);
 
-            String sql = "INSERT INTO CARRO\n" +
-                    "(ID_CARRO, ID_ALUGUEL, ALUGADO, NOME, MARCA, CLASSE, quantidade_passageiros, km_rodados, valor_diaria)\n" +
-                    "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)\n";
+            String sql = "INSERT INTO FUNCIONARIO\n" +
+                    "(ID_FUNCIONARIO, MATRICULA)\n" +
+                    "VALUES(?, ?)\n";
 
             PreparedStatement stmt = con.prepareStatement(sql);
 
-            stmt.setInt(1, Carro.getIdCarro());
-            //inserir idAluguel
-            stmt.setString(3, Carro.getAlugado());
-            stmt.setString(4, Carro.getNomeCarro());
-            stmt.setString(5, Carro.getMarca());
-            stmt.setString(6, Carro.getClasse());
-            stmt.setInt(7, Carro.getQntPassageiros());
-            stmt.setInt(8, Carro.getKmRodados());
-            stmt.setDouble(9, Carro.getPrecoDiaria());
+            stmt.setInt(1, funcionario.getIdFuncionario());
+            stmt.setString(2, funcionario.getMatricula());
 
             int res = stmt.executeUpdate();
-            System.out.println("adicionarCarro.res=" + res);
-            return new Carro();
+            System.out.println("adicionarFuncionario.res=" + res);
+            return funcionario;
         } catch (SQLException e) {
             throw new BancoDeDadosException(e.getCause());
         } finally {
@@ -62,21 +56,20 @@ public class CarroRepository implements  Repositorio<Integer, Carro> {
             }
         }
     }
-
     @Override
     public boolean remover(Integer id) throws BancoDeDadosException {
         Connection con = null;
         try {
             con = ConexaoBancoDeDados.getConnection();
 
-            String sql = "DELETE FROM CARRO WHERE id_carro = ?";
+            String sql = "DELETE FROM FUNCIONARIO WHERE id_funcionario = ?";
 
             PreparedStatement stmt = con.prepareStatement(sql);
 
             stmt.setInt(1, id);
 
             int res = stmt.executeUpdate();
-            System.out.println("removerCarroPorId.res=" + res);
+            System.out.println("removerFuncionarioPorId.res=" + res);
 
             return res > 0;
         } catch (SQLException e) {
@@ -91,37 +84,24 @@ public class CarroRepository implements  Repositorio<Integer, Carro> {
             }
         }
     }
-
     @Override
-    public boolean editar(Integer id, Carro carro) throws BancoDeDadosException {
+    public boolean editar(Integer id, Funcionario funcionario) throws BancoDeDadosException {
         Connection con = null;
         try {
             con = ConexaoBancoDeDados.getConnection();
 
             StringBuilder sql = new StringBuilder();
-            sql.append("UPDATE CARRO SET ");
-            sql.append(" Alugado = ?,");
-            sql.append(" Nome do Carro = ?,");
-            sql.append(" Marca = ? ");
-            sql.append(" Classe = ? ");
-            sql.append(" Quantidade de passageiros = ? ");
-            sql.append(" Kilômetros Rodados ? ");
-            sql.append(" Valor Diária = ? ");
-            sql.append(" WHERE id_carro = ? ");
+            sql.append("UPDATE FUNCIONARIO SET ");
+            sql.append(" matricula = ?,");
+            sql.append(" WHERE id_funcionario = ? ");
 
             PreparedStatement stmt = con.prepareStatement(sql.toString());
 
-            stmt.setString(1, carro.getAlugado());
-            stmt.setString(2, carro.getNomeCarro());
-            stmt.setString(3, carro.getMarca());
-            stmt.setString(4, carro.getClasse());
-            stmt.setInt(5, carro.getQntPassageiros());
-            stmt.setInt(6, carro.getKmRodados());
-            stmt.setDouble(7, carro.getPrecoDiaria());
-            stmt.setInt(8, id);
+            stmt.setString(1, funcionario.getMatricula());
+            stmt.setInt(2, id);
 
             int res = stmt.executeUpdate();
-            System.out.println("editarCarro.res=" + res);
+            System.out.println("editarFuncionario.res=" + res);
 
             return res > 0;
         } catch (SQLException e) {
@@ -136,30 +116,23 @@ public class CarroRepository implements  Repositorio<Integer, Carro> {
             }
         }
     }
-
     @Override
-    public List<Carro> listar() throws BancoDeDadosException {
-        List<Carro> carros = new ArrayList<>();
+    public List<Funcionario> listar() throws BancoDeDadosException {
+        List<Funcionario> funcionarios = new ArrayList<>();
         Connection con = null;
         try {
             con = ConexaoBancoDeDados.getConnection();
             Statement stmt = con.createStatement();
 
-            String sql = "SELECT * FROM CARRO";
+            String sql = "SELECT * FROM FUNCIONARIO";
 
             ResultSet res = stmt.executeQuery(sql);
 
             while (res.next()) {
-                Carro carro = new Carro();
-                carro.setIdCarro(res.getInt("id_carro"));
-                carro.setNomeCarro(res.getString("nome"));
-                carro.setAlugado(res.getString("alugado"));
-                carro.setMarca(res.getString("marca"));
-                carro.setClasse(res.getString("classe"));
-                carro.setQntPassageiros(res.getInt("quantidade_passageiros"));
-                carro.setKmRodados(res.getInt("km_rodados"));
-                carro.setPrecoDiaria(res.getDouble("valor_diaria"));
-                carros.add(carro);
+                Funcionario funcionario = new Funcionario();
+                funcionario.setIdFuncionario(res.getInt("id_funcionario"));
+                funcionario.setMatricula(res.getString("matricula"));
+                funcionarios.add(funcionario);
             }
         } catch (SQLException e) {
             throw new BancoDeDadosException(e.getCause());
@@ -172,6 +145,6 @@ public class CarroRepository implements  Repositorio<Integer, Carro> {
                 e.printStackTrace();
             }
         }
-        return carros;
+        return funcionarios;
     }
 }

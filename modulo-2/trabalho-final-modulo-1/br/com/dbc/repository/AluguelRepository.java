@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AluguelRepository implements  Repositorio<Integer, Aluguel> {
-
     @Override
     public Integer getProximoId(Connection connection) throws SQLException {
         String sql = "SELECT seq_aluguel.nextval mysequence from DUAL";
@@ -21,7 +20,6 @@ public class AluguelRepository implements  Repositorio<Integer, Aluguel> {
         }
         return null;
     }
-
     @Override
     public Aluguel adicionar(Aluguel Aluguel) throws BancoDeDadosException {
         Connection con = null;
@@ -31,17 +29,17 @@ public class AluguelRepository implements  Repositorio<Integer, Aluguel> {
             Integer proximoId = this.getProximoId(con);
             Aluguel.setIdAluguel(proximoId);
 
-            String sql = "INSERT INTO Aluguel\n" +
-                    "(ID_Aluguel, ID_Usuario, ID_Carro, DIA DO ALUGUEL, DIA DA ENTREGA)\n" +
+            String sql = "INSERT INTO ALUGUEL\n" +
+                    "(ID_ALUGUEL, ID_CLIENTE, ID_CARRO, diaDoAluguel, diaDaEntrega)\n" +
                     "VALUES(?, ?, ?, ?, ?)\n";
 
             PreparedStatement stmt = con.prepareStatement(sql);
 
             stmt.setInt(1, Aluguel.getIdAluguel());
-            //inserir idusuario
-            //inserir idcarro
-            stmt.setInt(2, Aluguel.getDiaDoAluguel());
-            stmt.setInt(3, Aluguel.getDiaDoAluguel());
+            stmt.setInt(2, Aluguel.getCliente().getIdCliente());
+            stmt.setInt(3, Aluguel.getCarro().getIdCarro());
+            stmt.setInt(4, Aluguel.getDiaDoAluguel());
+            stmt.setInt(5, Aluguel.getDiaDoAluguel());
 
 
             int res = stmt.executeUpdate();
@@ -66,13 +64,12 @@ public class AluguelRepository implements  Repositorio<Integer, Aluguel> {
         try {
             con = ConexaoBancoDeDados.getConnection();
 
-            String sql = "DELETE FROM Aluguel WHERE id_Aluguel = ?";
+            String sql = "DELETE FROM ALUGUEL WHERE id_aluguel = ?";
 
             PreparedStatement stmt = con.prepareStatement(sql);
 
             stmt.setInt(1, id);
 
-            // Executa-se a consulta
             int res = stmt.executeUpdate();
             System.out.println("removerAluguelPorId.res=" + res);
 
@@ -97,16 +94,19 @@ public class AluguelRepository implements  Repositorio<Integer, Aluguel> {
             con = ConexaoBancoDeDados.getConnection();
 
             StringBuilder sql = new StringBuilder();
-            sql.append("UPDATE Aluguel SET ");
+            sql.append("UPDATE ALUGUEL SET ");
             sql.append(" Dia do Aluguel = ?,");
             sql.append(" Dia da Entrega = ?,");
+            sql.append((" WHERE id_aluguel = ? "));
 
             PreparedStatement stmt = con.prepareStatement(sql.toString());
 
-            stmt.setInt(1, aluguel.getDiaDoAluguel());
-            stmt.setInt(2, aluguel.getDiaDaEntrega());
+            stmt.setInt(1, aluguel.getCliente().getIdCliente());
+            stmt.setInt(2, aluguel.getCarro().getIdCarro());
+            stmt.setInt(3, aluguel.getDiaDoAluguel());
+            stmt.setInt(4, aluguel.getDiaDaEntrega());
+            stmt.setInt(5, id);
 
-            // Executa-se a consulta
             int res = stmt.executeUpdate();
             System.out.println("editarAluguel.res=" + res);
 
@@ -132,14 +132,15 @@ public class AluguelRepository implements  Repositorio<Integer, Aluguel> {
             con = ConexaoBancoDeDados.getConnection();
             Statement stmt = con.createStatement();
 
-            String sql = "SELECT * FROM Aluguel";
+            String sql = "SELECT * FROM ALUGUEL";
 
-            // Executa-se a consulta
             ResultSet res = stmt.executeQuery(sql);
 
             while (res.next()) {
                 Aluguel aluguel = new Aluguel();
                 aluguel.setIdAluguel(res.getInt("id_Aluguel"));
+                aluguel.getCliente().setIdCliente(res.getInt("id_cliente"));
+                aluguel.getCarro().setIdCarro(res.getInt("id_carro"));
                 aluguel.setDiaDoAluguel(res.getInt("diaDoAluguel"));
                 aluguel.setDiaDaEntrega(res.getInt("diaDaEntrega"));
                 alugueis.add(aluguel);

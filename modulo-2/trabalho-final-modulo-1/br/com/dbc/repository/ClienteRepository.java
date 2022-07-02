@@ -33,7 +33,7 @@ public class ClienteRepository implements  Repositorio<Integer, Cliente> {
                 cliente.setIdCliente(proximoId);
 
                 String sql = "INSERT INTO CLIENTE\n" +
-                        "(ID_CLIENTE, CPF, TELEFONE, ENDERECO)\n" +
+                        "(ID_CLIENTE, CPF, TELEFONE, ENDERECO, SALDO)\n" +
                         "VALUES(?, ?, ?, ?)\n";
 
                 PreparedStatement stmt = con.prepareStatement(sql);
@@ -42,6 +42,7 @@ public class ClienteRepository implements  Repositorio<Integer, Cliente> {
                 stmt.setString(2, cliente.getCpf());
                 stmt.setString(3, cliente.getTelefone());
                 stmt.setString(4, cliente.getEndereco());
+                stmt.setDouble(5, cliente.getSaldo());
 
                 int res = stmt.executeUpdate();
                 System.out.println("adicionarCliente.res=" + res);
@@ -109,7 +110,6 @@ public class ClienteRepository implements  Repositorio<Integer, Cliente> {
                 stmt.setString(3, cliente.getEndereco());
                 stmt.setInt(4, id);
 
-                // Executa-se a consulta
                 int res = stmt.executeUpdate();
                 System.out.println("editarCliente.res=" + res);
 
@@ -137,7 +137,6 @@ public class ClienteRepository implements  Repositorio<Integer, Cliente> {
 
                 String sql = "SELECT * FROM CLIENTE";
 
-                // Executa-se a consulta
                 ResultSet res = stmt.executeQuery(sql);
 
                 while (res.next()) {
