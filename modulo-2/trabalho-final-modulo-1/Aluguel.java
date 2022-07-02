@@ -16,29 +16,12 @@ public class Aluguel {
         this.diaDaEntrega = diaDaEntrega;
     }
 
-    public Double getValorAluguel() {
+    public Double valorDoAluguel() {
         if (this.carro == null) {
             return 0.0;
         } else {
             return (this.diaDaEntrega - this.diaDoAluguel) * this.carro.getPrecoDiaria();
         }
-    }
-
-    public Integer imprimirDiasComCarro() {
-        Integer diasTotais = this.getDiaDaEntrega() - this.getDiaDoAluguel();
-        return diasTotais;
-    }
-
-    public Double calcularDiarias() {
-        Double valorDiarias = 0.0;
-        if (carro.getClasse().equals("C")) {
-            valorDiarias = imprimirDiasComCarro() * carro.getPrecoDiaria();
-        } else if (carro.getClasse().equals("B")) {
-            valorDiarias = imprimirDiasComCarro() * carro.getPrecoDiaria() * 1.2;
-        } else if (carro.getClasse().equals("A")) {
-            valorDiarias = imprimirDiasComCarro() * carro.getPrecoDiaria() * 1.5;
-        }
-        return valorDiarias;
     }
 
     public Cliente getCliente() {

@@ -126,7 +126,7 @@ public class Main {
                             aluguelCarro.setCliente(clienteAluguel);
                             aluguelCarro.setDiaDoAluguel(diaAluguel);
                             aluguelCarro.setDiaDaEntrega(diaEntrega);
-                            System.out.println("Valor do aluguel R$: " + aluguelCarro.getValorAluguel());
+                            System.out.println("Valor do aluguel R$: " + aluguelCarro.valorDoAluguel());
                             System.out.println("CONFIRMAR ALUGUEL?\n1 - Sim;\n2 - Não\nSUA ESCOLHA: ");
                             int confirmarAluguel = sc.nextInt();
                             if (confirmarAluguel == 1) {

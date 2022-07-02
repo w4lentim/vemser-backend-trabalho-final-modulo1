@@ -2,10 +2,7 @@ import java.util.ArrayList;
 
 public class CarrosController {
 
-    public CarrosController() {
-
-    }
-
+    public CarrosController() {};
     public static CarrosController carrosController = new CarrosController();
 
     public ArrayList<Carro> inicializarCarros() {
@@ -21,6 +18,7 @@ public class CarrosController {
         retorno.add(new Carro(9, "N", "Shelby GT500", "Mustang", "A", 5, 5000, 1000.00));
         return retorno;
     };
+
     public void adicionarCarro(Carro carro) {
         Database.database.getCarros().add(carro);
     }
@@ -43,6 +41,7 @@ public class CarrosController {
         }
         return null;
     }
+
     public void atualizarCarro(Integer id, Carro carro) {
         Carro carroParaAtualizar = selecionarCarro(id);
         carroParaAtualizar.setNomeCarro(carro.getNomeCarro());

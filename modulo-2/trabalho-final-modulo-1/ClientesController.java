@@ -2,9 +2,7 @@ import java.util.ArrayList;
 
 public class ClientesController {
 
-    public ClientesController() {
-
-    };
+    public ClientesController() {};
 
     public static ClientesController clientesController = new ClientesController();
     public ArrayList<Cliente> inicializarClientes() {
