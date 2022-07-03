@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AluguelRepository implements  Repositorio<Integer, Aluguel> {
+public class AluguelRepository implements Repositorio<Integer, Aluguel> {
     @Override
     public Integer getProximoId(Connection connection) throws SQLException {
         String sql = "SELECT seq_aluguel.nextval mysequence from DUAL";
@@ -20,6 +20,7 @@ public class AluguelRepository implements  Repositorio<Integer, Aluguel> {
         }
         return null;
     }
+
     @Override
     public Aluguel adicionar(Aluguel Aluguel) throws BancoDeDadosException {
         Connection con = null;
@@ -39,12 +40,12 @@ public class AluguelRepository implements  Repositorio<Integer, Aluguel> {
             stmt.setInt(2, Aluguel.getCliente().getIdCliente());
             stmt.setInt(3, Aluguel.getCarro().getIdCarro());
             stmt.setInt(4, Aluguel.getDiaDoAluguel());
-            stmt.setInt(5, Aluguel.getDiaDoAluguel());
+            stmt.setInt(5, Aluguel.getDiaDaEntrega());
 
 
             int res = stmt.executeUpdate();
             System.out.println("adicionarAluguel.res=" + res);
-            return new Aluguel();
+            return Aluguel;
         } catch (SQLException e) {
             throw new BancoDeDadosException(e.getCause());
         } finally {
