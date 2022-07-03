@@ -34,7 +34,7 @@ public class CarroRepository implements  Repositorio<Integer, Carro> {
 
             stmt.setInt(1, id);
 
-            int res = stmt.executeUpdate();
+            ResultSet res = stmt.executeQuery(sql);
 //            System.out.println("carroSelecionadoPorId.res = " + res);
 
         } catch (SQLException e) {

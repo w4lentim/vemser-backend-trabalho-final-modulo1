@@ -33,8 +33,8 @@ public class AluguelRepository implements Repositorio<Integer, Aluguel> {
 
             stmt.setInt(1, id);
 
-            int res = stmt.executeUpdate();
 //            System.out.println("clienteSelecionadoPorId.res = " + res);
+            ResultSet res = stmt.executeQuery(sql);
 
         } catch (SQLException e) {
             throw new BancoDeDadosException(e.getCause());
