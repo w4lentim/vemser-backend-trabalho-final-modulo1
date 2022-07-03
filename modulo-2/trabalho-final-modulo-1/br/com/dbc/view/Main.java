@@ -1,5 +1,6 @@
 package br.com.dbc.view;
 
+import br.com.dbc.exception.BancoDeDadosException;
 import br.com.dbc.model.Aluguel;
 import br.com.dbc.model.Carro;
 import br.com.dbc.model.Cliente;
@@ -11,7 +12,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws BancoDeDadosException {
         Scanner sc = new Scanner(System.in);
 
         int escolha = -1;
@@ -168,7 +169,7 @@ public class Main {
                             aluguelCarro.setDiaDoAluguel(diaAluguel);
                             aluguelCarro.setDiaDaEntrega(diaEntrega);
 
-                            System.out.println("Valor do aluguel R$: " + aluguelCarro.valorDoAluguel());
+                            System.out.println("Valor do aluguel R$: " + AluguelService.alugueisService.valorDoAluguel(aluguelCarro, carroEscolhido));
                             System.out.println("CONFIRMAR ALUGUEL?");
                             System.out.println("1 - SIM");
                             System.out.println("2 - NÃO");

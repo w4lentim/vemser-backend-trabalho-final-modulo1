@@ -34,7 +34,7 @@ public class AluguelRepository implements Repositorio<Integer, Aluguel> {
             stmt.setInt(1, id);
 
             int res = stmt.executeUpdate();
-            System.out.println("clienteSelecionadoPorId.res = " + res);
+//            System.out.println("clienteSelecionadoPorId.res = " + res);
 
         } catch (SQLException e) {
             throw new BancoDeDadosException(e.getCause());
@@ -73,7 +73,7 @@ public class AluguelRepository implements Repositorio<Integer, Aluguel> {
 
 
             int res = stmt.executeUpdate();
-            System.out.println("adicionarAluguel.res=" + res);
+//            System.out.println("adicionarAluguel.res=" + res);
             return Aluguel;
         } catch (SQLException e) {
             throw new BancoDeDadosException(e.getCause());
@@ -101,7 +101,7 @@ public class AluguelRepository implements Repositorio<Integer, Aluguel> {
             stmt.setInt(1, id);
 
             int res = stmt.executeUpdate();
-            System.out.println("removerAluguelPorId.res=" + res);
+//            System.out.println("removerAluguelPorId.res=" + res);
 
             return res > 0;
         } catch (SQLException e) {
@@ -138,7 +138,7 @@ public class AluguelRepository implements Repositorio<Integer, Aluguel> {
             stmt.setInt(5, id);
 
             int res = stmt.executeUpdate();
-            System.out.println("editarAluguel.res=" + res);
+//            System.out.println("editarAluguel.res=" + res);
 
             return res > 0;
         } catch (SQLException e) {

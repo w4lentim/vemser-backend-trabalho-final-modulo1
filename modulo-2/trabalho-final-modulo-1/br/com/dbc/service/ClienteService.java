@@ -18,14 +18,16 @@ public class ClienteService {
     public static ClienteService clientesService = new ClienteService();
 
     public Cliente selecionarCliente(Integer id) throws BancoDeDadosException {
-        Map<Integer, String> clienteIdECpf = clienteRepository.listar().stream()
-                .collect(Collectors.toMap(Cliente::getIdCliente, Cliente::getCpf));
-        if (clienteIdECpf != null) {
-//            for (int index = 0; index < clienteIdECpf.size(); index++) {
-//                if (clienteIdECpf.get(index) == id) {
-                    System.out.println("Cliente selecionado: " + clienteIdECpf.get(id);
+        Cliente clienteSelec = clienteRepository.selecionar(id);
+        if (clienteSelec != null) {
+            for (int index = 0; index < clienteSelec.getIdCliente(); index++) {
+                if (clienteSelec.getIdCliente() == id) {
+                    System.out.println("Cliente selecionado: " + clienteSelec.getIdCliente());
+                    return clienteSelec;
                 }
-        return clienteIdECpf;
+            }
+        }
+        return null;
     }
 
     public void adicionarCliente(Cliente cliente) {

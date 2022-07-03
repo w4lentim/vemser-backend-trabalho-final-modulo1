@@ -26,6 +26,35 @@ public class UsuarioRepository implements Repositorio<Integer, Usuario> {
     }
 
     @Override
+    public Usuario selecionar(Integer id) throws BancoDeDadosException {
+        Connection con = null;
+        try {
+            con = ConexaoBancoDeDados.getConnection();
+
+            String sql = "SELECT ID_USUARIO FROM FUNCIONARIO\n" +
+                    "WHERE ID_USUARIO = ?\n";
+
+            PreparedStatement stmt = con.prepareStatement(sql);
+
+            stmt.setInt(1, id);
+
+//            int res = stmt.executeUpdate();
+//            System.out.println("selecionarUsuario.res=" + res);
+        } catch (SQLException e) {
+            throw new BancoDeDadosException(e.getCause());
+        } finally {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+    @Override
     public Usuario adicionar(Usuario usuario) throws BancoDeDadosException {
         Connection con = null;
         try {
@@ -43,8 +72,8 @@ public class UsuarioRepository implements Repositorio<Integer, Usuario> {
             stmtUsu.setInt(1, usuario.getIdUsuario());
             stmtUsu.setString(2, usuario.getNome());
 
-            int res = stmtUsu.executeUpdate();
-            System.out.println("adicionarUsuario.res=" + res);
+//            int res = stmtUsu.executeUpdate();
+//            System.out.println("adicionarUsuario.res=" + res);
             return usuario;
         } catch (SQLException e) {
             throw new BancoDeDadosException(e.getCause());
@@ -58,6 +87,7 @@ public class UsuarioRepository implements Repositorio<Integer, Usuario> {
             }
         }
     }
+
     @Override
     public boolean remover(Integer id) throws BancoDeDadosException {
         Connection con = null;
@@ -71,7 +101,7 @@ public class UsuarioRepository implements Repositorio<Integer, Usuario> {
             stmt.setInt(1, id);
 
             int res = stmt.executeUpdate();
-            System.out.println("removerUsuarioPorId.res=" + res);
+//            System.out.println("removerUsuarioPorId.res=" + res);
 
             return res > 0;
         } catch (SQLException e) {
@@ -104,8 +134,8 @@ public class UsuarioRepository implements Repositorio<Integer, Usuario> {
             stmt.setInt(2, id);
 
             int res = stmt.executeUpdate();
-            System.out.println("editarUsuario.res=" + res);
-
+//            System.out.println("editarUsuario.res=" + res);
+//
             return res > 0;
         } catch (SQLException e) {
             throw new BancoDeDadosException(e.getCause());

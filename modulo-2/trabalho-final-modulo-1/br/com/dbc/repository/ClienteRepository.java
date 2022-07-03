@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClienteRepository implements  Repositorio<Integer, Cliente> {
+public class ClienteRepository implements Repositorio<Integer, Cliente> {
 
         @Override
         public Integer getProximoId(Connection connection) throws SQLException {
@@ -60,6 +60,35 @@ public class ClienteRepository implements  Repositorio<Integer, Cliente> {
             }
         }
 
+    @Override
+    public Cliente selecionar(Integer id) throws BancoDeDadosException {
+        Connection con = null;
+        try {
+            con = ConexaoBancoDeDados.getConnection();
+
+            String sql = "SELECT ID_CLIENTE FROM CLIENTE\n" +
+                    "WHERE ID_CLIENTE = ?\n";
+
+            PreparedStatement stmt = con.prepareStatement(sql);
+
+            stmt.setInt(1, id);
+
+            int res = stmt.executeUpdate();
+//            System.out.println("selecionarCliente.res=" + res);
+        } catch (SQLException e) {
+            throw new BancoDeDadosException(e.getCause());
+        } finally {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
         @Override
         public boolean remover(Integer id) throws BancoDeDadosException {
             Connection con = null;
@@ -74,7 +103,7 @@ public class ClienteRepository implements  Repositorio<Integer, Cliente> {
 
                 // Executa-se a consulta
                 int res = stmt.executeUpdate();
-                System.out.println("removerClientePorId.res=" + res);
+//                System.out.println("removerClientePorId.res=" + res);
 
                 return res > 0;
             } catch (SQLException e) {
@@ -113,7 +142,7 @@ public class ClienteRepository implements  Repositorio<Integer, Cliente> {
                 stmt.setInt(5, id);
 
                 int res = stmt.executeUpdate();
-                System.out.println("editarCliente.res=" + res);
+//                System.out.println("editarCliente.res=" + res);
 
                 return res > 0;
             } catch (SQLException e) {

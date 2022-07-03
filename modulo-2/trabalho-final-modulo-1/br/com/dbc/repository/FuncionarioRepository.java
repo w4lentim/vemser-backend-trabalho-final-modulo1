@@ -1,13 +1,14 @@
 package br.com.dbc.repository;
 
 import br.com.dbc.exception.BancoDeDadosException;
+import br.com.dbc.model.Cliente;
 import br.com.dbc.model.Funcionario;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FuncionarioRepository implements  Repositorio<Integer, Funcionario> {
+public class FuncionarioRepository implements Repositorio<Integer, Funcionario> {
 
     @Override
     public Integer getProximoId(Connection connection) throws SQLException {
@@ -41,8 +42,8 @@ public class FuncionarioRepository implements  Repositorio<Integer, Funcionario>
             stmt.setInt(1, funcionario.getIdFuncionario());
             stmt.setString(2, funcionario.getMatricula());
 
-            int res = stmt.executeUpdate();
-            System.out.println("adicionarFuncionario.res=" + res);
+//            int res = stmt.executeUpdate();
+//            System.out.println("adicionarFuncionario.res=" + res);
             return funcionario;
         } catch (SQLException e) {
             throw new BancoDeDadosException(e.getCause());
@@ -56,6 +57,38 @@ public class FuncionarioRepository implements  Repositorio<Integer, Funcionario>
             }
         }
     }
+
+
+    @Override
+    public Funcionario selecionar(Integer id) throws BancoDeDadosException {
+        Connection con = null;
+        try {
+            con = ConexaoBancoDeDados.getConnection();
+
+            String sql = "SELECT ID_FUNCIONARIO FROM FUNCIONARIO\n" +
+                    "WHERE ID_FUNCIONARIO = ?\n";
+
+            PreparedStatement stmt = con.prepareStatement(sql);
+
+            stmt.setInt(1, id);
+
+//            int res = stmt.executeUpdate();
+//            System.out.println("selecionarFuncionario.res=" + res);
+        } catch (SQLException e) {
+            throw new BancoDeDadosException(e.getCause());
+        } finally {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+
     @Override
     public boolean remover(Integer id) throws BancoDeDadosException {
         Connection con = null;
@@ -69,7 +102,7 @@ public class FuncionarioRepository implements  Repositorio<Integer, Funcionario>
             stmt.setInt(1, id);
 
             int res = stmt.executeUpdate();
-            System.out.println("removerFuncionarioPorId.res=" + res);
+//            System.out.println("removerFuncionarioPorId.res=" + res);
 
             return res > 0;
         } catch (SQLException e) {
@@ -101,7 +134,7 @@ public class FuncionarioRepository implements  Repositorio<Integer, Funcionario>
             stmt.setInt(2, id);
 
             int res = stmt.executeUpdate();
-            System.out.println("editarFuncionario.res=" + res);
+//            System.out.println("editarFuncionario.res=" + res);
 
             return res > 0;
         } catch (SQLException e) {

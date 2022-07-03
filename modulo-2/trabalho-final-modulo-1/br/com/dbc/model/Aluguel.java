@@ -20,13 +20,6 @@ public class Aluguel {
         this.diaDaEntrega = diaDaEntrega;
     }
 
-    public Double valorDoAluguel() {
-        if (this.carro == null) {
-            return 0.0;
-        } else {
-            return (this.diaDaEntrega - this.diaDoAluguel) * this.carro.getPrecoDiaria();
-        }
-    }
     public Integer getIdAluguel() {
         return idAluguel;
     }

@@ -23,18 +23,18 @@ public class CarroService {
         }
     }
 
-//    public Carro selecionarCarro(Integer id) {
-//        ArrayList<Carro> carros = new ArrayList<>();
-//        if (carros != null) {
-//            for (int index = 0; index < carros.size(); index++) {
-//                if (carros.get(index).getIdCarro() == id) {
-//                    System.out.println("Carro selecionado: " + carros.get(index));
-//                    return carros.get(index);
-//                }
-//            }
-//        }
-//        return null;
-//    }
+    public Carro selecionarCarro(Integer id) throws BancoDeDadosException {
+        Carro carroSelec = carroRepository.selecionar(id);
+        if (carroSelec != null) {
+            for (int index = 0; index < carroSelec.getIdCarro(); index++) {
+                if (carroSelec.getIdCarro() == id) {
+                    System.out.println("Carro selecionado: " + carroSelec.getIdCarro());
+                    return carroSelec;
+                }
+            }
+        }
+        return null;
+    }
 
     public void removerCarro(Integer id) {
         try {

@@ -35,7 +35,7 @@ public class CarroRepository implements  Repositorio<Integer, Carro> {
             stmt.setInt(1, id);
 
             int res = stmt.executeUpdate();
-            System.out.println("carroSelecionadoPorId.res = " + res);
+//            System.out.println("carroSelecionadoPorId.res = " + res);
 
         } catch (SQLException e) {
             throw new BancoDeDadosException(e.getCause());
@@ -75,7 +75,7 @@ public class CarroRepository implements  Repositorio<Integer, Carro> {
             stmt.setDouble(8, Carro.getPrecoDiaria());
 
             int res = stmt.executeUpdate();
-            System.out.println("adicionarCarro.res=" + res);
+//            System.out.println("adicionarCarro.res=" + res);
             return new Carro();
         } catch (SQLException e) {
             throw new BancoDeDadosException(e.getCause());
@@ -103,7 +103,7 @@ public class CarroRepository implements  Repositorio<Integer, Carro> {
             stmt.setInt(1, id);
 
             int res = stmt.executeUpdate();
-            System.out.println("removerCarroPorId.res=" + res);
+//            System.out.println("removerCarroPorId.res=" + res);
 
             return res > 0;
         } catch (SQLException e) {
@@ -148,7 +148,7 @@ public class CarroRepository implements  Repositorio<Integer, Carro> {
             stmt.setInt(8, id);
 
             int res = stmt.executeUpdate();
-            System.out.println("editarCarro.res=" + res);
+//            System.out.println("editarCarro.res=" + res);
 
             return res > 0;
         } catch (SQLException e) {
