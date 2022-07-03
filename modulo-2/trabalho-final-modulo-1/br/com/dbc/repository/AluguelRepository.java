@@ -22,6 +22,35 @@ public class AluguelRepository implements Repositorio<Integer, Aluguel> {
     }
 
     @Override
+    public Aluguel selecionar(Integer id) throws BancoDeDadosException {
+        Connection con = null;
+        try {
+            con = ConexaoBancoDeDados.getConnection();
+
+            String sql = "SELECT id_cliente FROM ALUGUEL WHERE id_cliente = ? ";
+
+            PreparedStatement stmt = con.prepareStatement(sql);
+
+            stmt.setInt(1, id);
+
+            int res = stmt.executeUpdate();
+            System.out.println("clienteSelecionadoPorId.res = " + res);
+
+        } catch (SQLException e) {
+            throw new BancoDeDadosException(e.getCause());
+        } finally {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+    @Override
     public Aluguel adicionar(Aluguel Aluguel) throws BancoDeDadosException {
         Connection con = null;
         try {

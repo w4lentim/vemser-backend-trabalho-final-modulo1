@@ -1,6 +1,7 @@
 package br.com.dbc.repository;
 
 import br.com.dbc.exception.BancoDeDadosException;
+import br.com.dbc.model.Aluguel;
 import br.com.dbc.model.Carro;
 
 import java.sql.*;
@@ -18,6 +19,34 @@ public class CarroRepository implements  Repositorio<Integer, Carro> {
 
         if (res.next()) {
             return res.getInt("mysequence");
+        }
+        return null;
+    }
+    @Override
+    public Carro selecionar(Integer id) throws BancoDeDadosException {
+        Connection con = null;
+        try {
+            con = ConexaoBancoDeDados.getConnection();
+
+            String sql = "SELECT id_carro FROM CARRO WHERE id_carro = ?";
+
+            PreparedStatement stmt = con.prepareStatement(sql);
+
+            stmt.setInt(1, id);
+
+            int res = stmt.executeUpdate();
+            System.out.println("carroSelecionadoPorId.res = " + res);
+
+        } catch (SQLException e) {
+            throw new BancoDeDadosException(e.getCause());
+        } finally {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return null;
     }

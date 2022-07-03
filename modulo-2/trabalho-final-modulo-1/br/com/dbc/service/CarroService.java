@@ -23,20 +23,18 @@ public class CarroService {
         }
     }
 
-    public Carro selecionarCarro(Integer id) {
-
-//        ArrayList<Carro> carros = carroRepository.listar().listIterator();
-        ArrayList<Carro> carros = new ArrayList<>();
-        if (carros != null) {
-            for (int index = 0; index < carros.size(); index++) {
-                if (carros.get(index).getIdCarro() == id) {
-                    System.out.println("Carro selecionado: " + carros.get(index));
-                    return carros.get(index);
-                }
-            }
-        }
-        return null;
-    }
+//    public Carro selecionarCarro(Integer id) {
+//        ArrayList<Carro> carros = new ArrayList<>();
+//        if (carros != null) {
+//            for (int index = 0; index < carros.size(); index++) {
+//                if (carros.get(index).getIdCarro() == id) {
+//                    System.out.println("Carro selecionado: " + carros.get(index));
+//                    return carros.get(index);
+//                }
+//            }
+//        }
+//        return null;
+//    }
 
     public void removerCarro(Integer id) {
         try {

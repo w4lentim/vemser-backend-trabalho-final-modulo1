@@ -11,6 +11,8 @@ public interface Repositorio<CHAVE, OBJETO> {
 
     OBJETO adicionar(OBJETO object) throws BancoDeDadosException;
 
+    OBJETO selecionar(CHAVE id) throws BancoDeDadosException;
+
     boolean remover(CHAVE id) throws BancoDeDadosException;
 
     boolean editar(CHAVE id, OBJETO objeto) throws BancoDeDadosException;
