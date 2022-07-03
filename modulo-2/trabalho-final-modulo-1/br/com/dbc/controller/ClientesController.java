@@ -1,8 +1,6 @@
 package br.com.dbc.controller;
 
 import br.com.dbc.model.Cliente;
-import br.com.dbc.model.Database;
-
 import java.util.ArrayList;
 
 public class ClientesController {
@@ -19,7 +17,7 @@ public class ClientesController {
     }
 
     public Cliente selecionarCliente(Integer id) {
-        ArrayList<Cliente> clientes = Database.database.getClientes();
+        ArrayList<Cliente> clientes = new ArrayList<>();
         if (clientes != null) {
             for (int index = 0; index < clientes.size(); index++) {
                 if (clientes.get(index).getIdCliente() == id) {
