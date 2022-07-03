@@ -21,7 +21,6 @@ public class CarroRepository implements  Repositorio<Integer, Carro> {
         }
         return null;
     }
-
     @Override
     public Carro adicionar(Carro Carro) throws BancoDeDadosException {
         Connection con = null;
@@ -32,20 +31,19 @@ public class CarroRepository implements  Repositorio<Integer, Carro> {
             Carro.setIdCarro(proximoId);
 
             String sql = "INSERT INTO CARRO\n" +
-                    "(ID_CARRO, ID_ALUGUEL, ALUGADO, NOME, MARCA, CLASSE, quantidade_passageiros, km_rodados, valor_diaria)\n" +
-                    "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)\n";
+                    "(ID_CARRO, ALUGADO, NOME, MARCA, CLASSE, quantidade_passageiros, km_rodados, valor_diaria)\n" +
+                    "VALUES(?, ?, ?, ?, ?, ?, ?, ?)\n";
 
             PreparedStatement stmt = con.prepareStatement(sql);
 
             stmt.setInt(1, Carro.getIdCarro());
-            //inserir idAluguel
-            stmt.setString(3, Carro.getAlugado());
-            stmt.setString(4, Carro.getNomeCarro());
-            stmt.setString(5, Carro.getMarca());
-            stmt.setString(6, Carro.getClasse());
-            stmt.setInt(7, Carro.getQntPassageiros());
-            stmt.setInt(8, Carro.getKmRodados());
-            stmt.setDouble(9, Carro.getPrecoDiaria());
+            stmt.setString(2, Carro.getAlugado());
+            stmt.setString(3, Carro.getNomeCarro());
+            stmt.setString(4, Carro.getMarca());
+            stmt.setString(5, Carro.getClasse());
+            stmt.setInt(6, Carro.getQntPassageiros());
+            stmt.setInt(7, Carro.getKmRodados());
+            stmt.setDouble(8, Carro.getPrecoDiaria());
 
             int res = stmt.executeUpdate();
             System.out.println("adicionarCarro.res=" + res);

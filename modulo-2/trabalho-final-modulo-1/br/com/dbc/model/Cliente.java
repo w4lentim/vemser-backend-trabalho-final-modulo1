@@ -23,14 +23,6 @@ public class Cliente extends Usuario {
         this.endereco = endereco;
         this.saldo = saldo;
     }
-
-    public Double saldoCliente(Double valor){
-        System.out.println("Escreva seu saldo disponível: ");
-        Scanner sc = new Scanner(System.in);
-        this.setSaldo(sc.nextDouble());
-        return getSaldo();
-    }
-
     public Integer getIdCliente() {
         return idCliente;
     }
@@ -79,4 +71,11 @@ public class Cliente extends Usuario {
     public void imprimir() {
         System.out.println("Nome do br.com.dbc.model.Cliente: " + this.getNome() + "\nCPF: " + this.getCpf() + "\nTelefone: " + this.getTelefone() + "\nEndereço: " + this.getEndereco() + "\nSaldo R$: " + this.getSaldo());
     }
+
+    //    public Double saldoCliente(Double valor){
+//        System.out.println("Escreva seu saldo disponível: ");
+//        Scanner sc = new Scanner(System.in);
+//        this.setSaldo(sc.nextDouble());
+//        return getSaldo();
+//    }
 }

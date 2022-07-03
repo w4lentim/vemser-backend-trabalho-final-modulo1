@@ -13,7 +13,7 @@ public class UsuarioRepository implements Repositorio<Integer, Usuario> {
 
     @Override
     public Integer getProximoId(Connection connection) throws SQLException {
-        String sql = "SELECT seq_pessoa2.nextval mysequence from DUAL";
+        String sql = "SELECT seq_usuario.nextval mysequence from DUAL";
 
         Statement stmt = connection.createStatement();
         ResultSet res = stmt.executeQuery(sql);
@@ -58,7 +58,6 @@ public class UsuarioRepository implements Repositorio<Integer, Usuario> {
             }
         }
     }
-
     @Override
     public boolean remover(Integer id) throws BancoDeDadosException {
         Connection con = null;
@@ -120,7 +119,6 @@ public class UsuarioRepository implements Repositorio<Integer, Usuario> {
             }
         }
     }
-
     @Override
     public List<Usuario> listar() throws BancoDeDadosException {
         List<Usuario> usuarios = new ArrayList<>();

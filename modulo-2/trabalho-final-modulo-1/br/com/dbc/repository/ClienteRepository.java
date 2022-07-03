@@ -11,7 +11,7 @@ public class ClienteRepository implements  Repositorio<Integer, Cliente> {
 
         @Override
         public Integer getProximoId(Connection connection) throws SQLException {
-            String sql = "SELECT seq_pessoa2.nextval mysequence from DUAL";
+            String sql = "SELECT seq_cliente.nextval mysequence from DUAL";
 
             Statement stmt = connection.createStatement();
             ResultSet res = stmt.executeQuery(sql);
