@@ -66,16 +66,21 @@ public class ClienteRepository implements Repositorio<Integer, Cliente> {
         try {
             con = ConexaoBancoDeDados.getConnection();
 
-            String sql = "SELECT ID_CLIENTE FROM CLIENTE\n" +
+            String sql = "SELECT * FROM CLIENTE\n" +
                     "WHERE ID_CLIENTE = ?\n";
 
             PreparedStatement stmt = con.prepareStatement(sql);
 
             stmt.setInt(1, id);
 
-            ResultSet res = stmt.executeQuery(sql);
+            ResultSet res = stmt.executeQuery();
+            if (res.next()) {
+                return getCliente(res);
+            }
+            return null;
 //            System.out.println("selecionarCliente.res=" + res);
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new BancoDeDadosException(e.getCause());
         } finally {
             try {
@@ -86,7 +91,6 @@ public class ClienteRepository implements Repositorio<Integer, Cliente> {
                 e.printStackTrace();
             }
         }
-        return null;
     }
 
         @Override
@@ -170,12 +174,7 @@ public class ClienteRepository implements Repositorio<Integer, Cliente> {
                 ResultSet res = stmt.executeQuery(sql);
 
                 while (res.next()) {
-                    Cliente cliente = new Cliente();
-                    cliente.setIdCliente(res.getInt("id_cliente"));
-                    cliente.setCpf(res.getString("cpf"));
-                    cliente.setTelefone(res.getString("telefone"));
-                    cliente.setEndereco(res.getString("endereco"));
-                    cliente.setSaldo(res.getDouble("saldo"));
+                    Cliente cliente = getCliente(res);
                     clientes.add(cliente);
                 }
             } catch (SQLException e) {
@@ -191,4 +190,14 @@ public class ClienteRepository implements Repositorio<Integer, Cliente> {
             }
             return clientes;
         }
+
+    private Cliente getCliente(ResultSet res) throws SQLException {
+        Cliente cliente = new Cliente();
+        cliente.setIdCliente(res.getInt("id_cliente"));
+        cliente.setCpf(res.getString("cpf"));
+        cliente.setTelefone(res.getString("telefone"));
+        cliente.setEndereco(res.getString("endereco"));
+        cliente.setSaldo(res.getDouble("saldo"));
+        return cliente;
     }
+}

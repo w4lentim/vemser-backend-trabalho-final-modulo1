@@ -28,13 +28,17 @@ public class CarroRepository implements  Repositorio<Integer, Carro> {
         try {
             con = ConexaoBancoDeDados.getConnection();
 
-            String sql = "SELECT id_carro FROM CARRO WHERE id_carro = ?";
+            String sql = "SELECT * FROM CARRO WHERE id_carro = ?";
 
             PreparedStatement stmt = con.prepareStatement(sql);
 
             stmt.setInt(1, id);
 
-            ResultSet res = stmt.executeQuery(sql);
+            ResultSet res = stmt.executeQuery();
+            if (res.next()) {
+                return getCarro(res);
+            }
+            return null;
 //            System.out.println("carroSelecionadoPorId.res = " + res);
 
         } catch (SQLException e) {
@@ -48,7 +52,6 @@ public class CarroRepository implements  Repositorio<Integer, Carro> {
                 e.printStackTrace();
             }
         }
-        return null;
     }
     @Override
     public Carro adicionar(Carro Carro) throws BancoDeDadosException {
@@ -104,6 +107,38 @@ public class CarroRepository implements  Repositorio<Integer, Carro> {
 
             int res = stmt.executeUpdate();
 //            System.out.println("removerCarroPorId.res=" + res);
+
+            return res > 0;
+        } catch (SQLException e) {
+            throw new BancoDeDadosException(e.getCause());
+        } finally {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public boolean editarAlugado(Integer id, Boolean alugado) throws BancoDeDadosException {
+        Connection con = null;
+        try {
+            con = ConexaoBancoDeDados.getConnection();
+
+            StringBuilder sql = new StringBuilder();
+            sql.append("UPDATE CARRO SET ");
+            sql.append(" Alugado = ? ");
+            sql.append(" WHERE id_carro = ? ");
+
+            PreparedStatement stmt = con.prepareStatement(sql.toString());
+
+            stmt.setString(1, alugado ? "S" : "N");
+            stmt.setInt(2, id);
+
+            int res = stmt.executeUpdate();
+//            System.out.println("editarCarro.res=" + res);
 
             return res > 0;
         } catch (SQLException e) {
@@ -177,15 +212,7 @@ public class CarroRepository implements  Repositorio<Integer, Carro> {
             ResultSet res = stmt.executeQuery(sql);
 
             while (res.next()) {
-                Carro carro = new Carro();
-                carro.setIdCarro(res.getInt("id_carro"));
-                carro.setNomeCarro(res.getString("nome"));
-                carro.setAlugado(res.getString("alugado"));
-                carro.setMarca(res.getString("marca"));
-                carro.setClasse(res.getString("classe"));
-                carro.setQntPassageiros(res.getInt("quantidade_passageiros"));
-                carro.setKmRodados(res.getInt("km_rodados"));
-                carro.setPrecoDiaria(res.getDouble("valor_diaria"));
+                Carro carro = getCarro(res);
                 carros.add(carro);
             }
         } catch (SQLException e) {
@@ -200,5 +227,18 @@ public class CarroRepository implements  Repositorio<Integer, Carro> {
             }
         }
         return carros;
+    }
+
+    private Carro getCarro(ResultSet res) throws SQLException {
+        Carro carro = new Carro();
+        carro.setIdCarro(res.getInt("id_carro"));
+        carro.setNomeCarro(res.getString("nome"));
+        carro.setAlugado(res.getString("alugado"));
+        carro.setMarca(res.getString("marca"));
+        carro.setClasse(res.getString("classe"));
+        carro.setQntPassageiros(res.getInt("quantidade_passageiros"));
+        carro.setKmRodados(res.getInt("km_rodados"));
+        carro.setPrecoDiaria(res.getDouble("preco_diaria"));
+        return carro;
     }
 }

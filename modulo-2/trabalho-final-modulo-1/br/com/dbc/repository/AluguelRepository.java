@@ -51,13 +51,13 @@ public class AluguelRepository implements Repositorio<Integer, Aluguel> {
     }
 
     @Override
-    public Aluguel adicionar(Aluguel Aluguel) throws BancoDeDadosException {
+    public Aluguel adicionar(Aluguel aluguel) throws BancoDeDadosException {
         Connection con = null;
         try {
             con = ConexaoBancoDeDados.getConnection();
 
             Integer proximoId = this.getProximoId(con);
-            Aluguel.setIdAluguel(proximoId);
+            aluguel.setIdAluguel(proximoId);
 
             String sql = "INSERT INTO ALUGUEL\n" +
                     "(ID_ALUGUEL, ID_CLIENTE, ID_CARRO, diaDoAluguel, diaDaEntrega)\n" +
@@ -65,16 +65,16 @@ public class AluguelRepository implements Repositorio<Integer, Aluguel> {
 
             PreparedStatement stmt = con.prepareStatement(sql);
 
-            stmt.setInt(1, Aluguel.getIdAluguel());
-            stmt.setInt(2, Aluguel.getCliente().getIdCliente());
-            stmt.setInt(3, Aluguel.getCarro().getIdCarro());
-            stmt.setInt(4, Aluguel.getDiaDoAluguel());
-            stmt.setInt(5, Aluguel.getDiaDaEntrega());
+            stmt.setInt(1, aluguel.getIdAluguel());
+            stmt.setInt(2, aluguel.getCliente().getIdCliente());
+            stmt.setInt(3, aluguel.getCarro().getIdCarro());
+            stmt.setInt(4, aluguel.getDiaDoAluguel());
+            stmt.setInt(5, aluguel.getDiaDaEntrega());
 
 
             int res = stmt.executeUpdate();
 //            System.out.println("adicionarAluguel.res=" + res);
-            return Aluguel;
+            return aluguel;
         } catch (SQLException e) {
             throw new BancoDeDadosException(e.getCause());
         } finally {
