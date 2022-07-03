@@ -25,6 +25,8 @@ public class CarroService {
     }
 
     public Carro selecionarCarro(Integer id) {
+
+//        ArrayList<Carro> carros = carroRepository.listar().listIterator();
         ArrayList<Carro> carros = Database.database.getCarros();
         if (carros != null) {
             for (int index = 0; index < carros.size(); index++) {

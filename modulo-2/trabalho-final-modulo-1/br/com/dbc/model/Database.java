@@ -13,11 +13,11 @@ public class Database {
 
     public static Database database = new Database();
 
-    public Database() {
-        this.carros = CarrosController.carrosController.inicializarCarros();
-        this.clientes = ClientesController.clientesController.inicializarClientes();
-        this.alugueis = new ArrayList<>();
-    }
+//    public Database() {
+//        this.carros = CarrosController.carrosController.inicializarCarros();
+//        this.clientes = ClientesController.clientesController.inicializarClientes();
+//        this.alugueis = new ArrayList<>();
+//    }
 
     public ArrayList<Carro> getCarros() {
         return this.carros;
