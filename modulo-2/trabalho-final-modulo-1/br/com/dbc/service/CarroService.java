@@ -2,7 +2,6 @@ package br.com.dbc.service;
 
 import br.com.dbc.exception.BancoDeDadosException;
 import br.com.dbc.model.Carro;
-import br.com.dbc.model.Database;
 import br.com.dbc.repository.CarroRepository;
 
 import java.util.ArrayList;
@@ -25,7 +24,9 @@ public class CarroService {
     }
 
     public Carro selecionarCarro(Integer id) {
-        ArrayList<Carro> carros = Database.database.getCarros();
+
+//        ArrayList<Carro> carros = carroRepository.listar().listIterator();
+        ArrayList<Carro> carros = new ArrayList<>();
         if (carros != null) {
             for (int index = 0; index < carros.size(); index++) {
                 if (carros.get(index).getIdCarro() == id) {

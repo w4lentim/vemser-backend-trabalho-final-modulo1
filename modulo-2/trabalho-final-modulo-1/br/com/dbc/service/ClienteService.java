@@ -2,7 +2,6 @@ package br.com.dbc.service;
 
 import br.com.dbc.exception.BancoDeDadosException;
 import br.com.dbc.model.Cliente;
-import br.com.dbc.model.Database;
 import br.com.dbc.repository.ClienteRepository;
 
 import java.util.ArrayList;
@@ -17,7 +16,7 @@ public class ClienteService {
     public static ClienteService clientesService = new ClienteService();
 
     public Cliente selecionarCliente(Integer id) {
-        ArrayList<Cliente> clientes = Database.database.getClientes();
+        ArrayList<Cliente> clientes = new ArrayList<>();
         if (clientes != null) {
             for (int index = 0; index < clientes.size(); index++) {
                 if (clientes.get(index).getIdCliente() == id) {
@@ -33,6 +32,9 @@ public class ClienteService {
         try {
             if (cliente.getCpf().length() != 14){
                 throw new Exception("CPF inválido!");
+            }
+            if (cliente.getTelefone().length() != 14){
+                throw new Exception("Telefone inválido!");
             }
                 Cliente clienteAdd = clienteRepository.adicionar(cliente);
                 System.out.println("Cliente adicinado com sucesso! " + clienteAdd);
