@@ -21,7 +21,7 @@ public class ClienteService {
         if (clientes != null) {
             for (int index = 0; index < clientes.size(); index++) {
                 if (clientes.get(index).getIdCliente() == id) {
-                    System.out.println("br.com.dbc.model.Cliente selecionado: " + clientes.get(index).getIdCliente());
+                    System.out.println("Cliente selecionado: " + clientes.get(index).getIdCliente());
                     return clientes.get(index);
                 }
             }
@@ -32,7 +32,7 @@ public class ClienteService {
     public void adicionarCliente(Cliente cliente) {
         try {
             Cliente clienteAdicionado = clienteRepository.adicionar(cliente);
-            System.out.println("cliente adicinado com sucesso! " + clienteAdicionado);
+            System.out.println("Cliente adicinado com sucesso! " + clienteAdicionado);
         } catch (BancoDeDadosException e) {
             e.printStackTrace();
         }
