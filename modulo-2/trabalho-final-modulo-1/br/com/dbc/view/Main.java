@@ -14,9 +14,9 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int escolha = 0;
+        int escolha = -1;
 
-        while (escolha != 3) {
+        while (escolha != 0) {
             System.out.println("SEJA BEM VINDO A LOCADORA DBCAR!");
             System.out.println("LOGIN:\n1 - ACESSO AO MENU PARA FUNCIONÁRIOS;\n2 - ACESSO AO MENU PARA CLIENTES;");
             System.out.print("SUA ESCOLHA: ");
@@ -30,7 +30,7 @@ public class Main {
                     System.out.println("2 - ADICIONAR UM NOVO CARRO NO CATÁLOGO;");
                     System.out.println("3 - ATUALIZAR UM CARRO DO CATÁLOGO;");
                     System.out.println("4 - REMOVER CARRO DO CATÁLOGO;");
-                    System.out.println("5 - SAIR;");
+                    System.out.println("5 - RETORNAR AO MENU;");
                     System.out.println("SUA ESCOLHA: ");
                     int opcaoFuncionario = Integer.parseInt(sc.nextLine());
                     switch (opcaoFuncionario) {
@@ -80,7 +80,7 @@ public class Main {
                             System.out.println("Informe o novo ID do carro: ");
                             carroAtualizado.setIdCarro(Integer.parseInt(sc.nextLine()));
 
-                            System.out.println("br.com.dbc.model.Carro está disponível ou alugado? (S/N): ");
+                            System.out.println("Carro está disponível ou alugado? (S/N): ");
                             carroAtualizado.setAlugado(sc.nextLine());
 
                             System.out.println("Informe o nome do carro: ");
@@ -121,7 +121,7 @@ public class Main {
                             System.out.println("---- CARRO REMOVIDO COM SUCESSO! ----");
                             break;
                         }
-                        case 0 -> {
+                        case 5 -> {
                             break;
                         }
                         default -> {
@@ -135,7 +135,7 @@ public class Main {
                     System.out.println("------ MENU PARA CLIENTES ------");
                     System.out.println("1 - LISTAR CARROS DISPONÍVEIS NO CATÁLOGO;");
                     System.out.println("2 - ALUGAR UM CARRO;");
-                    System.out.println("3 - SAIR;");
+                    System.out.println("3 - RETORNAR AO MENU;");
                     System.out.println("SUA ESCOLHA: ");
                     int opcaoCliente = Integer.parseInt(sc.nextLine());
 
@@ -181,10 +181,14 @@ public class Main {
                                 System.out.println("ALUGUEL CANCELADO;");
                             }
                         }
+                        case 3 -> {
+                            break;
+                        }
                     }
                 }
                 default -> {
                     System.out.println("MENU SELECIONADO INVÁLIDO. POR FAVOR SELECIONE APENAS UM DOS MENUS DISPONÍVEIS.");
+                    System.out.println("-------------------------------------------------");
                 }
             }
         }
