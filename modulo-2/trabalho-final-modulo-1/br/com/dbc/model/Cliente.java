@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class Cliente extends Usuario {
     
     private Integer idCliente;
-    private String nome;
     private String cpf; // (UNIQUE);
     private String telefone;
     private String endereco;
@@ -15,9 +14,8 @@ public class Cliente extends Usuario {
 
     public Cliente() {};
 
-    public Cliente(Integer idCliente, String nome, String cpf, String telefone, String endereco, Double saldo) {
+    public Cliente(Integer idCliente, String cpf, String telefone, String endereco, Double saldo) {
         this.idCliente = idCliente;
-        this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;
         this.endereco = endereco;
@@ -29,14 +27,6 @@ public class Cliente extends Usuario {
 
     public void setIdCliente(Integer idCliente) {
         this.idCliente = idCliente;
-    }
-    
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public String getCpf() {

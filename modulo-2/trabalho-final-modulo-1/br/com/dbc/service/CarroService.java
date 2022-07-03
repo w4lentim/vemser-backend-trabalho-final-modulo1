@@ -29,7 +29,7 @@ public class CarroService {
         if (carros != null) {
             for (int index = 0; index < carros.size(); index++) {
                 if (carros.get(index).getIdCarro() == id) {
-                    System.out.println("br.com.dbc.model.Carro selecionado: " + carros.get(index));
+                    System.out.println("Carro selecionado: " + carros.get(index));
                     return carros.get(index);
                 }
             }

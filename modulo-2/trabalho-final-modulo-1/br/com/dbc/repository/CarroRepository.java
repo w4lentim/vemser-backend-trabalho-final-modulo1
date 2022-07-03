@@ -31,7 +31,7 @@ public class CarroRepository implements  Repositorio<Integer, Carro> {
             Carro.setIdCarro(proximoId);
 
             String sql = "INSERT INTO CARRO\n" +
-                    "(ID_CARRO, ALUGADO, NOME, MARCA, CLASSE, quantidade_passageiros, km_rodados, valor_diaria)\n" +
+                    "(ID_CARRO, ALUGADO, NOME, MARCA, CLASSE, QUANTIDADE_PASSAGEIROS, KM_RODADOS, VALOR_DIARIA)\n" +
                     "VALUES(?, ?, ?, ?, ?, ?, ?, ?)\n";
 
             PreparedStatement stmt = con.prepareStatement(sql);

@@ -31,11 +31,18 @@ public class ClienteService {
 
     public void adicionarCliente(Cliente cliente) {
         try {
-            Cliente clienteAdicionado = clienteRepository.adicionar(cliente);
-            System.out.println("Cliente adicinado com sucesso! " + clienteAdicionado);
-        } catch (BancoDeDadosException e) {
-            e.printStackTrace();
-        }
+            if (cliente.getCpf().length() != 14){
+                throw new Exception("CPF inválido!");
+            }
+                Cliente clienteAdd = clienteRepository.adicionar(cliente);
+                System.out.println("Cliente adicinado com sucesso! " + clienteAdd);
+            } catch(BancoDeDadosException e){
+                e.printStackTrace();
+            } catch(Exception e){
+                System.out.println("ERRO: " + e.getMessage());
+                System.out.println("TRACE: ");
+                e.printStackTrace();
+            }
     }
 
     public void removerCliente(Integer id) {
@@ -63,12 +70,5 @@ public class ClienteService {
             e.printStackTrace();
         }
     }
-
-//    public void listarClientePorCodigoDoCliente(Integer idCliente) {
-//        try {
-//            clienteRepository,listarClientePorCodigoDoCliente(idCliente).forEach(System.out::println);
-//        } catch (BancoDeDadosException e) {
-//            e.printStackTrace();
-//        }
 }
 

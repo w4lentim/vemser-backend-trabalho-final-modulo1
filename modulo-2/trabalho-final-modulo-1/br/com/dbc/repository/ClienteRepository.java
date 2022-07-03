@@ -101,6 +101,7 @@ public class ClienteRepository implements  Repositorio<Integer, Cliente> {
                 sql.append(" cpf = ?,");
                 sql.append(" telefone = ?,");
                 sql.append(" endereco = ? ");
+                sql.append(" saldo = ? ");
                 sql.append(" WHERE id_cliente = ? ");
 
                 PreparedStatement stmt = con.prepareStatement(sql.toString());
@@ -108,7 +109,8 @@ public class ClienteRepository implements  Repositorio<Integer, Cliente> {
                 stmt.setString(1, cliente.getCpf());
                 stmt.setString(2, cliente.getTelefone());
                 stmt.setString(3, cliente.getEndereco());
-                stmt.setInt(4, id);
+                stmt.setDouble(4, cliente.getSaldo());
+                stmt.setInt(5, id);
 
                 int res = stmt.executeUpdate();
                 System.out.println("editarCliente.res=" + res);
@@ -145,6 +147,7 @@ public class ClienteRepository implements  Repositorio<Integer, Cliente> {
                     cliente.setCpf(res.getString("cpf"));
                     cliente.setTelefone(res.getString("telefone"));
                     cliente.setEndereco(res.getString("endereco"));
+                    cliente.setSaldo(res.getDouble("saldo"));
                     clientes.add(cliente);
                 }
             } catch (SQLException e) {
