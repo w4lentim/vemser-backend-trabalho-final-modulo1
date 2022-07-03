@@ -5,6 +5,8 @@ import br.com.dbc.model.Cliente;
 import br.com.dbc.repository.ClienteRepository;
 
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class ClienteService {
     private ClienteRepository clienteRepository;
@@ -15,17 +17,15 @@ public class ClienteService {
 
     public static ClienteService clientesService = new ClienteService();
 
-    public Cliente selecionarCliente(Integer id) {
-        ArrayList<Cliente> clientes = new ArrayList<>();
-        if (clientes != null) {
-            for (int index = 0; index < clientes.size(); index++) {
-                if (clientes.get(index).getIdCliente() == id) {
-                    System.out.println("Cliente selecionado: " + clientes.get(index).getIdCliente());
-                    return clientes.get(index);
+    public Cliente selecionarCliente(Integer id) throws BancoDeDadosException {
+        Map<Integer, String> clienteIdECpf = clienteRepository.listar().stream()
+                .collect(Collectors.toMap(Cliente::getIdCliente, Cliente::getCpf));
+        if (clienteIdECpf != null) {
+//            for (int index = 0; index < clienteIdECpf.size(); index++) {
+//                if (clienteIdECpf.get(index) == id) {
+                    System.out.println("Cliente selecionado: " + clienteIdECpf.get(id);
                 }
-            }
-        }
-        return null;
+        return clienteIdECpf;
     }
 
     public void adicionarCliente(Cliente cliente) {
