@@ -101,7 +101,6 @@ public class AluguelRepository implements Repositorio<Integer, Aluguel> {
             stmt.setInt(1, id);
 
             int res = stmt.executeUpdate();
-//            System.out.println("removerAluguelPorId.res=" + res);
 
             return res > 0;
         } catch (SQLException e) {
