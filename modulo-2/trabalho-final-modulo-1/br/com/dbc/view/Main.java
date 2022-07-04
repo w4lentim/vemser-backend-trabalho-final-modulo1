@@ -43,9 +43,6 @@ public class Main {
                         case 2 -> {
                             Carro carro = new Carro();
 
-                            System.out.println("Informe o ID do carro: ");
-                            carro.setIdCarro(Integer.parseInt(sc.nextLine()));
-
                             System.out.println("Carro está disponível? (S/N): ");
                             carro.setAlugado(sc.nextLine());
 

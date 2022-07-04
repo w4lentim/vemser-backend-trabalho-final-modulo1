@@ -23,11 +23,21 @@ public class AluguelService {
 
     public void alugar(Aluguel aluguel) throws BancoDeDadosException {
         Aluguel aluguelSalvo = aluguelRepository.adicionar(aluguel);
-        if(carroRepository.editarAlugado(aluguel.getCarro().getIdCarro(), true)) {
-            System.out.println("O ALUGUEL FOI REALIZADO COM SUCESSO!");
-            System.out.println("Cliente: " + aluguel.getCliente().getNome() + "\nAluguel: " + aluguelSalvo);
-        } else {
-            System.out.println("O CARRO JÁ ESTÁ ALUGADO!");
+        try {
+            Carro carro = carroRepository.selecionar(aluguel.getCarro().getIdCarro());
+            if(carro != null) {
+                System.out.println("CARRO ENCONTRADO");
+            }
+            if (carroRepository.editarAlugado(aluguel.getCarro().getIdCarro(), true)) {
+                    System.out.println("O ALUGUEL FOI REALIZADO COM SUCESSO!");
+                    System.out.println("Cliente: " + aluguel.getCliente().getNome() + "\nAluguel: " + aluguelSalvo);
+            }
+
+        } catch(BancoDeDadosException e) {
+            e.printStackTrace();
+            if(carroRepository.editarAlugado(aluguel.getCarro().getIdCarro(), false)){
+                System.out.println("O CARRO JÁ ESTÁ ALUGADO!");
+            }
         }
     }
 

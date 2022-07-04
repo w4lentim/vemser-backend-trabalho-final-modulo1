@@ -18,4 +18,11 @@ public abstract class Usuario implements Impressao {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "nome='" + nome + '\'' +
+                '}';
+    }
 }

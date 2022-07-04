@@ -54,32 +54,32 @@ public class CarroRepository implements  Repositorio<Integer, Carro> {
         }
     }
     @Override
-    public Carro adicionar(Carro Carro) throws BancoDeDadosException {
+    public Carro adicionar(Carro carro) throws BancoDeDadosException {
         Connection con = null;
         try {
             con = ConexaoBancoDeDados.getConnection();
 
             Integer proximoId = this.getProximoId(con);
-            Carro.setIdCarro(proximoId);
+            carro.setIdCarro(proximoId);
 
             String sql = "INSERT INTO CARRO\n" +
-                    "(ID_CARRO, ALUGADO, NOME, MARCA, CLASSE, QUANTIDADE_PASSAGEIROS, KM_RODADOS, VALOR_DIARIA)\n" +
+                    "(ID_CARRO, ALUGADO, NOME, MARCA, CLASSE, QUANTIDADE_PASSAGEIROS, KM_RODADOS, PRECO_DIARIA)\n" +
                     "VALUES(?, ?, ?, ?, ?, ?, ?, ?)\n";
 
             PreparedStatement stmt = con.prepareStatement(sql);
 
-            stmt.setInt(1, Carro.getIdCarro());
-            stmt.setString(2, Carro.getAlugado());
-            stmt.setString(3, Carro.getNomeCarro());
-            stmt.setString(4, Carro.getMarca());
-            stmt.setString(5, Carro.getClasse());
-            stmt.setInt(6, Carro.getQntPassageiros());
-            stmt.setInt(7, Carro.getKmRodados());
-            stmt.setDouble(8, Carro.getPrecoDiaria());
+            stmt.setInt(1, carro.getIdCarro());
+            stmt.setString(2, carro.getAlugado());
+            stmt.setString(3, carro.getNomeCarro());
+            stmt.setString(4, carro.getMarca());
+            stmt.setString(5, carro.getClasse());
+            stmt.setInt(6, carro.getQntPassageiros());
+            stmt.setInt(7, carro.getKmRodados());
+            stmt.setDouble(8, carro.getPrecoDiaria());
 
             int res = stmt.executeUpdate();
 //            System.out.println("adicionarCarro.res=" + res);
-            return new Carro();
+            return carro;
         } catch (SQLException e) {
             throw new BancoDeDadosException(e.getCause());
         } finally {
