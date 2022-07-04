@@ -66,7 +66,8 @@ public class ClienteRepository implements Repositorio<Integer, Cliente> {
         try {
             con = ConexaoBancoDeDados.getConnection();
 
-            String sql = "SELECT * FROM CLIENTE\n" +
+            String sql = "SELECT * FROM CLIENTE C\n" +
+                    "INNER JOIN USUARIO U ON (U.ID_USUARIO = C.ID_USUARIO)\n" +
                     "WHERE ID_CLIENTE = ?\n";
 
             PreparedStatement stmt = con.prepareStatement(sql);
@@ -193,6 +194,7 @@ public class ClienteRepository implements Repositorio<Integer, Cliente> {
 
     private Cliente getCliente(ResultSet res) throws SQLException {
         Cliente cliente = new Cliente();
+        cliente.setNome(res.getString("nome"));
         cliente.setIdCliente(res.getInt("id_cliente"));
         cliente.setCpf(res.getString("cpf"));
         cliente.setTelefone(res.getString("telefone"));

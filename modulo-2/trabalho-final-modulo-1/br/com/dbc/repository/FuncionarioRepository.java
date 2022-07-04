@@ -65,15 +65,19 @@ public class FuncionarioRepository implements Repositorio<Integer, Funcionario> 
         try {
             con = ConexaoBancoDeDados.getConnection();
 
-            String sql = "SELECT ID_FUNCIONARIO FROM FUNCIONARIO\n" +
+            String sql = "SELECT * FROM FUNCIONARIO F\n" +
+                    "INNER JOIN USUARIO U ON (U.ID_USUARIO = F.ID_USUARIO)\n" +
                     "WHERE ID_FUNCIONARIO = ?\n";
 
             PreparedStatement stmt = con.prepareStatement(sql);
 
             stmt.setInt(1, id);
+            ResultSet res = stmt.executeQuery();
+            if(res.next()){
+                return getFuncionario(res);
+            }
+            return null;
 
-//            int res = stmt.executeUpdate();
-//            System.out.println("selecionarFuncionario.res=" + res);
         } catch (SQLException e) {
             throw new BancoDeDadosException(e.getCause());
         } finally {
@@ -85,7 +89,6 @@ public class FuncionarioRepository implements Repositorio<Integer, Funcionario> 
                 e.printStackTrace();
             }
         }
-        return null;
     }
 
 
@@ -157,14 +160,14 @@ public class FuncionarioRepository implements Repositorio<Integer, Funcionario> 
             con = ConexaoBancoDeDados.getConnection();
             Statement stmt = con.createStatement();
 
-            String sql = "SELECT * FROM FUNCIONARIO";
+            String sql = "SELECT * FROM FUNCIONARIO F\n" +
+                    "INNER JOIN USUARIO U ON (U.ID_USUARIO = F.ID_USUARIO)\n" +
+                    "WHERE ID_FUNCIONARIO = ?\n";
 
             ResultSet res = stmt.executeQuery(sql);
 
             while (res.next()) {
-                Funcionario funcionario = new Funcionario();
-                funcionario.setIdFuncionario(res.getInt("id_funcionario"));
-                funcionario.setMatricula(res.getString("matricula"));
+                Funcionario funcionario = getFuncionario(res);
                 funcionarios.add(funcionario);
             }
         } catch (SQLException e) {
@@ -179,5 +182,12 @@ public class FuncionarioRepository implements Repositorio<Integer, Funcionario> 
             }
         }
         return funcionarios;
+    }
+    private Funcionario getFuncionario(ResultSet res) throws SQLException {
+        Funcionario funcionario = new Funcionario();
+        funcionario.setNome(res.getString("nome"));
+        funcionario.setIdFuncionario(res.getInt("id_funcionario"));
+        funcionario.setMatricula(res.getString("matricula"));
+        return funcionario;
     }
 }

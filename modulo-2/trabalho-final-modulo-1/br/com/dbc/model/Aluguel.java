@@ -59,4 +59,15 @@ public class Aluguel {
     public void setDiaDaEntrega(Integer diaDaEntrega) {
         this.diaDaEntrega = diaDaEntrega;
     }
+
+    @Override
+    public String toString() {
+        return "Aluguel{" +
+                "idAluguel=" + idAluguel +
+                ", cliente=" + cliente +
+                ", carro=" + carro +
+                ", diaDoAluguel=" + diaDoAluguel +
+                ", diaDaEntrega=" + diaDaEntrega +
+                '}';
+    }
 }

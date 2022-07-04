@@ -1,34 +1,37 @@
-CREATE TABLE VEM_SER.USUARIO (
-  id_usuario NUMBER NOT NULL,
-  nome VARCHAR2(200) NOT NULL,
-  PRIMARY KEY (id_usuario)
-);
-             
-CREATE TABLE VEM_SER.FUNCIONARIO (
-  id_funcionario NUMBER(38) NOT NULL,
-  matricula VARCHAR2(100) UNIQUE NOT NULL,
-  PRIMARY KEY (id_funcionario),
-  CONSTRAINT FK_USUARIO FOREIGN KEY (ID_FUNCIONARIO) REFERENCES USUARIO (ID_USUARIO)
+CREATE TABLE USUARIO (
+                         id_usuario NUMBER NOT NULL,
+                         nome VARCHAR2(200) NOT NULL,
+                         PRIMARY KEY (id_usuario)
 );
 
-CREATE TABLE VEM_SER.CLIENTE (
-  id_cliente NUMBER(38) NOT NULL,
-  cpf VARCHAR2(14) UNIQUE NOT NULL,
-  telefone VARCHAR2(14) NOT NULL,
-  endere�o VARCHAR2(200) NOT NULL,
-  saldo DECIMAL(8,2) NOT NULL,
-  PRIMARY KEY (id_cliente),
-  CONSTRAINT FK_USUARIO_CLIENTE FOREIGN KEY (ID_CLIENTE) REFERENCES USUARIO (ID_USUARIO)
+CREATE TABLE FUNCIONARIO (
+                             id_funcionario NUMBER(38) NOT NULL,
+                             matricula VARCHAR2(100) UNIQUE NOT NULL,
+                             id_usuario NUMBER NOT NULL,
+                             PRIMARY KEY (id_funcionario),
+                             CONSTRAINT FK_USUARIO FOREIGN KEY (ID_USUARIO) REFERENCES USUARIO (ID_USUARIO)
 );
 
-CREATE TABLE VEM_SER.ALUGUEL (
-  id_aluguel NUMBER(38) NOT NULL,
-  id_cliente NUMBER(38) NOT NULL,
-  id_carro NUMBER(38) NOT NULL,
-  diaDoAluguel DATE NOT NULL,
-  diaDaEntrega DATE NOT NULL,
-  PRIMARY KEY (id_aluguel),
-  CONSTRAINT FK_CLIENTE_ALUGUEL FOREIGN KEY (ID_CLIENTE) REFERENCES CLIENTE (ID_CLIENTE)
+CREATE TABLE CLIENTE (
+                         id_cliente NUMBER(38) NOT NULL,
+                         cpf VARCHAR2(14) UNIQUE NOT NULL,
+                         telefone VARCHAR2(14) NOT NULL,
+                         endereco VARCHAR2(200) NOT NULL,
+                         saldo DECIMAL(8,2) NOT NULL,
+                         id_usuario NUMBER NOT NULL,
+                         PRIMARY KEY (id_cliente),
+                         CONSTRAINT FK_USUARIO_CLIENTE FOREIGN KEY (ID_USUARIO) REFERENCES USUARIO (ID_USUARIO)
+);
+
+
+CREATE TABLE ALUGUEL (
+                         id_aluguel NUMBER(38) NOT NULL,
+                         id_cliente NUMBER(38) NOT NULL,
+                         id_carro NUMBER(38) NOT NULL,
+                         diaDoAluguel NUMBER NOT NULL,
+                         diaDaEntrega NUMBER NOT NULL,
+                         PRIMARY KEY (id_aluguel),
+                         CONSTRAINT FK_CLIENTE_ALUGUEL FOREIGN KEY (ID_CLIENTE) REFERENCES CLIENTE (ID_CLIENTE)
 );
 
 CREATE TABLE VEM_SER.CARRO (
@@ -70,7 +73,7 @@ NOCACHE NOCYCLE;
 
 -- INSERT'S DOS USUARIOS;
 ----------------------------------------------------------------------------------
-INSERT INTO VEM_SER.USUARIO (ID_USUARIO, NOME) VALUES (SEQ_USUARIO.nextval, 'Jo�o');
+INSERT INTO VEM_SER.USUARIO (ID_USUARIO, NOME) VALUES (SEQ_USUARIO.nextval, 'João');
 
 INSERT INTO VEM_SER.USUARIO (ID_USUARIO, NOME) VALUES (SEQ_USUARIO.nextval, 'Paulo');
 
@@ -88,7 +91,7 @@ INSERT INTO VEMSER_WILLIAN.USUARIO (ID_USUARIO, NOME) VALUES (VEMSER_WILLIAN.SEQ
 
 INSERT INTO VEMSER_WILLIAN.USUARIO (ID_USUARIO, NOME) VALUES (VEMSER_WILLIAN.SEQ_USUARIO.nextval, 'Marcos');
 
-INSERT INTO VEMSER_WILLIAN.USUARIO (ID_USUARIO, NOME) VALUES (VEMSER_WILLIAN.SEQ_USUARIO.nextval, 'Ant�nio');
+INSERT INTO VEMSER_WILLIAN.USUARIO (ID_USUARIO, NOME) VALUES (VEMSER_WILLIAN.SEQ_USUARIO.nextval, 'Antônio');
 -----------------------------------------------------------------------------------
 
 -- INSERT'S DOS FUNCIONARIOS;
