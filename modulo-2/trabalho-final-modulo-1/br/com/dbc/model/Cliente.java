@@ -59,13 +59,16 @@ public class Cliente extends Usuario {
 
     @Override
     public void imprimir() {
-        System.out.println("Nome do br.com.dbc.model.Cliente: " + this.getNome() + "\nCPF: " + this.getCpf() + "\nTelefone: " + this.getTelefone() + "\nEndereço: " + this.getEndereco() + "\nSaldo R$: " + this.getSaldo());
+        System.out.println("Nome do Cliente: " + this.getNome() + "\nCPF: " + this.getCpf() + "\nTelefone: " + this.getTelefone() + "\nEndereço: " + this.getEndereco() + "\nSaldo R$: " + this.getSaldo());
     }
-
-    //    public Double saldoCliente(Double valor){
-//        System.out.println("Escreva seu saldo disponível: ");
-//        Scanner sc = new Scanner(System.in);
-//        this.setSaldo(sc.nextDouble());
-//        return getSaldo();
-//    }
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "idCliente=" + idCliente +
+                ", cpf='" + cpf + '\'' +
+                ", telefone='" + telefone + '\'' +
+                ", endereco='" + endereco + '\'' +
+                ", saldo=" + saldo +
+                '}';
+    }
 }

@@ -146,6 +146,8 @@ public class Main {
                             System.out.println("-------------------------------------------------");
                         }
                         case 2 -> {
+                            CarroService.carrosService.listarCarros();
+                            System.out.println("-------------------------------------------------");
 
                             System.out.println("Informe o ID do carro que deseja alugar: ");
                             int idCarroEscolhido = (Integer.parseInt(sc.nextLine()));

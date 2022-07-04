@@ -33,4 +33,11 @@ public class Funcionario extends Usuario {
     public void imprimir() {
         System.out.println("Nome do funcionário: " + this.getNome() + "\nMatrícula do Funcionário: " + this.getMatricula());
     }
+    @Override
+    public String toString() {
+        return "Funcionario{" +
+                "idFuncionario=" + idFuncionario +
+                ", matricula='" + matricula + '\'' +
+                '}';
+    }
 }

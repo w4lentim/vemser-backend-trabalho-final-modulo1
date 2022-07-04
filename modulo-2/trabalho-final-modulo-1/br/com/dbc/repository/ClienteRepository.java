@@ -22,7 +22,6 @@ public class ClienteRepository implements Repositorio<Integer, Cliente> {
 
             return null;
         }
-
         @Override
         public Cliente adicionar(Cliente cliente) throws BancoDeDadosException {
             Connection con = null;
@@ -59,7 +58,6 @@ public class ClienteRepository implements Repositorio<Integer, Cliente> {
                 }
             }
         }
-
     @Override
     public Cliente selecionar(Integer id) throws BancoDeDadosException {
         Connection con = null;
@@ -79,7 +77,6 @@ public class ClienteRepository implements Repositorio<Integer, Cliente> {
                 return getCliente(res);
             }
             return null;
-//            System.out.println("selecionarCliente.res=" + res);
         } catch (SQLException e) {
             e.printStackTrace();
             throw new BancoDeDadosException(e.getCause());
@@ -93,7 +90,6 @@ public class ClienteRepository implements Repositorio<Integer, Cliente> {
             }
         }
     }
-
         @Override
         public boolean remover(Integer id) throws BancoDeDadosException {
             Connection con = null;
@@ -106,9 +102,7 @@ public class ClienteRepository implements Repositorio<Integer, Cliente> {
 
                 stmt.setInt(1, id);
 
-                // Executa-se a consulta
                 int res = stmt.executeUpdate();
-//                System.out.println("removerClientePorId.res=" + res);
 
                 return res > 0;
             } catch (SQLException e) {
@@ -131,7 +125,7 @@ public class ClienteRepository implements Repositorio<Integer, Cliente> {
 
                 StringBuilder sql = new StringBuilder();
                 sql.append("UPDATE CLIENTE SET ");
-                sql.append(" cpf = ?,");
+                sql.append(" cpf = ? ");
                 sql.append(" telefone = ?,");
                 sql.append(" endereco = ? ");
                 sql.append(" saldo = ? ");
@@ -146,7 +140,6 @@ public class ClienteRepository implements Repositorio<Integer, Cliente> {
                 stmt.setInt(5, id);
 
                 int res = stmt.executeUpdate();
-//                System.out.println("editarCliente.res=" + res);
 
                 return res > 0;
             } catch (SQLException e) {

@@ -53,7 +53,6 @@ public class CarroService {
             e.printStackTrace();
         }
     }
-
     public void listarCarros() {
         try {
             carroRepository.listar().forEach(System.out::println);

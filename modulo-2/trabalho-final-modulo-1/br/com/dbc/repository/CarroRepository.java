@@ -162,8 +162,8 @@ public class CarroRepository implements  Repositorio<Integer, Carro> {
 
             StringBuilder sql = new StringBuilder();
             sql.append("UPDATE CARRO SET ");
-            sql.append(" Alugado = ?,");
-            sql.append(" Nome do Carro = ?,");
+            sql.append(" Alugado = ? ");
+            sql.append(" Nome do Carro = ? ");
             sql.append(" Marca = ? ");
             sql.append(" Classe = ? ");
             sql.append(" Quantidade de passageiros = ? ");
@@ -183,7 +183,6 @@ public class CarroRepository implements  Repositorio<Integer, Carro> {
             stmt.setInt(8, id);
 
             int res = stmt.executeUpdate();
-//            System.out.println("editarCarro.res=" + res);
 
             return res > 0;
         } catch (SQLException e) {
@@ -198,7 +197,6 @@ public class CarroRepository implements  Repositorio<Integer, Carro> {
             }
         }
     }
-
     @Override
     public List<Carro> listar() throws BancoDeDadosException {
         List<Carro> carros = new ArrayList<>();
