@@ -4,57 +4,53 @@ ALTER TABLE ALUGUEL
 
 ALTER TABLE CLIENTE ADD ID_USUARIO NUMBER NOT NULL
 
-SELECT * FROM CLIENTE
-
-DROP TABLE CLIENTE
-
 
 CREATE TABLE USUARIO (
-                         id_usuario NUMBER NOT NULL,
-                         nome VARCHAR2(200) NOT NULL,
-                         PRIMARY KEY (id_usuario)
+	id_usuario NUMBER NOT NULL,
+        nome VARCHAR2(200) NOT NULL,
+        PRIMARY KEY (id_usuario)
 );
 
 CREATE TABLE FUNCIONARIO (
-                             id_funcionario NUMBER(38) NOT NULL,
-                             matricula VARCHAR2(100) UNIQUE NOT NULL,
-                             id_usuario NUMBER NOT NULL,
-                             PRIMARY KEY (id_funcionario),
-                             CONSTRAINT FK_USUARIO FOREIGN KEY (ID_USUARIO) REFERENCES USUARIO (ID_USUARIO)
+        id_funcionario NUMBER(38) NOT NULL,
+        matricula VARCHAR2(100) UNIQUE NOT NULL,
+        id_usuario NUMBER NOT NULL,
+        PRIMARY KEY (id_funcionario),
+        CONSTRAINT FK_USUARIO FOREIGN KEY (ID_USUARIO) REFERENCES USUARIO (ID_USUARIO)
 );
 
 CREATE TABLE CLIENTE (
-                         id_cliente NUMBER(38) NOT NULL,
-                         cpf VARCHAR2(14) UNIQUE NOT NULL,
-                         telefone VARCHAR2(14) NOT NULL,
-                         endereco VARCHAR2(200) NOT NULL,
-                         saldo DECIMAL(8,2) NOT NULL,
-                         id_usuario NUMBER NOT NULL,
-                         PRIMARY KEY (id_cliente),
-                         CONSTRAINT FK_USUARIO_CLIENTE FOREIGN KEY (ID_USUARIO) REFERENCES USUARIO (ID_USUARIO)
+        id_cliente NUMBER(38) NOT NULL,
+        cpf VARCHAR2(14) UNIQUE NOT NULL,
+        telefone VARCHAR2(14) NOT NULL,
+        endereco VARCHAR2(200) NOT NULL,
+        saldo DECIMAL(8,2) NOT NULL,
+        id_usuario NUMBER NOT NULL,
+        PRIMARY KEY (id_cliente),
+        CONSTRAINT FK_USUARIO_CLIENTE FOREIGN KEY (ID_USUARIO) REFERENCES USUARIO (ID_USUARIO)
 );
 
 
 CREATE TABLE ALUGUEL (
-                         id_aluguel NUMBER(38) NOT NULL,
-                         id_cliente NUMBER(38) NOT NULL,
-                         id_carro NUMBER(38) NOT NULL,
-                         diaDoAluguel NUMBER NOT NULL,
-                         diaDaEntrega NUMBER NOT NULL,
-                         PRIMARY KEY (id_aluguel),
-                         CONSTRAINT FK_CLIENTE_ALUGUEL FOREIGN KEY (ID_CLIENTE) REFERENCES CLIENTE (ID_CLIENTE)
+        id_aluguel NUMBER(38) NOT NULL,
+        id_cliente NUMBER(38) NOT NULL,
+        id_carro NUMBER(38) NOT NULL,
+        diaDoAluguel NUMBER NOT NULL,
+        diaDaEntrega NUMBER NOT NULL,
+        PRIMARY KEY (id_aluguel),
+        CONSTRAINT FK_CLIENTE_ALUGUEL FOREIGN KEY (ID_CLIENTE) REFERENCES CLIENTE (ID_CLIENTE)
 );
 
 CREATE TABLE VEM_SER.CARRO (
-                               id_carro NUMBER(38) NOT NULL,
-                               alugado CHAR(1),
-                               nome VARCHAR2(200) NOT NULL,
-                               marca VARCHAR2(200) NOT NULL,
-                               classe CHAR(1) NOT NULL,
-                               quantidade_passageiros NUMBER(38) NOT NULL,
-                               km_rodados NUMBER(38) NOT NULL,
-                               valor_diaria DECIMAL(8,2) NOT NULL,
-                               PRIMARY KEY (id_carro),
+        id_carro NUMBER(38) NOT NULL,
+        alugado CHAR(1),
+        nome VARCHAR2(200) NOT NULL,
+        marca VARCHAR2(200) NOT NULL,
+        classe CHAR(1) NOT NULL,
+        quantidade_passageiros NUMBER(38) NOT NULL,
+        km_rodados NUMBER(38) NOT NULL,
+        valor_diaria DECIMAL(8,2) NOT NULL,
+        PRIMARY KEY (id_carro),
 );
 
 CREATE SEQUENCE SEQ_USUARIO
