@@ -5,6 +5,7 @@ import br.com.dbc.model.Carro;
 import br.com.dbc.repository.CarroRepository;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class CarroService {
 
@@ -57,6 +58,14 @@ public class CarroService {
     public void listarCarros() {
         try {
             carroRepository.listar().forEach(System.out::println);
+        } catch (BancoDeDadosException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void listarCarrosNaoAlugados() throws BancoDeDadosException {
+        try {
+            carroRepository.listarNaoAlugaDos().forEach(System.out::println);
         } catch (BancoDeDadosException e) {
             e.printStackTrace();
         }

@@ -241,4 +241,34 @@ public class CarroRepository implements  Repositorio<Integer, Carro> {
         carro.setPrecoDiaria(res.getDouble("preco_diaria"));
         return carro;
     }
+
+    public List<Carro> listarNaoAlugaDos() throws BancoDeDadosException {
+        List<Carro> carros = new ArrayList<>();
+        Connection con = null;
+        try {
+            con = ConexaoBancoDeDados.getConnection();
+            Statement stmt = con.createStatement();
+
+            String sql = "SELECT * FROM CARRO\n" +
+                          "WHERE ALUGADO = 'N'";
+
+            ResultSet res = stmt.executeQuery(sql);
+
+            while (res.next()) {
+                Carro carro = getCarro(res);
+                carros.add(carro);
+            }
+        } catch (SQLException e) {
+            throw new BancoDeDadosException(e.getCause());
+        } finally {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return carros;
+    }
 }
